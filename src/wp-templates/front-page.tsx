@@ -8,8 +8,14 @@ import { GetHomePageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
 
 const Component: FaustTemplate<GetHomePageQuery> = (props) => {
+  // Loading state for previews
+  if (props.loading) {
+    return <>Loading...</>;
+  }
+
   const { title: siteTitle, description: siteDescription } = props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;
+  const { title, content } = props.data.page;
 
   return (
     <>
@@ -20,7 +26,7 @@ const Component: FaustTemplate<GetHomePageQuery> = (props) => {
       <Header siteTitle={siteTitle} menuItems={menuItems} />
 
       <main className="">
-        <section className={'container'}></section>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
       </main>
 
       <Footer />
@@ -28,8 +34,19 @@ const Component: FaustTemplate<GetHomePageQuery> = (props) => {
   );
 };
 
+Component.variables = ({ databaseId }, ctx) => {
+  return {
+    databaseId,
+    asPreview: ctx?.asPreview,
+  };
+};
+
 Component.query = gql(`
-  query GetHomePage {
+  query GetHomePage($databaseId: ID!, $asPreview: Boolean = false) {
+    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      title
+      content
+    }
     generalSettings {
       title
       description
