@@ -1,14 +1,14 @@
-import { CodegenConfig } from "@graphql-codegen/cli";
+import { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  schema: "https://faustexample.wpengine.com/graphql",
-  documents: ["src/**/*.{tsx,ts}"],
+  schema: 'https://boldisthl.wpengine.com/graphql',
+  documents: ['src/**/*.{tsx,ts}'],
   generates: {
-    "./src/__generated__/": {
-      preset: "client",
+    './src/__generated__/': {
+      preset: 'client',
       plugins: [],
       presetConfig: {
-        gqlTagName: "gql",
+        gqlTagName: 'gql',
       },
     },
   },

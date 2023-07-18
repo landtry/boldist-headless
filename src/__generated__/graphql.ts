@@ -12,15 +12,704 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  BlockAttributesObject: any;
 };
 
-/** The atlasContentModelerSettings setting type */
-export type AtlasContentModelerSettingsSettings = {
-  __typename?: 'AtlasContentModelerSettingsSettings';
-  /** Opt into anonymous usage tracking to help us make Atlas Content Modeler better. */
-  atlasContentModelerUsageTracking?: Maybe<Scalars['String']>;
+/** A Field Group registered by ACF */
+export type AcfFieldGroup = {
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
 };
+
+/** ACF Link field */
+export type AcfLink = {
+  __typename?: 'AcfLink';
+  /** The target of the link (_blank, etc) */
+  target?: Maybe<Scalars['String']>;
+  /** The title of the link */
+  title?: Maybe<Scalars['String']>;
+  /** The url of the link */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms address field. */
+export type AddressField = FormField & GfFieldWithAddressSetting & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCopyValuesOptionSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & {
+  __typename?: 'AddressField';
+  /** Determines the type of address to be displayed. */
+  addressType?: Maybe<AddressFieldTypeEnum>;
+  /** Address field value. */
+  addressValues?: Maybe<AddressFieldValue>;
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** The field id of the field being used as the copy source. */
+  copyValuesOptionFieldId?: Maybe<Scalars['Int']>;
+  /** The label that appears next to the copy values option when the form is displayed. The default value is \“Same as previous\”. */
+  copyValuesOptionLabel?: Maybe<Scalars['String']>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the country that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;INTERATIONAL&quot;. */
+  defaultCountry?: Maybe<AddressFieldCountryEnum>;
+  /** Contains the province that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;CANADA&quot;. */
+  defaultProvince?: Maybe<AddressFieldProvinceEnum>;
+  /** Contains the state that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;US&quot;. */
+  defaultState?: Maybe<AddressFieldProvinceEnum>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Indicates whether the copy values option can be used. This option allows users to skip filling out the field and use the same values as another. For example, if the mailing and billing address are the same. */
+  shouldCopyValuesOption?: Maybe<Scalars['Boolean']>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** Countries supported by Gravity Forms Address Field. */
+export enum AddressFieldCountryEnum {
+  /** Andorra . */
+  Ad = 'AD',
+  /** United Arab Emirates . */
+  Ae = 'AE',
+  /** Afghanistan . */
+  Af = 'AF',
+  /** Antigua and Barbuda . */
+  Ag = 'AG',
+  /** Anguilla . */
+  Ai = 'AI',
+  /** Albania . */
+  Al = 'AL',
+  /** Armenia . */
+  Am = 'AM',
+  /** Angola . */
+  Ao = 'AO',
+  /** Antarctica . */
+  Aq = 'AQ',
+  /** Argentina . */
+  Ar = 'AR',
+  /** American Samoa . */
+  As = 'AS',
+  /** Austria . */
+  At = 'AT',
+  /** Australia . */
+  Au = 'AU',
+  /** Aruba . */
+  Aw = 'AW',
+  /** Åland Islands . */
+  Ax = 'AX',
+  /** Azerbaijan . */
+  Az = 'AZ',
+  /** Bosnia and Herzegovina . */
+  Ba = 'BA',
+  /** Barbados . */
+  Bb = 'BB',
+  /** Bangladesh . */
+  Bd = 'BD',
+  /** Belgium . */
+  Be = 'BE',
+  /** Burkina Faso . */
+  Bf = 'BF',
+  /** Bulgaria . */
+  Bg = 'BG',
+  /** Bahrain . */
+  Bh = 'BH',
+  /** Burundi . */
+  Bi = 'BI',
+  /** Benin . */
+  Bj = 'BJ',
+  /** Saint Barthélemy . */
+  Bl = 'BL',
+  /** Bermuda . */
+  Bm = 'BM',
+  /** Brunei Darussalam . */
+  Bn = 'BN',
+  /** Bolivia . */
+  Bo = 'BO',
+  /** Bonaire, Sint Eustatius and Saba . */
+  Bq = 'BQ',
+  /** Brazil . */
+  Br = 'BR',
+  /** Bahamas . */
+  Bs = 'BS',
+  /** Bhutan . */
+  Bt = 'BT',
+  /** Bouvet Island . */
+  Bv = 'BV',
+  /** Botswana . */
+  Bw = 'BW',
+  /** Belarus . */
+  By = 'BY',
+  /** Belize . */
+  Bz = 'BZ',
+  /** Canada . */
+  Ca = 'CA',
+  /** Cocos Islands . */
+  Cc = 'CC',
+  /** Congo, Democratic Republic of the . */
+  Cd = 'CD',
+  /** Central African Republic . */
+  Cf = 'CF',
+  /** Congo . */
+  Cg = 'CG',
+  /** Switzerland . */
+  Ch = 'CH',
+  /** Côte d'Ivoire . */
+  Ci = 'CI',
+  /** Cook Islands . */
+  Ck = 'CK',
+  /** Chile . */
+  Cl = 'CL',
+  /** Cameroon . */
+  Cm = 'CM',
+  /** China . */
+  Cn = 'CN',
+  /** Colombia . */
+  Co = 'CO',
+  /** Costa Rica . */
+  Cr = 'CR',
+  /** Cuba . */
+  Cu = 'CU',
+  /** Cabo Verde . */
+  Cv = 'CV',
+  /** Curaçao . */
+  Cw = 'CW',
+  /** Christmas Island . */
+  Cx = 'CX',
+  /** Cyprus . */
+  Cy = 'CY',
+  /** Czechia . */
+  Cz = 'CZ',
+  /** Germany . */
+  De = 'DE',
+  /** Djibouti . */
+  Dj = 'DJ',
+  /** Denmark . */
+  Dk = 'DK',
+  /** Dominica . */
+  Dm = 'DM',
+  /** Dominican Republic . */
+  Do = 'DO',
+  /** Algeria . */
+  Dz = 'DZ',
+  /** Ecuador . */
+  Ec = 'EC',
+  /** Estonia . */
+  Ee = 'EE',
+  /** Egypt . */
+  Eg = 'EG',
+  /** Western Sahara . */
+  Eh = 'EH',
+  /** Eritrea . */
+  Er = 'ER',
+  /** Spain . */
+  Es = 'ES',
+  /** Ethiopia . */
+  Et = 'ET',
+  /** Finland . */
+  Fi = 'FI',
+  /** Fiji . */
+  Fj = 'FJ',
+  /** Falkland Islands . */
+  Fk = 'FK',
+  /** Micronesia . */
+  Fm = 'FM',
+  /** Faroe Islands . */
+  Fo = 'FO',
+  /** France . */
+  Fr = 'FR',
+  /** Gabon . */
+  Ga = 'GA',
+  /** United Kingdom . */
+  Gb = 'GB',
+  /** Grenada . */
+  Gd = 'GD',
+  /** Georgia . */
+  Ge = 'GE',
+  /** French Guiana . */
+  Gf = 'GF',
+  /** Guernsey . */
+  Gg = 'GG',
+  /** Ghana . */
+  Gh = 'GH',
+  /** Gibraltar . */
+  Gi = 'GI',
+  /** Greenland . */
+  Gl = 'GL',
+  /** Gambia . */
+  Gm = 'GM',
+  /** Guinea . */
+  Gn = 'GN',
+  /** Guadeloupe . */
+  Gp = 'GP',
+  /** Equatorial Guinea . */
+  Gq = 'GQ',
+  /** Greece . */
+  Gr = 'GR',
+  /** South Georgia and the South Sandwich Islands . */
+  Gs = 'GS',
+  /** Guatemala . */
+  Gt = 'GT',
+  /** Guam . */
+  Gu = 'GU',
+  /** Guinea-Bissau . */
+  Gw = 'GW',
+  /** Guyana . */
+  Gy = 'GY',
+  /** Hong Kong . */
+  Hk = 'HK',
+  /** Heard Island and McDonald Islands . */
+  Hm = 'HM',
+  /** Honduras . */
+  Hn = 'HN',
+  /** Croatia . */
+  Hr = 'HR',
+  /** Haiti . */
+  Ht = 'HT',
+  /** Hungary . */
+  Hu = 'HU',
+  /** Indonesia . */
+  Id = 'ID',
+  /** Ireland . */
+  Ie = 'IE',
+  /** Israel . */
+  Il = 'IL',
+  /** Isle of Man . */
+  Im = 'IM',
+  /** India . */
+  In = 'IN',
+  /** British Indian Ocean Territory . */
+  Io = 'IO',
+  /** Iraq . */
+  Iq = 'IQ',
+  /** Iran . */
+  Ir = 'IR',
+  /** Iceland . */
+  Is = 'IS',
+  /** Italy . */
+  It = 'IT',
+  /** Jersey . */
+  Je = 'JE',
+  /** Jamaica . */
+  Jm = 'JM',
+  /** Jordan . */
+  Jo = 'JO',
+  /** Japan . */
+  Jp = 'JP',
+  /** Kenya . */
+  Ke = 'KE',
+  /** Kyrgyzstan . */
+  Kg = 'KG',
+  /** Cambodia . */
+  Kh = 'KH',
+  /** Kiribati . */
+  Ki = 'KI',
+  /** Comoros . */
+  Km = 'KM',
+  /** Saint Kitts and Nevis . */
+  Kn = 'KN',
+  /** Korea, Democratic People's Republic of . */
+  Kp = 'KP',
+  /** Korea, Republic of . */
+  Kr = 'KR',
+  /** Kuwait . */
+  Kw = 'KW',
+  /** Cayman Islands . */
+  Ky = 'KY',
+  /** Kazakhstan . */
+  Kz = 'KZ',
+  /** Lao People's Democratic Republic . */
+  La = 'LA',
+  /** Lebanon . */
+  Lb = 'LB',
+  /** Saint Lucia . */
+  Lc = 'LC',
+  /** Liechtenstein . */
+  Li = 'LI',
+  /** Sri Lanka . */
+  Lk = 'LK',
+  /** Liberia . */
+  Lr = 'LR',
+  /** Lesotho . */
+  Ls = 'LS',
+  /** Lithuania . */
+  Lt = 'LT',
+  /** Luxembourg . */
+  Lu = 'LU',
+  /** Latvia . */
+  Lv = 'LV',
+  /** Libya . */
+  Ly = 'LY',
+  /** Morocco . */
+  Ma = 'MA',
+  /** Monaco . */
+  Mc = 'MC',
+  /** Moldova . */
+  Md = 'MD',
+  /** Montenegro . */
+  Me = 'ME',
+  /** Saint Martin . */
+  Mf = 'MF',
+  /** Madagascar . */
+  Mg = 'MG',
+  /** Marshall Islands . */
+  Mh = 'MH',
+  /** North Macedonia . */
+  Mk = 'MK',
+  /** Mali . */
+  Ml = 'ML',
+  /** Myanmar . */
+  Mm = 'MM',
+  /** Mongolia . */
+  Mn = 'MN',
+  /** Macao . */
+  Mo = 'MO',
+  /** Northern Mariana Islands . */
+  Mp = 'MP',
+  /** Martinique . */
+  Mq = 'MQ',
+  /** Mauritania . */
+  Mr = 'MR',
+  /** Montserrat . */
+  Ms = 'MS',
+  /** Malta . */
+  Mt = 'MT',
+  /** Mauritius . */
+  Mu = 'MU',
+  /** Maldives . */
+  Mv = 'MV',
+  /** Malawi . */
+  Mw = 'MW',
+  /** Mexico . */
+  Mx = 'MX',
+  /** Malaysia . */
+  My = 'MY',
+  /** Mozambique . */
+  Mz = 'MZ',
+  /** Namibia . */
+  Na = 'NA',
+  /** New Caledonia . */
+  Nc = 'NC',
+  /** Niger . */
+  Ne = 'NE',
+  /** Norfolk Island . */
+  Nf = 'NF',
+  /** Nigeria . */
+  Ng = 'NG',
+  /** Nicaragua . */
+  Ni = 'NI',
+  /** Netherlands . */
+  Nl = 'NL',
+  /** Norway . */
+  No = 'NO',
+  /** Nepal . */
+  Np = 'NP',
+  /** Nauru . */
+  Nr = 'NR',
+  /** Niue . */
+  Nu = 'NU',
+  /** New Zealand . */
+  Nz = 'NZ',
+  /** Oman . */
+  Om = 'OM',
+  /** Panama . */
+  Pa = 'PA',
+  /** Peru . */
+  Pe = 'PE',
+  /** French Polynesia . */
+  Pf = 'PF',
+  /** Papua New Guinea . */
+  Pg = 'PG',
+  /** Philippines . */
+  Ph = 'PH',
+  /** Pakistan . */
+  Pk = 'PK',
+  /** Poland . */
+  Pl = 'PL',
+  /** Saint Pierre and Miquelon . */
+  Pm = 'PM',
+  /** Pitcairn . */
+  Pn = 'PN',
+  /** Puerto Rico . */
+  Pr = 'PR',
+  /** Palestine, State of . */
+  Ps = 'PS',
+  /** Portugal . */
+  Pt = 'PT',
+  /** Palau . */
+  Pw = 'PW',
+  /** Paraguay . */
+  Py = 'PY',
+  /** Qatar . */
+  Qa = 'QA',
+  /** Réunion . */
+  Re = 'RE',
+  /** Romania . */
+  Ro = 'RO',
+  /** Serbia . */
+  Rs = 'RS',
+  /** Russian Federation . */
+  Ru = 'RU',
+  /** Rwanda . */
+  Rw = 'RW',
+  /** Saudi Arabia . */
+  Sa = 'SA',
+  /** Solomon Islands . */
+  Sb = 'SB',
+  /** Seychelles . */
+  Sc = 'SC',
+  /** Sudan . */
+  Sd = 'SD',
+  /** Sweden . */
+  Se = 'SE',
+  /** Singapore . */
+  Sg = 'SG',
+  /** Saint Helena, Ascension and Tristan da Cunha . */
+  Sh = 'SH',
+  /** Slovenia . */
+  Si = 'SI',
+  /** Svalbard and Jan Mayen . */
+  Sj = 'SJ',
+  /** Slovakia . */
+  Sk = 'SK',
+  /** Sierra Leone . */
+  Sl = 'SL',
+  /** San Marino . */
+  Sm = 'SM',
+  /** Senegal . */
+  Sn = 'SN',
+  /** Somalia . */
+  So = 'SO',
+  /** Suriname . */
+  Sr = 'SR',
+  /** South Sudan . */
+  Ss = 'SS',
+  /** Sao Tome and Principe . */
+  St = 'ST',
+  /** El Salvador . */
+  Sv = 'SV',
+  /** Sint Maarten . */
+  Sx = 'SX',
+  /** Syria Arab Republic . */
+  Sy = 'SY',
+  /** Eswatini . */
+  Sz = 'SZ',
+  /** Turks and Caicos Islands . */
+  Tc = 'TC',
+  /** Chad . */
+  Td = 'TD',
+  /** French Southern Territories . */
+  Tf = 'TF',
+  /** Togo . */
+  Tg = 'TG',
+  /** Thailand . */
+  Th = 'TH',
+  /** Tajikistan . */
+  Tj = 'TJ',
+  /** Tokelau . */
+  Tk = 'TK',
+  /** Timor-Leste . */
+  Tl = 'TL',
+  /** Turkmenistan . */
+  Tm = 'TM',
+  /** Tunisia . */
+  Tn = 'TN',
+  /** Tonga . */
+  To = 'TO',
+  /** Türkiye . */
+  Tr = 'TR',
+  /** Trinidad and Tobago . */
+  Tt = 'TT',
+  /** Tuvalu . */
+  Tv = 'TV',
+  /** Taiwan . */
+  Tw = 'TW',
+  /** Tanzania, the United Republic of . */
+  Tz = 'TZ',
+  /** Ukraine . */
+  Ua = 'UA',
+  /** Uganda . */
+  Ug = 'UG',
+  /** US Minor Outlying Islands . */
+  Um = 'UM',
+  /** United States . */
+  Us = 'US',
+  /** Uruguay . */
+  Uy = 'UY',
+  /** Uzbekistan . */
+  Uz = 'UZ',
+  /** Holy See . */
+  Va = 'VA',
+  /** Saint Vincent and the Grenadines . */
+  Vc = 'VC',
+  /** Venezuela . */
+  Ve = 'VE',
+  /** Virgin Islands, British . */
+  Vg = 'VG',
+  /** Virgin Islands, U.S. . */
+  Vi = 'VI',
+  /** Viet Nam . */
+  Vn = 'VN',
+  /** Vanuatu . */
+  Vu = 'VU',
+  /** Wallis and Futuna . */
+  Wf = 'WF',
+  /** Samoa . */
+  Ws = 'WS',
+  /** Yemen . */
+  Ye = 'YE',
+  /** Mayotte . */
+  Yt = 'YT',
+  /** South Africa . */
+  Za = 'ZA',
+  /** Zambia . */
+  Zm = 'ZM',
+  /** Zimbabwe . */
+  Zw = 'ZW'
+}
+
+/** Input fields for Address FormField. */
+export type AddressFieldInput = {
+  /** Address city. */
+  city?: InputMaybe<Scalars['String']>;
+  /** Address country. */
+  country?: InputMaybe<AddressFieldCountryEnum>;
+  /** Address line two. */
+  lineTwo?: InputMaybe<Scalars['String']>;
+  /** Address state/region/province name. */
+  state?: InputMaybe<Scalars['String']>;
+  /** Street address. */
+  street?: InputMaybe<Scalars['String']>;
+  /** Address zip code. */
+  zip?: InputMaybe<Scalars['String']>;
+};
+
+/** Canadian Provinces supported by Gravity Forms Address Field. */
+export enum AddressFieldProvinceEnum {
+  /** Alberta . */
+  Alberta = 'ALBERTA',
+  /** British Columbia . */
+  BritishColumbia = 'BRITISH_COLUMBIA',
+  /** Manitoba . */
+  Manitoba = 'MANITOBA',
+  /** Newfoundland and Labrador . */
+  NewfoundlandAndLabrador = 'NEWFOUNDLAND_AND_LABRADOR',
+  /** New Brunswick . */
+  NewBrunswick = 'NEW_BRUNSWICK',
+  /** Northwest Territories . */
+  NorthwestTerritories = 'NORTHWEST_TERRITORIES',
+  /** Nova Scotia . */
+  NovaScotia = 'NOVA_SCOTIA',
+  /** Nunavut . */
+  Nunavut = 'NUNAVUT',
+  /** Ontario . */
+  Ontario = 'ONTARIO',
+  /** Prince Edward Island . */
+  PrinceEdwardIsland = 'PRINCE_EDWARD_ISLAND',
+  /** Quebec . */
+  Quebec = 'QUEBEC',
+  /** Saskatchewan . */
+  Saskatchewan = 'SASKATCHEWAN',
+  /** Yukon . */
+  Yukon = 'YUKON'
+}
+
+/** Determines the type of address to be displayed. */
+export enum AddressFieldTypeEnum {
+  /** Canada address type. */
+  Canada = 'CANADA',
+  /** International address type. */
+  International = 'INTERNATIONAL',
+  /** United States address type. */
+  Us = 'US'
+}
+
+/** The individual properties for each element of the address value field. */
+export type AddressFieldValue = {
+  __typename?: 'AddressFieldValue';
+  /** Address city. */
+  city?: Maybe<Scalars['String']>;
+  /** Address country. */
+  country?: Maybe<AddressFieldCountryEnum>;
+  /** Address line two. */
+  lineTwo?: Maybe<Scalars['String']>;
+  /** Address state/region/province name. */
+  state?: Maybe<Scalars['String']>;
+  /** Street address. */
+  street?: Maybe<Scalars['String']>;
+  /** Address zip code. */
+  zip?: Maybe<Scalars['String']>;
+};
+
+/** AddressInputProperty input values. */
+export type AddressInputProperty = GfFieldInput & GfFieldInputWithAddressSetting & {
+  __typename?: 'AddressInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** Key used to identify this input. */
+  key?: Maybe<Scalars['String']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** The AM or PM cycle in a 12-hour clock. */
+export enum AmPmEnum {
+  /** AM. The first 12-hour cycle of the day. */
+  Am = 'AM',
+  /** PM. The second 12-hour cycle of the day. */
+  Pm = 'PM'
+}
 
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
 export type Avatar = {
@@ -61,11 +750,89 @@ export enum AvatarRatingEnum {
   X = 'X'
 }
 
-/** Block that supports Anchor field */
-export type BlockWithSupportsAnchor = {
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
+/** A Gravity Forms captcha field. */
+export type CaptchaField = FormField & GfFieldWithCaptchaBackgroundSetting & GfFieldWithCaptchaBadgeSetting & GfFieldWithCaptchaForegroundSetting & GfFieldWithCaptchaLanguageSetting & GfFieldWithCaptchaSizeSetting & GfFieldWithCaptchaThemeSetting & GfFieldWithCaptchaTypeSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & {
+  __typename?: 'CaptchaField';
+  /** The language used when the captcha is displayed. This property is available when the captchaType is “captcha”, the default. The possible values are the language codes used by WordPress. */
+  captchaBadgePosition?: Maybe<CaptchaFieldBadgePositionEnum>;
+  /** The language used when the captcha is displayed. This property is available when the captchaType is “captcha”, the default. The possible values are the language codes used by WordPress. */
+  captchaLanguage?: Maybe<Scalars['String']>;
+  /** Determines the theme to be used for the reCAPTCHA field. Only applicable to the recaptcha captcha type. */
+  captchaTheme?: Maybe<CaptchaFieldThemeEnum>;
+  /** Determines the type of CAPTCHA field to be used. */
+  captchaType?: Maybe<CaptchaFieldTypeEnum>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** Determines the image’s background color, in HEX format (i.e. #CCCCCC). Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaBackgroundColor?: Maybe<Scalars['String']>;
+  /** Determines the image’s font color, in HEX format (i.e. #CCCCCC). Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaFontColor?: Maybe<Scalars['String']>;
+  /** Determines the CAPTCHA image size. Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaSize?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
+
+/** The position to place the (invisible) reCaptcha badge. */
+export enum CaptchaFieldBadgePositionEnum {
+  /** Bottom-left position. */
+  BottomLeft = 'BOTTOM_LEFT',
+  /** Bottom-right position. */
+  BottomRight = 'BOTTOM_RIGHT',
+  /** Inline position. */
+  Inline = 'INLINE'
+}
+
+/** The theme to be used for the reCAPTCHA field. */
+export enum CaptchaFieldThemeEnum {
+  /** Dark reCAPTCHA theme. */
+  Dark = 'DARK',
+  /** Light reCAPTCHA theme. */
+  Light = 'LIGHT'
+}
+
+/** Type of CAPTCHA field to be used. */
+export enum CaptchaFieldTypeEnum {
+  /** Math CAPTCHA type. */
+  Math = 'MATH',
+  /** reCAPTCHA type. */
+  Recaptcha = 'RECAPTCHA',
+  /** Simple CAPTCHA type. */
+  Simple = 'SIMPLE'
+}
 
 /** The category type */
 export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
@@ -113,6 +880,8 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   parentId?: Maybe<Scalars['ID']>;
   /** Connection between the Category type and the post type */
   posts?: Maybe<CategoryToPostConnection>;
+  /** The Yoast SEO data of the Categories taxonomy. */
+  seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']>;
   /** Connection between the Category type and the Taxonomy type */
@@ -211,6 +980,8 @@ export type CategoryConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -258,6 +1029,8 @@ export type CategoryToAncestorsCategoryConnectionPageInfo = CategoryConnectionPa
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -291,6 +1064,8 @@ export type CategoryToCategoryConnectionPageInfo = CategoryConnectionPageInfo & 
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -370,6 +1145,8 @@ export type CategoryToContentNodeConnectionPageInfo = ContentNodeConnectionPageI
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -452,6 +1229,8 @@ export type CategoryToPostConnectionPageInfo = PageInfo & PostConnectionPageInfo
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -529,6 +1308,113 @@ export type CategoryToTaxonomyConnectionEdge = Edge & OneToOneConnection & Taxon
   cursor?: Maybe<Scalars['String']>;
   /** The node of the connection, without the edges */
   node: Taxonomy;
+};
+
+/** A Gravity Forms checkbox field. */
+export type CheckboxField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSelectAllChoicesSetting & {
+  __typename?: 'CheckboxField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Checkbox field value. */
+  checkboxValues?: Maybe<Array<Maybe<CheckboxFieldValue>>>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** CheckboxFieldChoice choice values. */
+export type CheckboxFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'CheckboxFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** Input fields for a single checkbox. */
+export type CheckboxFieldInput = {
+  /** Input ID. */
+  inputId?: InputMaybe<Scalars['Float']>;
+  /** Input value. */
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** The individual properties for each element of the Checkbox value field. */
+export type CheckboxFieldValue = GfFieldValueWithChoice & GfFieldValueWithInput & {
+  __typename?: 'CheckboxFieldValue';
+  /** The selected Gravity Forms field choice object. */
+  connectedChoice?: Maybe<GfFieldChoice>;
+  /** The selected Gravity Forms field input object. */
+  connectedInput?: Maybe<GfFieldInput>;
+  /** Input ID. */
+  inputId?: Maybe<Scalars['Float']>;
+  /** Input text. */
+  text?: Maybe<Scalars['String']>;
+  /** Input value. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** CheckboxInputProperty input values. */
+export type CheckboxInputProperty = GfFieldInput & GfFieldInputWithSelectAllChoicesSetting & {
+  __typename?: 'CheckboxInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
 };
 
 /** A Comment object */
@@ -655,6 +1541,8 @@ export type CommentConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -708,6 +1596,8 @@ export type CommentToCommentConnectionPageInfo = CommentConnectionPageInfo & Pag
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -925,6 +1815,44 @@ export enum CommentsConnectionOrderbyEnum {
   UserId = 'USER_ID'
 }
 
+/** Gravity Forms conditional logic. */
+export type ConditionalLogic = {
+  __typename?: 'ConditionalLogic';
+  /** The type of action the conditional logic will perform. */
+  actionType?: Maybe<ConditionalLogicActionTypeEnum>;
+  /** Determines how to the rules should be evaluated. */
+  logicType?: Maybe<ConditionalLogicLogicTypeEnum>;
+  /** Conditional logic rules. */
+  rules?: Maybe<Array<Maybe<ConditionalLogicRule>>>;
+};
+
+/** The type of action the conditional logic will perform. */
+export enum ConditionalLogicActionTypeEnum {
+  /** Text button (default). */
+  Hide = 'HIDE',
+  /** Image button. */
+  Show = 'SHOW'
+}
+
+/** Determines how to the rules should be evaluated. */
+export enum ConditionalLogicLogicTypeEnum {
+  /** Evaulate all logic rules. */
+  All = 'ALL',
+  /** Evaluate any logic rule. */
+  Any = 'ANY'
+}
+
+/** Gravity Forms conditional logic rule. */
+export type ConditionalLogicRule = {
+  __typename?: 'ConditionalLogicRule';
+  /** Target field Id. Field that will have it’s value compared with the value property to determine if this rule is a match. */
+  fieldId?: Maybe<Scalars['Float']>;
+  /** Operator to be used when evaluating this rule. */
+  operator?: Maybe<FormRuleOperatorEnum>;
+  /** The value to compare with field specified by fieldId. */
+  value?: Maybe<Scalars['String']>;
+};
+
 /** GraphQL representation of WordPress Conditional Tags. */
 export type ConditionalTags = {
   __typename?: 'ConditionalTags';
@@ -1050,6 +1978,58 @@ export type Connection = {
   pageInfo: PageInfo;
 };
 
+/** A Gravity Forms consent field. */
+export type ConsentField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithCheckboxLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithRulesSetting & {
+  __typename?: 'ConsentField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Text of the consent checkbox. */
+  checkboxLabel?: Maybe<Scalars['String']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** Consent field value. This is `true` when consent is given, `false` when it is not. */
+  consentValue?: Maybe<Scalars['Boolean']>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
 /** Nodes used to manage content */
 export type ContentNode = {
   /** @deprecated Deprecated in favor of using Next.js pages */
@@ -1098,6 +2078,8 @@ export type ContentNode = {
   previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   slug?: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -1153,6 +2135,8 @@ export type ContentNodeConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1225,6 +2209,8 @@ export type ContentNodeToEnqueuedScriptConnectionPageInfo = EnqueuedScriptConnec
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1258,6 +2244,8 @@ export type ContentNodeToEnqueuedStylesheetConnectionPageInfo = EnqueuedStyleshe
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1385,6 +2373,8 @@ export type ContentTypeConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1396,11 +2386,7 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Page = 'PAGE',
   /** The Type of Content object */
-  Post = 'POST',
-  /** The Type of Content object */
-  Project = 'PROJECT',
-  /** The Type of Content object */
-  Testimonial = 'TESTIMONIAL'
+  Post = 'POST'
 }
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
@@ -1440,6 +2426,8 @@ export type ContentTypeToContentNodeConnectionPageInfo = ContentNodeConnectionPa
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1513,6 +2501,8 @@ export type ContentTypeToTaxonomyConnectionPageInfo = PageInfo & TaxonomyConnect
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -1534,4792 +2524,6 @@ export enum ContentTypesOfTagEnum {
   /** The Type of Content object */
   Post = 'POST'
 }
-
-/** A block used for editing the site */
-export type CoreArchives = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreArchives';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreArchives Block Type */
-  attributes?: Maybe<CoreArchivesAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreArchives Block Type */
-export type CoreArchivesAttributes = {
-  __typename?: 'CoreArchivesAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreArchives&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreArchives&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayAsDropdown&quot; field on the &quot;CoreArchives&quot; block */
-  displayAsDropdown?: Maybe<Scalars['Boolean']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreArchives&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreArchives&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreArchives&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showLabel&quot; field on the &quot;CoreArchives&quot; block */
-  showLabel?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showPostCounts&quot; field on the &quot;CoreArchives&quot; block */
-  showPostCounts?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreArchives&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;type&quot; field on the &quot;CoreArchives&quot; block */
-  type?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreAudio = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreAudio';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreAudio Block Type */
-  attributes?: Maybe<CoreAudioAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreAudio Block Type */
-export type CoreAudioAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreAudioAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreAudio&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;autoplay&quot; field on the &quot;CoreAudio&quot; block */
-  autoplay?: Maybe<Scalars['Boolean']>;
-  /** The &quot;caption&quot; field on the &quot;CoreAudio&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreAudio&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;id&quot; field on the &quot;CoreAudio&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreAudio&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;loop&quot; field on the &quot;CoreAudio&quot; block */
-  loop?: Maybe<Scalars['Boolean']>;
-  /** The &quot;preload&quot; field on the &quot;CoreAudio&quot; block */
-  preload?: Maybe<Scalars['String']>;
-  /** The &quot;src&quot; field on the &quot;CoreAudio&quot; block */
-  src?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreAudio&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreAvatar = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreAvatar';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreAvatar Block Type */
-  attributes?: Maybe<CoreAvatarAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreAvatar Block Type */
-export type CoreAvatarAttributes = {
-  __typename?: 'CoreAvatarAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreAvatar&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreAvatar&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreAvatar&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CoreAvatar&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreAvatar&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreAvatar&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;size&quot; field on the &quot;CoreAvatar&quot; block */
-  size?: Maybe<Scalars['Float']>;
-  /** The &quot;style&quot; field on the &quot;CoreAvatar&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;userId&quot; field on the &quot;CoreAvatar&quot; block */
-  userId?: Maybe<Scalars['Float']>;
-};
-
-/** A block used for editing the site */
-export type CoreBlock = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreBlock';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreBlock Block Type */
-  attributes?: Maybe<CoreBlockAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreBlock Block Type */
-export type CoreBlockAttributes = {
-  __typename?: 'CoreBlockAttributes';
-  /** The &quot;lock&quot; field on the &quot;CoreBlock&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;ref&quot; field on the &quot;CoreBlock&quot; block */
-  ref?: Maybe<Scalars['Float']>;
-};
-
-/** A block used for editing the site */
-export type CoreButton = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreButton';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreButton Block Type */
-  attributes?: Maybe<CoreButtonAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreButton Block Type */
-export type CoreButtonAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreButtonAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreButton&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreButton&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreButton&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreButton&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreButton&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreButton&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;linkClassName&quot; field on the &quot;CoreButton&quot; block */
-  linkClassName?: Maybe<Scalars['String']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreButton&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreButton&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreButton&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;rel&quot; field on the &quot;CoreButton&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreButton&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;text&quot; field on the &quot;CoreButton&quot; block */
-  text?: Maybe<Scalars['String']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreButton&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreButton&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;title&quot; field on the &quot;CoreButton&quot; block */
-  title?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreButton&quot; block */
-  url?: Maybe<Scalars['String']>;
-  /** The &quot;width&quot; field on the &quot;CoreButton&quot; block */
-  width?: Maybe<Scalars['Float']>;
-};
-
-/** A block used for editing the site */
-export type CoreButtons = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreButtons';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreButtons Block Type */
-  attributes?: Maybe<CoreButtonsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreButtons Block Type */
-export type CoreButtonsAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreButtonsAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreButtons&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreButtons&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreButtons&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreButtons&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreButtons&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreButtons&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreButtons&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreButtons&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreCalendar = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCalendar';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCalendar Block Type */
-  attributes?: Maybe<CoreCalendarAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCalendar Block Type */
-export type CoreCalendarAttributes = {
-  __typename?: 'CoreCalendarAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCalendar&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCalendar&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCalendar&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCalendar&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCalendar&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCalendar&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;month&quot; field on the &quot;CoreCalendar&quot; block */
-  month?: Maybe<Scalars['Int']>;
-  /** The &quot;style&quot; field on the &quot;CoreCalendar&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCalendar&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;year&quot; field on the &quot;CoreCalendar&quot; block */
-  year?: Maybe<Scalars['Int']>;
-};
-
-/** A block used for editing the site */
-export type CoreCategories = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCategories';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCategories Block Type */
-  attributes?: Maybe<CoreCategoriesAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCategories Block Type */
-export type CoreCategoriesAttributes = {
-  __typename?: 'CoreCategoriesAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCategories&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCategories&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayAsDropdown&quot; field on the &quot;CoreCategories&quot; block */
-  displayAsDropdown?: Maybe<Scalars['Boolean']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCategories&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCategories&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCategories&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showEmpty&quot; field on the &quot;CoreCategories&quot; block */
-  showEmpty?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showHierarchy&quot; field on the &quot;CoreCategories&quot; block */
-  showHierarchy?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showOnlyTopLevel&quot; field on the &quot;CoreCategories&quot; block */
-  showOnlyTopLevel?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showPostCounts&quot; field on the &quot;CoreCategories&quot; block */
-  showPostCounts?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreCategories&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreCode = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCode';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCode Block Type */
-  attributes?: Maybe<CoreCodeAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCode Block Type */
-export type CoreCodeAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreCodeAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCode&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreCode&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCode&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreCode&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreCode&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCode&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCode&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCode&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCode&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCode&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCode&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreColumn = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreColumn';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreColumn Block Type */
-  attributes?: Maybe<CoreColumnAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreColumn Block Type */
-export type CoreColumnAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreColumnAttributes';
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreColumn&quot; block */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreColumn&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreColumn&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreColumn&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreColumn&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreColumn&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreColumn&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreColumn&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreColumn&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreColumn&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreColumn&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreColumn&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;verticalAlignment&quot; field on the &quot;CoreColumn&quot; block */
-  verticalAlignment?: Maybe<Scalars['String']>;
-  /** The &quot;width&quot; field on the &quot;CoreColumn&quot; block */
-  width?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreColumns = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreColumns';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreColumns Block Type */
-  attributes?: Maybe<CoreColumnsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreColumns Block Type */
-export type CoreColumnsAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreColumnsAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreColumns&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreColumns&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreColumns&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreColumns&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreColumns&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreColumns&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreColumns&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreColumns&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isStackedOnMobile&quot; field on the &quot;CoreColumns&quot; block */
-  isStackedOnMobile?: Maybe<Scalars['Boolean']>;
-  /** The &quot;layout&quot; field on the &quot;CoreColumns&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreColumns&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreColumns&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreColumns&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;verticalAlignment&quot; field on the &quot;CoreColumns&quot; block */
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentAuthorName = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentAuthorName';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentAuthorName Block Type */
-  attributes?: Maybe<CoreCommentAuthorNameAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentAuthorName Block Type */
-export type CoreCommentAuthorNameAttributes = {
-  __typename?: 'CoreCommentAuthorNameAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCommentAuthorName&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentContent = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentContent';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentContent Block Type */
-  attributes?: Maybe<CoreCommentContentAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentContent Block Type */
-export type CoreCommentContentAttributes = {
-  __typename?: 'CoreCommentContentAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentContent&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentContent&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentContent&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentContent&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentContent&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentContent&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentContent&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreCommentContent&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCommentContent&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentDate = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentDate';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentDate Block Type */
-  attributes?: Maybe<CoreCommentDateAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentDate Block Type */
-export type CoreCommentDateAttributes = {
-  __typename?: 'CoreCommentDateAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentDate&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentDate&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentDate&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentDate&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;format&quot; field on the &quot;CoreCommentDate&quot; block */
-  format?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentDate&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CoreCommentDate&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentDate&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentDate&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCommentDate&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentEditLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentEditLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentEditLink Block Type */
-  attributes?: Maybe<CoreCommentEditLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentEditLink Block Type */
-export type CoreCommentEditLinkAttributes = {
-  __typename?: 'CoreCommentEditLinkAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreCommentEditLink&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentReplyLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentReplyLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentReplyLink Block Type */
-  attributes?: Maybe<CoreCommentReplyLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentReplyLink Block Type */
-export type CoreCommentReplyLinkAttributes = {
-  __typename?: 'CoreCommentReplyLinkAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreCommentReplyLink&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentTemplate = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentTemplate';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentTemplate Block Type */
-  attributes?: Maybe<CoreCommentTemplateAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentTemplate Block Type */
-export type CoreCommentTemplateAttributes = {
-  __typename?: 'CoreCommentTemplateAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentTemplate&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreComments = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreComments';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreComments Block Type */
-  attributes?: Maybe<CoreCommentsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreComments Block Type */
-export type CoreCommentsAttributes = {
-  __typename?: 'CoreCommentsAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreComments&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreComments&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreComments&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreComments&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreComments&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreComments&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;legacy&quot; field on the &quot;CoreComments&quot; block */
-  legacy?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CoreComments&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreComments&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;tagName&quot; field on the &quot;CoreComments&quot; block */
-  tagName?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreComments&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentsPagination = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentsPagination';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentsPagination Block Type */
-  attributes?: Maybe<CoreCommentsPaginationAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentsPagination Block Type */
-export type CoreCommentsPaginationAttributes = {
-  __typename?: 'CoreCommentsPaginationAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;paginationArrow&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  paginationArrow?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCommentsPagination&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentsPaginationNext = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentsPaginationNext';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentsPaginationNext Block Type */
-  attributes?: Maybe<CoreCommentsPaginationNextAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentsPaginationNext Block Type */
-export type CoreCommentsPaginationNextAttributes = {
-  __typename?: 'CoreCommentsPaginationNextAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentsPaginationNext&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentsPaginationNumbers = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentsPaginationNumbers';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentsPaginationNumbers Block Type */
-  attributes?: Maybe<CoreCommentsPaginationNumbersAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentsPaginationNumbers Block Type */
-export type CoreCommentsPaginationNumbersAttributes = {
-  __typename?: 'CoreCommentsPaginationNumbersAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentsPaginationNumbers&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentsPaginationPrevious = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentsPaginationPrevious';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentsPaginationPrevious Block Type */
-  attributes?: Maybe<CoreCommentsPaginationPreviousAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentsPaginationPrevious Block Type */
-export type CoreCommentsPaginationPreviousAttributes = {
-  __typename?: 'CoreCommentsPaginationPreviousAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentsPaginationPrevious&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreCommentsTitle = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCommentsTitle';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCommentsTitle Block Type */
-  attributes?: Maybe<CoreCommentsTitleAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCommentsTitle Block Type */
-export type CoreCommentsTitleAttributes = {
-  __typename?: 'CoreCommentsTitleAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;level&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  level?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showCommentsCount&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  showCommentsCount?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showPostTitle&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  showPostTitle?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreCommentsTitle&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreCover = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreCover';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreCover Block Type */
-  attributes?: Maybe<CoreCoverAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreCover Block Type */
-export type CoreCoverAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreCoverAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreCover&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;allowedBlocks&quot; field on the &quot;CoreCover&quot; block */
-  allowedBlocks?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;alt&quot; field on the &quot;CoreCover&quot; block */
-  alt?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundType&quot; field on the &quot;CoreCover&quot; block */
-  backgroundType?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreCover&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;contentPosition&quot; field on the &quot;CoreCover&quot; block */
-  contentPosition?: Maybe<Scalars['String']>;
-  /** The &quot;customGradient&quot; field on the &quot;CoreCover&quot; block */
-  customGradient?: Maybe<Scalars['String']>;
-  /** The &quot;customOverlayColor&quot; field on the &quot;CoreCover&quot; block */
-  customOverlayColor?: Maybe<Scalars['String']>;
-  /** The &quot;dimRatio&quot; field on the &quot;CoreCover&quot; block */
-  dimRatio?: Maybe<Scalars['Float']>;
-  /** The &quot;focalPoint&quot; field on the &quot;CoreCover&quot; block */
-  focalPoint?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreCover&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreCover&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreCover&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;hasParallax&quot; field on the &quot;CoreCover&quot; block */
-  hasParallax?: Maybe<Scalars['Boolean']>;
-  /** The &quot;id&quot; field on the &quot;CoreCover&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;isDark&quot; field on the &quot;CoreCover&quot; block */
-  isDark?: Maybe<Scalars['Boolean']>;
-  /** The &quot;isRepeated&quot; field on the &quot;CoreCover&quot; block */
-  isRepeated?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CoreCover&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;minHeight&quot; field on the &quot;CoreCover&quot; block */
-  minHeight?: Maybe<Scalars['Float']>;
-  /** The &quot;minHeightUnit&quot; field on the &quot;CoreCover&quot; block */
-  minHeightUnit?: Maybe<Scalars['String']>;
-  /** The &quot;overlayColor&quot; field on the &quot;CoreCover&quot; block */
-  overlayColor?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreCover&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;tagName&quot; field on the &quot;CoreCover&quot; block */
-  tagName?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreCover&quot; block */
-  url?: Maybe<Scalars['String']>;
-  /** The &quot;useFeaturedImage&quot; field on the &quot;CoreCover&quot; block */
-  useFeaturedImage?: Maybe<Scalars['Boolean']>;
-};
-
-/** A block used for editing the site */
-export type CoreEmbed = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreEmbed';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreEmbed Block Type */
-  attributes?: Maybe<CoreEmbedAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreEmbed Block Type */
-export type CoreEmbedAttributes = {
-  __typename?: 'CoreEmbedAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreEmbed&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;allowResponsive&quot; field on the &quot;CoreEmbed&quot; block */
-  allowResponsive?: Maybe<Scalars['Boolean']>;
-  /** The &quot;caption&quot; field on the &quot;CoreEmbed&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreEmbed&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreEmbed&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;previewable&quot; field on the &quot;CoreEmbed&quot; block */
-  previewable?: Maybe<Scalars['Boolean']>;
-  /** The &quot;providerNameSlug&quot; field on the &quot;CoreEmbed&quot; block */
-  providerNameSlug?: Maybe<Scalars['String']>;
-  /** The &quot;responsive&quot; field on the &quot;CoreEmbed&quot; block */
-  responsive?: Maybe<Scalars['Boolean']>;
-  /** The &quot;type&quot; field on the &quot;CoreEmbed&quot; block */
-  type?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreEmbed&quot; block */
-  url?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreFile = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreFile';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreFile Block Type */
-  attributes?: Maybe<CoreFileAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreFile Block Type */
-export type CoreFileAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreFileAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreFile&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreFile&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayPreview&quot; field on the &quot;CoreFile&quot; block */
-  displayPreview?: Maybe<Scalars['Boolean']>;
-  /** The &quot;downloadButtonText&quot; field on the &quot;CoreFile&quot; block */
-  downloadButtonText?: Maybe<Scalars['String']>;
-  /** The &quot;fileId&quot; field on the &quot;CoreFile&quot; block */
-  fileId?: Maybe<Scalars['String']>;
-  /** The &quot;fileName&quot; field on the &quot;CoreFile&quot; block */
-  fileName?: Maybe<Scalars['String']>;
-  /** The &quot;href&quot; field on the &quot;CoreFile&quot; block */
-  href?: Maybe<Scalars['String']>;
-  /** The &quot;id&quot; field on the &quot;CoreFile&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreFile&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;previewHeight&quot; field on the &quot;CoreFile&quot; block */
-  previewHeight?: Maybe<Scalars['Float']>;
-  /** The &quot;showDownloadButton&quot; field on the &quot;CoreFile&quot; block */
-  showDownloadButton?: Maybe<Scalars['Boolean']>;
-  /** The &quot;textLinkHref&quot; field on the &quot;CoreFile&quot; block */
-  textLinkHref?: Maybe<Scalars['String']>;
-  /** The &quot;textLinkTarget&quot; field on the &quot;CoreFile&quot; block */
-  textLinkTarget?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreFreeform = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreFreeform';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreFreeform Block Type */
-  attributes?: Maybe<CoreFreeformAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreFreeform Block Type */
-export type CoreFreeformAttributes = {
-  __typename?: 'CoreFreeformAttributes';
-  /** The &quot;content&quot; field on the &quot;CoreFreeform&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreFreeform&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreGallery = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreGallery';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreGallery Block Type */
-  attributes?: Maybe<CoreGalleryAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreGallery Block Type */
-export type CoreGalleryAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreGalleryAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreGallery&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;allowResize&quot; field on the &quot;CoreGallery&quot; block */
-  allowResize?: Maybe<Scalars['Boolean']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreGallery&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;caption&quot; field on the &quot;CoreGallery&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreGallery&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;columns&quot; field on the &quot;CoreGallery&quot; block */
-  columns?: Maybe<Scalars['Float']>;
-  /** The &quot;fixedHeight&quot; field on the &quot;CoreGallery&quot; block */
-  fixedHeight?: Maybe<Scalars['Boolean']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreGallery&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;ids&quot; field on the &quot;CoreGallery&quot; block */
-  ids?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;imageCrop&quot; field on the &quot;CoreGallery&quot; block */
-  imageCrop?: Maybe<Scalars['Boolean']>;
-  /** The &quot;images&quot; field on the &quot;CoreGallery&quot; block */
-  images?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;layout&quot; field on the &quot;CoreGallery&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreGallery&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;linkTo&quot; field on the &quot;CoreGallery&quot; block */
-  linkTo?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreGallery&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;shortCodeTransforms&quot; field on the &quot;CoreGallery&quot; block */
-  shortCodeTransforms?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;sizeSlug&quot; field on the &quot;CoreGallery&quot; block */
-  sizeSlug?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreGallery&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreGroup = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreGroup';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreGroup Block Type */
-  attributes?: Maybe<CoreGroupAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreGroup Block Type */
-export type CoreGroupAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreGroupAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreGroup&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreGroup&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreGroup&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreGroup&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreGroup&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreGroup&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreGroup&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreGroup&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreGroup&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreGroup&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;tagName&quot; field on the &quot;CoreGroup&quot; block */
-  tagName?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreGroup&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreHeading = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreHeading';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreHeading Block Type */
-  attributes?: Maybe<CoreHeadingAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreHeading Block Type */
-export type CoreHeadingAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreHeadingAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreHeading&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreHeading&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreHeading&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreHeading&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreHeading&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreHeading&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreHeading&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreHeading&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;level&quot; field on the &quot;CoreHeading&quot; block */
-  level?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreHeading&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreHeading&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreHeading&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreHeading&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreHeading&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreHomeLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreHomeLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreHomeLink Block Type */
-  attributes?: Maybe<CoreHomeLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreHomeLink Block Type */
-export type CoreHomeLinkAttributes = {
-  __typename?: 'CoreHomeLinkAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreHomeLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreHomeLink&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreHomeLink&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreHomeLink&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreHomeLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreHomeLink&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreHtml = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreHtml';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreHtml Block Type */
-  attributes?: Maybe<CoreHtmlAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreHtml Block Type */
-export type CoreHtmlAttributes = {
-  __typename?: 'CoreHtmlAttributes';
-  /** The &quot;content&quot; field on the &quot;CoreHtml&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreHtml&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreImage = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreImage';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreImage Block Type */
-  attributes?: Maybe<CoreImageAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreImage Block Type */
-export type CoreImageAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreImageAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreImage&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;alt&quot; field on the &quot;CoreImage&quot; block */
-  alt?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreImage&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;caption&quot; field on the &quot;CoreImage&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreImage&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreImage&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;height&quot; field on the &quot;CoreImage&quot; block */
-  height?: Maybe<Scalars['Float']>;
-  /** The &quot;href&quot; field on the &quot;CoreImage&quot; block */
-  href?: Maybe<Scalars['String']>;
-  /** The &quot;id&quot; field on the &quot;CoreImage&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;linkClass&quot; field on the &quot;CoreImage&quot; block */
-  linkClass?: Maybe<Scalars['String']>;
-  /** The &quot;linkDestination&quot; field on the &quot;CoreImage&quot; block */
-  linkDestination?: Maybe<Scalars['String']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreImage&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreImage&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;rel&quot; field on the &quot;CoreImage&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;sizeSlug&quot; field on the &quot;CoreImage&quot; block */
-  sizeSlug?: Maybe<Scalars['String']>;
-  /** The &quot;src&quot; field on the &quot;CoreImage&quot; block */
-  src?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreImage&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;title&quot; field on the &quot;CoreImage&quot; block */
-  title?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreImage&quot; block */
-  url?: Maybe<Scalars['String']>;
-  /** The &quot;width&quot; field on the &quot;CoreImage&quot; block */
-  width?: Maybe<Scalars['Float']>;
-};
-
-/** A block used for editing the site */
-export type CoreLatestComments = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreLatestComments';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreLatestComments Block Type */
-  attributes?: Maybe<CoreLatestCommentsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreLatestComments Block Type */
-export type CoreLatestCommentsAttributes = {
-  __typename?: 'CoreLatestCommentsAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreLatestComments&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreLatestComments&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;commentsToShow&quot; field on the &quot;CoreLatestComments&quot; block */
-  commentsToShow?: Maybe<Scalars['Float']>;
-  /** The &quot;displayAvatar&quot; field on the &quot;CoreLatestComments&quot; block */
-  displayAvatar?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayDate&quot; field on the &quot;CoreLatestComments&quot; block */
-  displayDate?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayExcerpt&quot; field on the &quot;CoreLatestComments&quot; block */
-  displayExcerpt?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CoreLatestComments&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreLatestComments&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreLatestPosts = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreLatestPosts';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreLatestPosts Block Type */
-  attributes?: Maybe<CoreLatestPostsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreLatestPosts Block Type */
-export type CoreLatestPostsAttributes = {
-  __typename?: 'CoreLatestPostsAttributes';
-  /** The &quot;addLinkToFeaturedImage&quot; field on the &quot;CoreLatestPosts&quot; block */
-  addLinkToFeaturedImage?: Maybe<Scalars['Boolean']>;
-  /** The &quot;align&quot; field on the &quot;CoreLatestPosts&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreLatestPosts&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;categories&quot; field on the &quot;CoreLatestPosts&quot; block */
-  categories?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;className&quot; field on the &quot;CoreLatestPosts&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;columns&quot; field on the &quot;CoreLatestPosts&quot; block */
-  columns?: Maybe<Scalars['Float']>;
-  /** The &quot;displayAuthor&quot; field on the &quot;CoreLatestPosts&quot; block */
-  displayAuthor?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayFeaturedImage&quot; field on the &quot;CoreLatestPosts&quot; block */
-  displayFeaturedImage?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayPostContent&quot; field on the &quot;CoreLatestPosts&quot; block */
-  displayPostContent?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayPostContentRadio&quot; field on the &quot;CoreLatestPosts&quot; block */
-  displayPostContentRadio?: Maybe<Scalars['String']>;
-  /** The &quot;displayPostDate&quot; field on the &quot;CoreLatestPosts&quot; block */
-  displayPostDate?: Maybe<Scalars['Boolean']>;
-  /** The &quot;excerptLength&quot; field on the &quot;CoreLatestPosts&quot; block */
-  excerptLength?: Maybe<Scalars['Float']>;
-  /** The &quot;featuredImageAlign&quot; field on the &quot;CoreLatestPosts&quot; block */
-  featuredImageAlign?: Maybe<Scalars['String']>;
-  /** The &quot;featuredImageSizeHeight&quot; field on the &quot;CoreLatestPosts&quot; block */
-  featuredImageSizeHeight?: Maybe<Scalars['Float']>;
-  /** The &quot;featuredImageSizeSlug&quot; field on the &quot;CoreLatestPosts&quot; block */
-  featuredImageSizeSlug?: Maybe<Scalars['String']>;
-  /** The &quot;featuredImageSizeWidth&quot; field on the &quot;CoreLatestPosts&quot; block */
-  featuredImageSizeWidth?: Maybe<Scalars['Float']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreLatestPosts&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreLatestPosts&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreLatestPosts&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreLatestPosts&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;order&quot; field on the &quot;CoreLatestPosts&quot; block */
-  order?: Maybe<Scalars['String']>;
-  /** The &quot;orderBy&quot; field on the &quot;CoreLatestPosts&quot; block */
-  orderBy?: Maybe<Scalars['String']>;
-  /** The &quot;postLayout&quot; field on the &quot;CoreLatestPosts&quot; block */
-  postLayout?: Maybe<Scalars['String']>;
-  /** The &quot;postsToShow&quot; field on the &quot;CoreLatestPosts&quot; block */
-  postsToShow?: Maybe<Scalars['Float']>;
-  /** The &quot;selectedAuthor&quot; field on the &quot;CoreLatestPosts&quot; block */
-  selectedAuthor?: Maybe<Scalars['Float']>;
-  /** The &quot;style&quot; field on the &quot;CoreLatestPosts&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreLatestPosts&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreLegacyWidget = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreLegacyWidget';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreLegacyWidget Block Type */
-  attributes?: Maybe<CoreLegacyWidgetAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreLegacyWidget Block Type */
-export type CoreLegacyWidgetAttributes = {
-  __typename?: 'CoreLegacyWidgetAttributes';
-  /** The &quot;id&quot; field on the &quot;CoreLegacyWidget&quot; block */
-  id?: Maybe<Scalars['String']>;
-  /** The &quot;idBase&quot; field on the &quot;CoreLegacyWidget&quot; block */
-  idBase?: Maybe<Scalars['String']>;
-  /** The &quot;instance&quot; field on the &quot;CoreLegacyWidget&quot; block */
-  instance?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreLegacyWidget&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreList = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreList';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreList Block Type */
-  attributes?: Maybe<CoreListAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreList Block Type */
-export type CoreListAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreListAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreList&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreList&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreList&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreList&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreList&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreList&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreList&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;ordered&quot; field on the &quot;CoreList&quot; block */
-  ordered?: Maybe<Scalars['Boolean']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreList&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;reversed&quot; field on the &quot;CoreList&quot; block */
-  reversed?: Maybe<Scalars['Boolean']>;
-  /** The &quot;start&quot; field on the &quot;CoreList&quot; block */
-  start?: Maybe<Scalars['Float']>;
-  /** The &quot;style&quot; field on the &quot;CoreList&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreList&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;type&quot; field on the &quot;CoreList&quot; block */
-  type?: Maybe<Scalars['String']>;
-  /** The &quot;values&quot; field on the &quot;CoreList&quot; block */
-  values?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreListItem = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreListItem';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreListItem Block Type */
-  attributes?: Maybe<CoreListItemAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreListItem Block Type */
-export type CoreListItemAttributes = {
-  __typename?: 'CoreListItemAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreListItem&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreListItem&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreListItem&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreListItem&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreListItem&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreListItem&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreListItem&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreLoginout = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreLoginout';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreLoginout Block Type */
-  attributes?: Maybe<CoreLoginoutAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreLoginout Block Type */
-export type CoreLoginoutAttributes = {
-  __typename?: 'CoreLoginoutAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreLoginout&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayLoginAsForm&quot; field on the &quot;CoreLoginout&quot; block */
-  displayLoginAsForm?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CoreLoginout&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;redirectToCurrent&quot; field on the &quot;CoreLoginout&quot; block */
-  redirectToCurrent?: Maybe<Scalars['Boolean']>;
-};
-
-/** A block used for editing the site */
-export type CoreMediaText = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreMediaText';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreMediaText Block Type */
-  attributes?: Maybe<CoreMediaTextAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreMediaText Block Type */
-export type CoreMediaTextAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreMediaTextAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreMediaText&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreMediaText&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreMediaText&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;focalPoint&quot; field on the &quot;CoreMediaText&quot; block */
-  focalPoint?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreMediaText&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreMediaText&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreMediaText&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;href&quot; field on the &quot;CoreMediaText&quot; block */
-  href?: Maybe<Scalars['String']>;
-  /** The &quot;imageFill&quot; field on the &quot;CoreMediaText&quot; block */
-  imageFill?: Maybe<Scalars['Boolean']>;
-  /** The &quot;isStackedOnMobile&quot; field on the &quot;CoreMediaText&quot; block */
-  isStackedOnMobile?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkClass&quot; field on the &quot;CoreMediaText&quot; block */
-  linkClass?: Maybe<Scalars['String']>;
-  /** The &quot;linkDestination&quot; field on the &quot;CoreMediaText&quot; block */
-  linkDestination?: Maybe<Scalars['String']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreMediaText&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreMediaText&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;mediaAlt&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaAlt?: Maybe<Scalars['String']>;
-  /** The &quot;mediaId&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaId?: Maybe<Scalars['Float']>;
-  /** The &quot;mediaLink&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaLink?: Maybe<Scalars['String']>;
-  /** The &quot;mediaPosition&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaPosition?: Maybe<Scalars['String']>;
-  /** The &quot;mediaSizeSlug&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaSizeSlug?: Maybe<Scalars['String']>;
-  /** The &quot;mediaType&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaType?: Maybe<Scalars['String']>;
-  /** The &quot;mediaUrl&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaUrl?: Maybe<Scalars['String']>;
-  /** The &quot;mediaWidth&quot; field on the &quot;CoreMediaText&quot; block */
-  mediaWidth?: Maybe<Scalars['Float']>;
-  /** The &quot;rel&quot; field on the &quot;CoreMediaText&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreMediaText&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreMediaText&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;verticalAlignment&quot; field on the &quot;CoreMediaText&quot; block */
-  verticalAlignment?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreMissing = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreMissing';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreMissing Block Type */
-  attributes?: Maybe<CoreMissingAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreMissing Block Type */
-export type CoreMissingAttributes = {
-  __typename?: 'CoreMissingAttributes';
-  /** The &quot;lock&quot; field on the &quot;CoreMissing&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;originalContent&quot; field on the &quot;CoreMissing&quot; block */
-  originalContent?: Maybe<Scalars['String']>;
-  /** The &quot;originalName&quot; field on the &quot;CoreMissing&quot; block */
-  originalName?: Maybe<Scalars['String']>;
-  /** The &quot;originalUndelimitedContent&quot; field on the &quot;CoreMissing&quot; block */
-  originalUndelimitedContent?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreMore = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreMore';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreMore Block Type */
-  attributes?: Maybe<CoreMoreAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreMore Block Type */
-export type CoreMoreAttributes = {
-  __typename?: 'CoreMoreAttributes';
-  /** The &quot;customText&quot; field on the &quot;CoreMore&quot; block */
-  customText?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreMore&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;noTeaser&quot; field on the &quot;CoreMore&quot; block */
-  noTeaser?: Maybe<Scalars['Boolean']>;
-};
-
-/** A block used for editing the site */
-export type CoreNavigation = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreNavigation';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreNavigation Block Type */
-  attributes?: Maybe<CoreNavigationAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreNavigation Block Type */
-export type CoreNavigationAttributes = {
-  __typename?: 'CoreNavigationAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreNavigation&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreNavigation&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreNavigation&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;customBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block */
-  customBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;customOverlayBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block */
-  customOverlayBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;customOverlayTextColor&quot; field on the &quot;CoreNavigation&quot; block */
-  customOverlayTextColor?: Maybe<Scalars['String']>;
-  /** The &quot;customTextColor&quot; field on the &quot;CoreNavigation&quot; block */
-  customTextColor?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreNavigation&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreNavigation&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;hasIcon&quot; field on the &quot;CoreNavigation&quot; block */
-  hasIcon?: Maybe<Scalars['Boolean']>;
-  /** The &quot;icon&quot; field on the &quot;CoreNavigation&quot; block */
-  icon?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreNavigation&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreNavigation&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;maxNestingLevel&quot; field on the &quot;CoreNavigation&quot; block */
-  maxNestingLevel?: Maybe<Scalars['Float']>;
-  /** The &quot;openSubmenusOnClick&quot; field on the &quot;CoreNavigation&quot; block */
-  openSubmenusOnClick?: Maybe<Scalars['Boolean']>;
-  /** The &quot;overlayBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block */
-  overlayBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;overlayMenu&quot; field on the &quot;CoreNavigation&quot; block */
-  overlayMenu?: Maybe<Scalars['String']>;
-  /** The &quot;overlayTextColor&quot; field on the &quot;CoreNavigation&quot; block */
-  overlayTextColor?: Maybe<Scalars['String']>;
-  /** The &quot;ref&quot; field on the &quot;CoreNavigation&quot; block */
-  ref?: Maybe<Scalars['Float']>;
-  /** The &quot;rgbBackgroundColor&quot; field on the &quot;CoreNavigation&quot; block */
-  rgbBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;rgbTextColor&quot; field on the &quot;CoreNavigation&quot; block */
-  rgbTextColor?: Maybe<Scalars['String']>;
-  /** The &quot;showSubmenuIcon&quot; field on the &quot;CoreNavigation&quot; block */
-  showSubmenuIcon?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreNavigation&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreNavigation&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;__unstableLocation&quot; field on the &quot;CoreNavigation&quot; block */
-  unstableLocation?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreNavigationLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreNavigationLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreNavigationLink Block Type */
-  attributes?: Maybe<CoreNavigationLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreNavigationLink Block Type */
-export type CoreNavigationLinkAttributes = {
-  __typename?: 'CoreNavigationLinkAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreNavigationLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;description&quot; field on the &quot;CoreNavigationLink&quot; block */
-  description?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreNavigationLink&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreNavigationLink&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;id&quot; field on the &quot;CoreNavigationLink&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;isTopLevelLink&quot; field on the &quot;CoreNavigationLink&quot; block */
-  isTopLevelLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;kind&quot; field on the &quot;CoreNavigationLink&quot; block */
-  kind?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreNavigationLink&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreNavigationLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationLink&quot; block */
-  opensInNewTab?: Maybe<Scalars['Boolean']>;
-  /** The &quot;rel&quot; field on the &quot;CoreNavigationLink&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreNavigationLink&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;title&quot; field on the &quot;CoreNavigationLink&quot; block */
-  title?: Maybe<Scalars['String']>;
-  /** The &quot;type&quot; field on the &quot;CoreNavigationLink&quot; block */
-  type?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreNavigationLink&quot; block */
-  url?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreNavigationSubmenu = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreNavigationSubmenu';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreNavigationSubmenu Block Type */
-  attributes?: Maybe<CoreNavigationSubmenuAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreNavigationSubmenu Block Type */
-export type CoreNavigationSubmenuAttributes = {
-  __typename?: 'CoreNavigationSubmenuAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;description&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  description?: Maybe<Scalars['String']>;
-  /** The &quot;id&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;isTopLevelItem&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  isTopLevelItem?: Maybe<Scalars['Boolean']>;
-  /** The &quot;kind&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  kind?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;opensInNewTab&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  opensInNewTab?: Maybe<Scalars['Boolean']>;
-  /** The &quot;rel&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;title&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  title?: Maybe<Scalars['String']>;
-  /** The &quot;type&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  type?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreNavigationSubmenu&quot; block */
-  url?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreNextpage = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreNextpage';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreNextpage Block Type */
-  attributes?: Maybe<CoreNextpageAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreNextpage Block Type */
-export type CoreNextpageAttributes = {
-  __typename?: 'CoreNextpageAttributes';
-  /** The &quot;lock&quot; field on the &quot;CoreNextpage&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CorePageList = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePageList';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePageList Block Type */
-  attributes?: Maybe<CorePageListAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePageList Block Type */
-export type CorePageListAttributes = {
-  __typename?: 'CorePageListAttributes';
-  /** The &quot;className&quot; field on the &quot;CorePageList&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePageList&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePageList&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;isNested&quot; field on the &quot;CorePageList&quot; block */
-  isNested?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CorePageList&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;parentPageID&quot; field on the &quot;CorePageList&quot; block */
-  parentPageID?: Maybe<Scalars['Int']>;
-  /** The &quot;style&quot; field on the &quot;CorePageList&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CorePageListItem = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePageListItem';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePageListItem Block Type */
-  attributes?: Maybe<CorePageListItemAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePageListItem Block Type */
-export type CorePageListItemAttributes = {
-  __typename?: 'CorePageListItemAttributes';
-  /** The &quot;className&quot; field on the &quot;CorePageListItem&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;hasChildren&quot; field on the &quot;CorePageListItem&quot; block */
-  hasChildren?: Maybe<Scalars['Boolean']>;
-  /** The &quot;id&quot; field on the &quot;CorePageListItem&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;label&quot; field on the &quot;CorePageListItem&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;link&quot; field on the &quot;CorePageListItem&quot; block */
-  link?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePageListItem&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;title&quot; field on the &quot;CorePageListItem&quot; block */
-  title?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreParagraph = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreParagraph';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreParagraph Block Type */
-  attributes?: Maybe<CoreParagraphAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreParagraph Block Type */
-export type CoreParagraphAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreParagraphAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreParagraph&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreParagraph&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreParagraph&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreParagraph&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreParagraph&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;direction&quot; field on the &quot;CoreParagraph&quot; block */
-  direction?: Maybe<Scalars['String']>;
-  /** The &quot;dropCap&quot; field on the &quot;CoreParagraph&quot; block */
-  dropCap?: Maybe<Scalars['Boolean']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreParagraph&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreParagraph&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreParagraph&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreParagraph&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreParagraph&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreParagraph&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreParagraph&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePattern = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePattern';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePattern Block Type */
-  attributes?: Maybe<CorePatternAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePattern Block Type */
-export type CorePatternAttributes = {
-  __typename?: 'CorePatternAttributes';
-  /** The &quot;className&quot; field on the &quot;CorePattern&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePattern&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;slug&quot; field on the &quot;CorePattern&quot; block */
-  slug?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostAuthor = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostAuthor';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostAuthor Block Type */
-  attributes?: Maybe<CorePostAuthorAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostAuthor Block Type */
-export type CorePostAuthorAttributes = {
-  __typename?: 'CorePostAuthorAttributes';
-  /** The &quot;avatarSize&quot; field on the &quot;CorePostAuthor&quot; block */
-  avatarSize?: Maybe<Scalars['Float']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostAuthor&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;byline&quot; field on the &quot;CorePostAuthor&quot; block */
-  byline?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostAuthor&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostAuthor&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostAuthor&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostAuthor&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CorePostAuthor&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CorePostAuthor&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostAuthor&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showAvatar&quot; field on the &quot;CorePostAuthor&quot; block */
-  showAvatar?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showBio&quot; field on the &quot;CorePostAuthor&quot; block */
-  showBio?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CorePostAuthor&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostAuthor&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostAuthor&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostAuthorBiography = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostAuthorBiography';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostAuthorBiography Block Type */
-  attributes?: Maybe<CorePostAuthorBiographyAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostAuthorBiography Block Type */
-export type CorePostAuthorBiographyAttributes = {
-  __typename?: 'CorePostAuthorBiographyAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostAuthorBiography&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostAuthorName = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostAuthorName';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostAuthorName Block Type */
-  attributes?: Maybe<CorePostAuthorNameAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostAuthorName Block Type */
-export type CorePostAuthorNameAttributes = {
-  __typename?: 'CorePostAuthorNameAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostAuthorName&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostAuthorName&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostAuthorName&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostAuthorName&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostAuthorName&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CorePostAuthorName&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CorePostAuthorName&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostAuthorName&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostAuthorName&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostAuthorName&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostAuthorName&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostComments = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostComments';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostComments Block Type */
-  attributes?: Maybe<CorePostCommentsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostComments Block Type */
-export type CorePostCommentsAttributes = {
-  __typename?: 'CorePostCommentsAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePostComments&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostComments&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostComments&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostComments&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostComments&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostComments&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostComments&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostComments&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostComments&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostCommentsForm = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostCommentsForm';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostCommentsForm Block Type */
-  attributes?: Maybe<CorePostCommentsFormAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostCommentsForm Block Type */
-export type CorePostCommentsFormAttributes = {
-  __typename?: 'CorePostCommentsFormAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostCommentsForm&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostContent = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostContent';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostContent Block Type */
-  attributes?: Maybe<CorePostContentAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostContent Block Type */
-export type CorePostContentAttributes = {
-  __typename?: 'CorePostContentAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePostContent&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostContent&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostContent&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostContent&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CorePostContent&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostContent&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostContent&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CorePostDate = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostDate';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostDate Block Type */
-  attributes?: Maybe<CorePostDateAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostDate Block Type */
-export type CorePostDateAttributes = {
-  __typename?: 'CorePostDateAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostDate&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostDate&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayType&quot; field on the &quot;CorePostDate&quot; block */
-  displayType?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostDate&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostDate&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;format&quot; field on the &quot;CorePostDate&quot; block */
-  format?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostDate&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CorePostDate&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostDate&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostDate&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostDate&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostDate&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostExcerpt = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostExcerpt';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostExcerpt Block Type */
-  attributes?: Maybe<CorePostExcerptAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostExcerpt Block Type */
-export type CorePostExcerptAttributes = {
-  __typename?: 'CorePostExcerptAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostExcerpt&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostExcerpt&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostExcerpt&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostExcerpt&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostExcerpt&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostExcerpt&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;moreText&quot; field on the &quot;CorePostExcerpt&quot; block */
-  moreText?: Maybe<Scalars['String']>;
-  /** The &quot;showMoreOnNewLine&quot; field on the &quot;CorePostExcerpt&quot; block */
-  showMoreOnNewLine?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CorePostExcerpt&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostExcerpt&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostExcerpt&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostFeaturedImage = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostFeaturedImage';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostFeaturedImage Block Type */
-  attributes?: Maybe<CorePostFeaturedImageAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostFeaturedImage Block Type */
-export type CorePostFeaturedImageAttributes = {
-  __typename?: 'CorePostFeaturedImageAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;customGradient&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  customGradient?: Maybe<Scalars['String']>;
-  /** The &quot;customOverlayColor&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  customOverlayColor?: Maybe<Scalars['String']>;
-  /** The &quot;dimRatio&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  dimRatio?: Maybe<Scalars['Float']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;height&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  height?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;overlayColor&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  overlayColor?: Maybe<Scalars['String']>;
-  /** The &quot;rel&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;scale&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  scale?: Maybe<Scalars['String']>;
-  /** The &quot;sizeSlug&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  sizeSlug?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;width&quot; field on the &quot;CorePostFeaturedImage&quot; block */
-  width?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostNavigationLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostNavigationLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostNavigationLink Block Type */
-  attributes?: Maybe<CorePostNavigationLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostNavigationLink Block Type */
-export type CorePostNavigationLinkAttributes = {
-  __typename?: 'CorePostNavigationLinkAttributes';
-  /** The &quot;arrow&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  arrow?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;linkLabel&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  linkLabel?: Maybe<Scalars['Boolean']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showTitle&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  showTitle?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;type&quot; field on the &quot;CorePostNavigationLink&quot; block */
-  type?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostTemplate = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostTemplate';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostTemplate Block Type */
-  attributes?: Maybe<CorePostTemplateAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostTemplate Block Type */
-export type CorePostTemplateAttributes = {
-  __typename?: 'CorePostTemplateAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePostTemplate&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostTemplate&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostTemplate&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostTemplate&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostTemplate&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostTemplate&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CorePostTemplate&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostTemplate&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePostTemplate&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostTemplate&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostTerms = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostTerms';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostTerms Block Type */
-  attributes?: Maybe<CorePostTermsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostTerms Block Type */
-export type CorePostTermsAttributes = {
-  __typename?: 'CorePostTermsAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostTerms&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostTerms&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostTerms&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostTerms&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostTerms&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostTerms&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;prefix&quot; field on the &quot;CorePostTerms&quot; block */
-  prefix?: Maybe<Scalars['String']>;
-  /** The &quot;separator&quot; field on the &quot;CorePostTerms&quot; block */
-  separator?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CorePostTerms&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;suffix&quot; field on the &quot;CorePostTerms&quot; block */
-  suffix?: Maybe<Scalars['String']>;
-  /** The &quot;term&quot; field on the &quot;CorePostTerms&quot; block */
-  term?: Maybe<Scalars['String']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostTerms&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostTerms&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePostTitle = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePostTitle';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePostTitle Block Type */
-  attributes?: Maybe<CorePostTitleAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePostTitle Block Type */
-export type CorePostTitleAttributes = {
-  __typename?: 'CorePostTitleAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePostTitle&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePostTitle&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePostTitle&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePostTitle&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePostTitle&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePostTitle&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CorePostTitle&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;level&quot; field on the &quot;CorePostTitle&quot; block */
-  level?: Maybe<Scalars['Float']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CorePostTitle&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePostTitle&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;rel&quot; field on the &quot;CorePostTitle&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CorePostTitle&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePostTitle&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePostTitle&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePreformatted = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePreformatted';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePreformatted Block Type */
-  attributes?: Maybe<CorePreformattedAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePreformatted Block Type */
-export type CorePreformattedAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CorePreformattedAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePreformatted&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePreformatted&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CorePreformatted&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePreformatted&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePreformatted&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePreformatted&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePreformatted&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePreformatted&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePreformatted&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CorePullquote = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CorePullquote';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CorePullquote Block Type */
-  attributes?: Maybe<CorePullquoteAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CorePullquote Block Type */
-export type CorePullquoteAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CorePullquoteAttributes';
-  /** The &quot;align&quot; field on the &quot;CorePullquote&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CorePullquote&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CorePullquote&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;citation&quot; field on the &quot;CorePullquote&quot; block */
-  citation?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CorePullquote&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CorePullquote&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CorePullquote&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CorePullquote&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CorePullquote&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CorePullquote&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CorePullquote&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CorePullquote&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;value&quot; field on the &quot;CorePullquote&quot; block */
-  value?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreQuery = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQuery';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQuery Block Type */
-  attributes?: Maybe<CoreQueryAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQuery Block Type */
-export type CoreQueryAttributes = {
-  __typename?: 'CoreQueryAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQuery&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQuery&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;displayLayout&quot; field on the &quot;CoreQuery&quot; block */
-  displayLayout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;layout&quot; field on the &quot;CoreQuery&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQuery&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;namespace&quot; field on the &quot;CoreQuery&quot; block */
-  namespace?: Maybe<Scalars['String']>;
-  /** The &quot;query&quot; field on the &quot;CoreQuery&quot; block */
-  query?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;queryId&quot; field on the &quot;CoreQuery&quot; block */
-  queryId?: Maybe<Scalars['Float']>;
-  /** The &quot;tagName&quot; field on the &quot;CoreQuery&quot; block */
-  tagName?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryNoResults = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryNoResults';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryNoResults Block Type */
-  attributes?: Maybe<CoreQueryNoResultsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryNoResults Block Type */
-export type CoreQueryNoResultsAttributes = {
-  __typename?: 'CoreQueryNoResultsAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreQueryNoResults&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryPagination = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryPagination';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryPagination Block Type */
-  attributes?: Maybe<CoreQueryPaginationAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryPagination Block Type */
-export type CoreQueryPaginationAttributes = {
-  __typename?: 'CoreQueryPaginationAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQueryPagination&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryPagination&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryPagination&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryPagination&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryPagination&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryPagination&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreQueryPagination&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryPagination&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;paginationArrow&quot; field on the &quot;CoreQueryPagination&quot; block */
-  paginationArrow?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryPagination&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreQueryPagination&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryPaginationNext = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryPaginationNext';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryPaginationNext Block Type */
-  attributes?: Maybe<CoreQueryPaginationNextAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryPaginationNext Block Type */
-export type CoreQueryPaginationNextAttributes = {
-  __typename?: 'CoreQueryPaginationNextAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryPaginationNext&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryPaginationNumbers = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryPaginationNumbers';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryPaginationNumbers Block Type */
-  attributes?: Maybe<CoreQueryPaginationNumbersAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryPaginationNumbers Block Type */
-export type CoreQueryPaginationNumbersAttributes = {
-  __typename?: 'CoreQueryPaginationNumbersAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryPaginationNumbers&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryPaginationPrevious = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryPaginationPrevious';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryPaginationPrevious Block Type */
-  attributes?: Maybe<CoreQueryPaginationPreviousAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryPaginationPrevious Block Type */
-export type CoreQueryPaginationPreviousAttributes = {
-  __typename?: 'CoreQueryPaginationPreviousAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryPaginationPrevious&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreQueryTitle = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQueryTitle';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQueryTitle Block Type */
-  attributes?: Maybe<CoreQueryTitleAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQueryTitle Block Type */
-export type CoreQueryTitleAttributes = {
-  __typename?: 'CoreQueryTitleAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQueryTitle&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQueryTitle&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQueryTitle&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQueryTitle&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQueryTitle&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQueryTitle&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;level&quot; field on the &quot;CoreQueryTitle&quot; block */
-  level?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQueryTitle&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showPrefix&quot; field on the &quot;CoreQueryTitle&quot; block */
-  showPrefix?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showSearchTerm&quot; field on the &quot;CoreQueryTitle&quot; block */
-  showSearchTerm?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreQueryTitle&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreQueryTitle&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreQueryTitle&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;type&quot; field on the &quot;CoreQueryTitle&quot; block */
-  type?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreQuote = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreQuote';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreQuote Block Type */
-  attributes?: Maybe<CoreQuoteAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreQuote Block Type */
-export type CoreQuoteAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreQuoteAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreQuote&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreQuote&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;citation&quot; field on the &quot;CoreQuote&quot; block */
-  citation?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreQuote&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreQuote&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreQuote&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreQuote&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreQuote&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreQuote&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreQuote&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreQuote&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;value&quot; field on the &quot;CoreQuote&quot; block */
-  value?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreReadMore = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreReadMore';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreReadMore Block Type */
-  attributes?: Maybe<CoreReadMoreAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreReadMore Block Type */
-export type CoreReadMoreAttributes = {
-  __typename?: 'CoreReadMoreAttributes';
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreReadMore&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreReadMore&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreReadMore&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreReadMore&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreReadMore&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreReadMore&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreReadMore&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreReadMore&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreReadMore&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreReadMore&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreReadMore&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreRss = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreRss';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreRss Block Type */
-  attributes?: Maybe<CoreRssAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreRss Block Type */
-export type CoreRssAttributes = {
-  __typename?: 'CoreRssAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreRss&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;blockLayout&quot; field on the &quot;CoreRss&quot; block */
-  blockLayout?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreRss&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;columns&quot; field on the &quot;CoreRss&quot; block */
-  columns?: Maybe<Scalars['Float']>;
-  /** The &quot;displayAuthor&quot; field on the &quot;CoreRss&quot; block */
-  displayAuthor?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayDate&quot; field on the &quot;CoreRss&quot; block */
-  displayDate?: Maybe<Scalars['Boolean']>;
-  /** The &quot;displayExcerpt&quot; field on the &quot;CoreRss&quot; block */
-  displayExcerpt?: Maybe<Scalars['Boolean']>;
-  /** The &quot;excerptLength&quot; field on the &quot;CoreRss&quot; block */
-  excerptLength?: Maybe<Scalars['Float']>;
-  /** The &quot;feedURL&quot; field on the &quot;CoreRss&quot; block */
-  feedURL?: Maybe<Scalars['String']>;
-  /** The &quot;itemsToShow&quot; field on the &quot;CoreRss&quot; block */
-  itemsToShow?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreRss&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreSearch = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSearch';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSearch Block Type */
-  attributes?: Maybe<CoreSearchAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSearch Block Type */
-export type CoreSearchAttributes = {
-  __typename?: 'CoreSearchAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSearch&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreSearch&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreSearch&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;buttonPosition&quot; field on the &quot;CoreSearch&quot; block */
-  buttonPosition?: Maybe<Scalars['String']>;
-  /** The &quot;buttonText&quot; field on the &quot;CoreSearch&quot; block */
-  buttonText?: Maybe<Scalars['String']>;
-  /** The &quot;buttonUseIcon&quot; field on the &quot;CoreSearch&quot; block */
-  buttonUseIcon?: Maybe<Scalars['Boolean']>;
-  /** The &quot;className&quot; field on the &quot;CoreSearch&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreSearch&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreSearch&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreSearch&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreSearch&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSearch&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;placeholder&quot; field on the &quot;CoreSearch&quot; block */
-  placeholder?: Maybe<Scalars['String']>;
-  /** The &quot;query&quot; field on the &quot;CoreSearch&quot; block */
-  query?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;showLabel&quot; field on the &quot;CoreSearch&quot; block */
-  showLabel?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreSearch&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreSearch&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-  /** The &quot;width&quot; field on the &quot;CoreSearch&quot; block */
-  width?: Maybe<Scalars['Float']>;
-  /** The &quot;widthUnit&quot; field on the &quot;CoreSearch&quot; block */
-  widthUnit?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreSeparator = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSeparator';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSeparator Block Type */
-  attributes?: Maybe<CoreSeparatorAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSeparator Block Type */
-export type CoreSeparatorAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreSeparatorAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSeparator&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreSeparator&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSeparator&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;cssClassName&quot; field on the &quot;CoreSeparator&quot; block */
-  cssClassName?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreSeparator&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSeparator&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;opacity&quot; field on the &quot;CoreSeparator&quot; block */
-  opacity?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreSeparator&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreShortcode = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreShortcode';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreShortcode Block Type */
-  attributes?: Maybe<CoreShortcodeAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreShortcode Block Type */
-export type CoreShortcodeAttributes = {
-  __typename?: 'CoreShortcodeAttributes';
-  /** The &quot;lock&quot; field on the &quot;CoreShortcode&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;text&quot; field on the &quot;CoreShortcode&quot; block */
-  text?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreSiteLogo = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSiteLogo';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSiteLogo Block Type */
-  attributes?: Maybe<CoreSiteLogoAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSiteLogo Block Type */
-export type CoreSiteLogoAttributes = {
-  __typename?: 'CoreSiteLogoAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSiteLogo&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSiteLogo&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CoreSiteLogo&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreSiteLogo&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSiteLogo&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;shouldSyncIcon&quot; field on the &quot;CoreSiteLogo&quot; block */
-  shouldSyncIcon?: Maybe<Scalars['Boolean']>;
-  /** The &quot;style&quot; field on the &quot;CoreSiteLogo&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;width&quot; field on the &quot;CoreSiteLogo&quot; block */
-  width?: Maybe<Scalars['Float']>;
-};
-
-/** A block used for editing the site */
-export type CoreSiteTagline = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSiteTagline';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSiteTagline Block Type */
-  attributes?: Maybe<CoreSiteTaglineAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSiteTagline Block Type */
-export type CoreSiteTaglineAttributes = {
-  __typename?: 'CoreSiteTaglineAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSiteTagline&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreSiteTagline&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSiteTagline&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreSiteTagline&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreSiteTagline&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreSiteTagline&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSiteTagline&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreSiteTagline&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreSiteTagline&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreSiteTagline&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreSiteTitle = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSiteTitle';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSiteTitle Block Type */
-  attributes?: Maybe<CoreSiteTitleAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSiteTitle Block Type */
-export type CoreSiteTitleAttributes = {
-  __typename?: 'CoreSiteTitleAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSiteTitle&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreSiteTitle&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSiteTitle&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreSiteTitle&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreSiteTitle&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreSiteTitle&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;isLink&quot; field on the &quot;CoreSiteTitle&quot; block */
-  isLink?: Maybe<Scalars['Boolean']>;
-  /** The &quot;level&quot; field on the &quot;CoreSiteTitle&quot; block */
-  level?: Maybe<Scalars['Float']>;
-  /** The &quot;linkTarget&quot; field on the &quot;CoreSiteTitle&quot; block */
-  linkTarget?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSiteTitle&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreSiteTitle&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreSiteTitle&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreSiteTitle&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreSocialLink = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSocialLink';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSocialLink Block Type */
-  attributes?: Maybe<CoreSocialLinkAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSocialLink Block Type */
-export type CoreSocialLinkAttributes = {
-  __typename?: 'CoreSocialLinkAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreSocialLink&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;label&quot; field on the &quot;CoreSocialLink&quot; block */
-  label?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSocialLink&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;rel&quot; field on the &quot;CoreSocialLink&quot; block */
-  rel?: Maybe<Scalars['String']>;
-  /** The &quot;service&quot; field on the &quot;CoreSocialLink&quot; block */
-  service?: Maybe<Scalars['String']>;
-  /** The &quot;url&quot; field on the &quot;CoreSocialLink&quot; block */
-  url?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreSocialLinks = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSocialLinks';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSocialLinks Block Type */
-  attributes?: Maybe<CoreSocialLinksAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSocialLinks Block Type */
-export type CoreSocialLinksAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreSocialLinksAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreSocialLinks&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSocialLinks&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;customIconBackgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block */
-  customIconBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;customIconColor&quot; field on the &quot;CoreSocialLinks&quot; block */
-  customIconColor?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreSocialLinks&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;iconBackgroundColor&quot; field on the &quot;CoreSocialLinks&quot; block */
-  iconBackgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;iconBackgroundColorValue&quot; field on the &quot;CoreSocialLinks&quot; block */
-  iconBackgroundColorValue?: Maybe<Scalars['String']>;
-  /** The &quot;iconColor&quot; field on the &quot;CoreSocialLinks&quot; block */
-  iconColor?: Maybe<Scalars['String']>;
-  /** The &quot;iconColorValue&quot; field on the &quot;CoreSocialLinks&quot; block */
-  iconColorValue?: Maybe<Scalars['String']>;
-  /** The &quot;layout&quot; field on the &quot;CoreSocialLinks&quot; block */
-  layout?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSocialLinks&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;openInNewTab&quot; field on the &quot;CoreSocialLinks&quot; block */
-  openInNewTab?: Maybe<Scalars['Boolean']>;
-  /** The &quot;showLabels&quot; field on the &quot;CoreSocialLinks&quot; block */
-  showLabels?: Maybe<Scalars['Boolean']>;
-  /** The &quot;size&quot; field on the &quot;CoreSocialLinks&quot; block */
-  size?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreSocialLinks&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreSpacer = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreSpacer';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreSpacer Block Type */
-  attributes?: Maybe<CoreSpacerAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreSpacer Block Type */
-export type CoreSpacerAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreSpacerAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreSpacer&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;height&quot; field on the &quot;CoreSpacer&quot; block */
-  height?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreSpacer&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreSpacer&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;width&quot; field on the &quot;CoreSpacer&quot; block */
-  width?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreTable = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreTable';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreTable Block Type */
-  attributes?: Maybe<CoreTableAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreTable Block Type */
-export type CoreTableAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreTableAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreTable&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreTable&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;body&quot; field on the &quot;CoreTable&quot; block */
-  body?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;borderColor&quot; field on the &quot;CoreTable&quot; block */
-  borderColor?: Maybe<Scalars['String']>;
-  /** The &quot;caption&quot; field on the &quot;CoreTable&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreTable&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreTable&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreTable&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;foot&quot; field on the &quot;CoreTable&quot; block */
-  foot?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreTable&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;hasFixedLayout&quot; field on the &quot;CoreTable&quot; block */
-  hasFixedLayout?: Maybe<Scalars['Boolean']>;
-  /** The &quot;head&quot; field on the &quot;CoreTable&quot; block */
-  head?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreTable&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreTable&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreTable&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreTagCloud = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreTagCloud';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreTagCloud Block Type */
-  attributes?: Maybe<CoreTagCloudAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreTagCloud Block Type */
-export type CoreTagCloudAttributes = {
-  __typename?: 'CoreTagCloudAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreTagCloud&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreTagCloud&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreTagCloud&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;largestFontSize&quot; field on the &quot;CoreTagCloud&quot; block */
-  largestFontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreTagCloud&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;numberOfTags&quot; field on the &quot;CoreTagCloud&quot; block */
-  numberOfTags?: Maybe<Scalars['Float']>;
-  /** The &quot;showTagCounts&quot; field on the &quot;CoreTagCloud&quot; block */
-  showTagCounts?: Maybe<Scalars['Boolean']>;
-  /** The &quot;smallestFontSize&quot; field on the &quot;CoreTagCloud&quot; block */
-  smallestFontSize?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreTagCloud&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;taxonomy&quot; field on the &quot;CoreTagCloud&quot; block */
-  taxonomy?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreTemplatePart = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreTemplatePart';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreTemplatePart Block Type */
-  attributes?: Maybe<CoreTemplatePartAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreTemplatePart Block Type */
-export type CoreTemplatePartAttributes = {
-  __typename?: 'CoreTemplatePartAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreTemplatePart&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;area&quot; field on the &quot;CoreTemplatePart&quot; block */
-  area?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreTemplatePart&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreTemplatePart&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;slug&quot; field on the &quot;CoreTemplatePart&quot; block */
-  slug?: Maybe<Scalars['String']>;
-  /** The &quot;tagName&quot; field on the &quot;CoreTemplatePart&quot; block */
-  tagName?: Maybe<Scalars['String']>;
-  /** The &quot;theme&quot; field on the &quot;CoreTemplatePart&quot; block */
-  theme?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreTermDescription = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreTermDescription';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreTermDescription Block Type */
-  attributes?: Maybe<CoreTermDescriptionAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreTermDescription Block Type */
-export type CoreTermDescriptionAttributes = {
-  __typename?: 'CoreTermDescriptionAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreTermDescription&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreTermDescription&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreTermDescription&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreTermDescription&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreTermDescription&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreTermDescription&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreTermDescription&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreTermDescription&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreTermDescription&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreTextColumns = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreTextColumns';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreTextColumns Block Type */
-  attributes?: Maybe<CoreTextColumnsAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreTextColumns Block Type */
-export type CoreTextColumnsAttributes = {
-  __typename?: 'CoreTextColumnsAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreTextColumns&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;columns&quot; field on the &quot;CoreTextColumns&quot; block */
-  columns?: Maybe<Scalars['Float']>;
-  /** The &quot;content&quot; field on the &quot;CoreTextColumns&quot; block */
-  content?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;lock&quot; field on the &quot;CoreTextColumns&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;width&quot; field on the &quot;CoreTextColumns&quot; block */
-  width?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreVerse = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreVerse';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreVerse Block Type */
-  attributes?: Maybe<CoreVerseAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreVerse Block Type */
-export type CoreVerseAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreVerseAttributes';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;backgroundColor&quot; field on the &quot;CoreVerse&quot; block */
-  backgroundColor?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreVerse&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;content&quot; field on the &quot;CoreVerse&quot; block */
-  content?: Maybe<Scalars['String']>;
-  /** The &quot;fontFamily&quot; field on the &quot;CoreVerse&quot; block */
-  fontFamily?: Maybe<Scalars['String']>;
-  /** The &quot;fontSize&quot; field on the &quot;CoreVerse&quot; block */
-  fontSize?: Maybe<Scalars['String']>;
-  /** The &quot;gradient&quot; field on the &quot;CoreVerse&quot; block */
-  gradient?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreVerse&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;style&quot; field on the &quot;CoreVerse&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;textAlign&quot; field on the &quot;CoreVerse&quot; block */
-  textAlign?: Maybe<Scalars['String']>;
-  /** The &quot;textColor&quot; field on the &quot;CoreVerse&quot; block */
-  textColor?: Maybe<Scalars['String']>;
-};
-
-/** A block used for editing the site */
-export type CoreVideo = BlockWithSupportsAnchor & EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreVideo';
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreVideo Block Type */
-  attributes?: Maybe<CoreVideoAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreVideo Block Type */
-export type CoreVideoAttributes = BlockWithSupportsAnchor & {
-  __typename?: 'CoreVideoAttributes';
-  /** The &quot;align&quot; field on the &quot;CoreVideo&quot; block */
-  align?: Maybe<Scalars['String']>;
-  /** The anchor field for the block. */
-  anchor?: Maybe<Scalars['String']>;
-  /** The &quot;autoplay&quot; field on the &quot;CoreVideo&quot; block */
-  autoplay?: Maybe<Scalars['Boolean']>;
-  /** The &quot;caption&quot; field on the &quot;CoreVideo&quot; block */
-  caption?: Maybe<Scalars['String']>;
-  /** The &quot;className&quot; field on the &quot;CoreVideo&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;controls&quot; field on the &quot;CoreVideo&quot; block */
-  controls?: Maybe<Scalars['Boolean']>;
-  /** The &quot;id&quot; field on the &quot;CoreVideo&quot; block */
-  id?: Maybe<Scalars['Float']>;
-  /** The &quot;lock&quot; field on the &quot;CoreVideo&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;loop&quot; field on the &quot;CoreVideo&quot; block */
-  loop?: Maybe<Scalars['Boolean']>;
-  /** The &quot;muted&quot; field on the &quot;CoreVideo&quot; block */
-  muted?: Maybe<Scalars['Boolean']>;
-  /** The &quot;playsInline&quot; field on the &quot;CoreVideo&quot; block */
-  playsInline?: Maybe<Scalars['Boolean']>;
-  /** The &quot;poster&quot; field on the &quot;CoreVideo&quot; block */
-  poster?: Maybe<Scalars['String']>;
-  /** The &quot;preload&quot; field on the &quot;CoreVideo&quot; block */
-  preload?: Maybe<Scalars['String']>;
-  /** The &quot;src&quot; field on the &quot;CoreVideo&quot; block */
-  src?: Maybe<Scalars['String']>;
-  /** The &quot;style&quot; field on the &quot;CoreVideo&quot; block */
-  style?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;tracks&quot; field on the &quot;CoreVideo&quot; block */
-  tracks?: Maybe<Scalars['BlockAttributesObject']>;
-};
-
-/** A block used for editing the site */
-export type CoreWidgetGroup = EditorBlock & PageEditorBlock & PostEditorBlock & {
-  __typename?: 'CoreWidgetGroup';
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** Attributes of the CoreWidgetGroup Block Type */
-  attributes?: Maybe<CoreWidgetGroupAttributes>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
-};
-
-/** Attributes of the CoreWidgetGroup Block Type */
-export type CoreWidgetGroupAttributes = {
-  __typename?: 'CoreWidgetGroupAttributes';
-  /** The &quot;className&quot; field on the &quot;CoreWidgetGroup&quot; block */
-  className?: Maybe<Scalars['String']>;
-  /** The &quot;lock&quot; field on the &quot;CoreWidgetGroup&quot; block */
-  lock?: Maybe<Scalars['BlockAttributesObject']>;
-  /** The &quot;title&quot; field on the &quot;CoreWidgetGroup&quot; block */
-  title?: Maybe<Scalars['String']>;
-};
 
 /** Input for the createCategory mutation. */
 export type CreateCategoryInput = {
@@ -6531,40 +2735,6 @@ export type CreatePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the createProject mutation. */
-export type CreateProjectInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: InputMaybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Project Content Area */
-  contentArea?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** Project Title */
-  projectTitle: Scalars['String'];
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  summary?: InputMaybe<Scalars['String']>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the createProject mutation. */
-export type CreateProjectPayload = {
-  __typename?: 'CreateProjectPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  project?: Maybe<Project>;
-};
-
 /** Input for the createTag mutation. */
 export type CreateTagInput = {
   /** The slug that the post_tag will be an alias of */
@@ -6586,37 +2756,6 @@ export type CreateTagPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The created post_tag */
   tag?: Maybe<Tag>;
-};
-
-/** Input for the createTestimonial mutation. */
-export type CreateTestimonialInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: InputMaybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  testimonialAuthor?: InputMaybe<Scalars['String']>;
-  testimonialContent?: InputMaybe<Scalars['String']>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the createTestimonial mutation. */
-export type CreateTestimonialPayload = {
-  __typename?: 'CreateTestimonialPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  testimonial?: Maybe<Testimonial>;
 };
 
 /** Input for the createUser mutation. */
@@ -6674,6 +2813,104 @@ export type DatabaseIdentifier = {
   databaseId: Scalars['Int'];
 };
 
+/** A Gravity Forms date field. */
+export type DateField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDateFormatSetting & GfFieldWithDateInputTypeSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & {
+  __typename?: 'DateField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines how the date field displays it’s calendar icon. */
+  calendarIconType?: Maybe<FormFieldCalendarIconTypeEnum>;
+  /** Contains the URL to the custom calendar icon. Only applicable when calendarIconType is set to custom. */
+  calendarIconUrl?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Determines how the date is displayed. */
+  dateFormat?: Maybe<DateFieldFormatEnum>;
+  /** The type of date field to display. */
+  dateType?: Maybe<DateFieldTypeEnum>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** How the DateField date is displayed. */
+export enum DateFieldFormatEnum {
+  /** dd/mm/yyyy format. */
+  Dmy = 'DMY',
+  /** dd-mm-yyyy format. */
+  DmyDash = 'DMY_DASH',
+  /** dd.mm.yyyy format. */
+  DmyDot = 'DMY_DOT',
+  /** mm/dd/yyyy format. */
+  Mdy = 'MDY',
+  /** yyyy/mm/dd format. */
+  YmdDash = 'YMD_DASH',
+  /** yyyy.mm.dd format. */
+  YmdDot = 'YMD_DOT',
+  /** yyyy/mm/dd format. */
+  YmdSlash = 'YMD_SLASH'
+}
+
+/** Type of date field to display. */
+export enum DateFieldTypeEnum {
+  /** A date dropdown. */
+  Dropdown = 'DROPDOWN',
+  /** A simple date field. */
+  Field = 'FIELD',
+  /** A datepicker. */
+  Picker = 'PICKER'
+}
+
 /** Date values */
 export type DateInput = {
   /** Day of the month (from 1 to 31) */
@@ -6682,6 +2919,23 @@ export type DateInput = {
   month?: InputMaybe<Scalars['Int']>;
   /** 4 digit year (e.g. 2017) */
   year?: InputMaybe<Scalars['Int']>;
+};
+
+/** DateInputProperty input values. */
+export type DateInputProperty = GfFieldInput & GfFieldInputWithDateFormatSetting & {
+  __typename?: 'DateInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
 };
 
 /** Filter the connection based on input */
@@ -6759,6 +3013,48 @@ export type DeleteCommentPayload = {
   comment?: Maybe<Comment>;
   /** The deleted comment ID */
   deletedId?: Maybe<Scalars['ID']>;
+};
+
+/** Input for the deleteGfDraftEntry mutation. */
+export type DeleteGfDraftEntryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** Either the global ID of the draft entry, or its resume token. */
+  id: Scalars['ID'];
+  /** The ID type for the draft entry. Defaults to `ID` . */
+  idType?: InputMaybe<DraftEntryIdTypeEnum>;
+};
+
+/** The payload for the deleteGfDraftEntry mutation. */
+export type DeleteGfDraftEntryPayload = {
+  __typename?: 'DeleteGfDraftEntryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The global ID of the draft entry that was deleted. */
+  deletedId?: Maybe<Scalars['ID']>;
+  /** The draft entry object before it was deleted. */
+  draftEntry?: Maybe<GfDraftEntry>;
+};
+
+/** Input for the deleteGfEntry mutation. */
+export type DeleteGfEntryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** Whether the entry should be force deleted instead of being moved to the trash. */
+  forceDelete?: InputMaybe<Scalars['Boolean']>;
+  /** ID of the entry to delete, either a global or database ID. */
+  id: Scalars['ID'];
+};
+
+/** The payload for the deleteGfEntry mutation. */
+export type DeleteGfEntryPayload = {
+  __typename?: 'DeleteGfEntryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The global ID of the draft entry that was deleted. */
+  deletedId?: Maybe<Scalars['ID']>;
+  /** The entry object before it was deleted. */
+  entry?: Maybe<GfSubmittedEntry>;
 };
 
 /** Input for the deleteMediaItem mutation. */
@@ -6847,29 +3143,6 @@ export type DeletePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the deleteProject mutation. */
-export type DeleteProjectInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']>;
-  /** The ID of the project to delete */
-  id: Scalars['ID'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** The payload for the deleteProject mutation. */
-export type DeleteProjectPayload = {
-  __typename?: 'DeleteProjectPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>;
-  /** The object before it was deleted */
-  project?: Maybe<Project>;
-};
-
 /** Input for the deleteTag mutation. */
 export type DeleteTagInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -6887,29 +3160,6 @@ export type DeleteTagPayload = {
   deletedId?: Maybe<Scalars['ID']>;
   /** The deteted term object */
   tag?: Maybe<Tag>;
-};
-
-/** Input for the deleteTestimonial mutation. */
-export type DeleteTestimonialInput = {
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Whether the object should be force deleted instead of being moved to the trash */
-  forceDelete?: InputMaybe<Scalars['Boolean']>;
-  /** The ID of the testimonial to delete */
-  id: Scalars['ID'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** The payload for the deleteTestimonial mutation. */
-export type DeleteTestimonialPayload = {
-  __typename?: 'DeleteTestimonialPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The ID of the deleted object */
-  deletedId?: Maybe<Scalars['ID']>;
-  /** The object before it was deleted */
-  testimonial?: Maybe<Testimonial>;
 };
 
 /** Input for the deleteUser mutation. */
@@ -6942,6 +3192,14 @@ export type DiscussionSettings = {
   defaultPingStatus?: Maybe<Scalars['String']>;
 };
 
+/** The Type of Identifier used to fetch a single resource. */
+export enum DraftEntryIdTypeEnum {
+  /** Unique global ID for the object. */
+  Id = 'ID',
+  /** The resume token assigned by Gravity Forms. Used by draft entries. */
+  ResumeToken = 'RESUME_TOKEN'
+}
+
 /** Relational context between connected nodes */
 export type Edge = {
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
@@ -6950,26 +3208,97 @@ export type Edge = {
   node: Node;
 };
 
-/** Blocks that can be edited to create content and layouts */
-export type EditorBlock = {
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the Block */
+/** A Gravity Forms email field. */
+export type EmailField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & GfFieldWithSubLabelPlacementSetting & GfGfFieldWithEmailConfirmationSetting & {
+  __typename?: 'EmailField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines whether the Confirm Email field is active. */
+  hasEmailConfirmation?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** Input fields for email field. */
+export type EmailFieldInput = {
+  /** Email confirmation input value. Only used when email confirmation is enabled. */
+  confirmationValue?: InputMaybe<Scalars['String']>;
+  /** Email input value. */
+  value?: InputMaybe<Scalars['String']>;
+};
+
+/** EmailInputProperty input values. */
+export type EmailInputProperty = GfFieldInput & GfFieldInputWithEmailConfirmationSetting & {
+  __typename?: 'EmailInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
   name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
 };
 
 /** Asset enqueued by the CMS */
@@ -7035,6 +3364,8 @@ export type EnqueuedScriptConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -7084,8 +3415,889 @@ export type EnqueuedStylesheetConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Options for ordering the connection. */
+export type EntriesConnectionOrderbyInput = {
+  /** The field name used to sort the results. */
+  field?: InputMaybe<Scalars['String']>;
+  /** Whether the sorting field's values are numeric. */
+  isNumeric?: InputMaybe<Scalars['Boolean']>;
+  /** The cardinality of the order of the connection. */
+  order?: InputMaybe<OrderEnum>;
+};
+
+/** Date Filters input fields for Entries queries. */
+export type EntriesDateFiltersInput = {
+  /** End date in Y-m-d H:i:s format. */
+  endDate?: InputMaybe<Scalars['String']>;
+  /** Start date in Y-m-d H:i:s format. */
+  startDate?: InputMaybe<Scalars['String']>;
+};
+
+/** Field Filters input fields for Entries queries. */
+export type EntriesFieldFiltersInput = {
+  /** The field value(s) to filter by. Must be boolean values. If using this field, do not also use stringValues, intValues or floatValues. */
+  boolValues?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
+  /** The field value(s) to filter by. Must be float values. If using this field, do not also use stringValues, intValues or boolValues. */
+  floatValues?: InputMaybe<Array<InputMaybe<Scalars['Float']>>>;
+  /** The field value(s) to filter by. Must be integer values. If using this field, do not also use stringValues, floatValues or boolValues. */
+  intValues?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  /** Optional. The entry meta key to filter by. You can use the ID of the form field, or the names of any of the columns in Gravity Form's database table for entries, such as "date_created", "is_read, "created_by", etc. If omitted, the value will be checked against all meta keys. . */
+  key?: InputMaybe<Scalars['String']>;
+  /** The operator to use for filtering. */
+  operator?: InputMaybe<FieldFiltersOperatorEnum>;
+  /** The field value(s) to filter by. Must be string values. If using this field, do not also use intValues, floatValues or boolValues. */
+  stringValues?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+/** The Type of Identifier used to fetch a single resource. */
+export enum EntryIdTypeEnum {
+  /** The database ID assigned by Gravity Forms. Used by submitted entries. */
+  DatabaseId = 'DATABASE_ID',
+  /** Unique global ID for the object. */
+  Id = 'ID',
+  /** The resume token assigned by Gravity Forms. Used by draft entries. */
+  ResumeToken = 'RESUME_TOKEN'
+}
+
+/** Status of entries to get. Default is ACTIVE. */
+export enum EntryStatusEnum {
+  /** Active entries (default). */
+  Active = 'ACTIVE',
+  /** All entries. */
+  All = 'ALL',
+  /** Spam entries. */
+  Spam = 'SPAM',
+  /** Entries in the trash. */
+  Trash = 'TRASH'
+}
+
+/** The type of Gravity Forms entry. */
+export enum EntryTypeEnum {
+  /** A Gravity Forms draft entry. */
+  Draft = 'DRAFT',
+  /** A Gravity Forms partial entry. */
+  Partial = 'PARTIAL',
+  /** A submitted Gravity Forms entry. */
+  Submitted = 'SUBMITTED'
+}
+
+/** Field error. */
+export type FieldError = {
+  __typename?: 'FieldError';
+  /** The field with the associated error message. */
+  id?: Maybe<Scalars['Float']>;
+  /** Error message. */
+  message?: Maybe<Scalars['String']>;
+};
+
+/** Whether to filter by ALL or ANY of the field filters. Default is ALL. */
+export enum FieldFiltersModeEnum {
+  /** All field filters (default). */
+  All = 'ALL',
+  /** Any field filters. */
+  Any = 'ANY'
+}
+
+/** The operator to use for filtering. */
+export enum FieldFiltersOperatorEnum {
+  /** Find field values that contain the passed value. Only one value may be passed when using this operator. SQL Equivalent: `LIKE %value%`. */
+  Contains = 'CONTAINS',
+  /** Default. Find field values that are equal to one of the values in the passed array. Default. */
+  In = 'IN',
+  /** Find field values that are an exact match for the passed value. Only one value may be passed when using this operator. SQL Equivalent: `=`. */
+  Is = 'IS',
+  /** Find field values that are NOT an exact match for the passed value. Only one value may be passed when using this operator. SQL Equivalent: `NOT`. */
+  IsNot = 'IS_NOT',
+  /** Find field values that are an exact match for the passed value. SQL wildcards are supported. Only one value may be passed when using this operator. SQL Equivalent: `LIKE`. */
+  Like = 'LIKE',
+  /** Find field values that do NOT match those in the values array. */
+  NotIn = 'NOT_IN'
+}
+
+/** A Gravity Forms fileupload field. */
+export type FileUploadField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithFileExtensionsSetting & GfFieldWithFileSizeSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMultipleFilesSetting & GfFieldWithPersonalData & GfFieldWithRulesSetting & {
+  __typename?: 'FileUploadField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** A comma-delimited list of the file extensions which may be uploaded. */
+  allowedExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Indicates whether multiple files may be uploaded. */
+  canAcceptMultipleFiles?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** File upload value */
+  fileUploadValues?: Maybe<Array<Maybe<FileUploadFieldValue>>>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The maximum size (in MB) an uploaded file may be . */
+  maxFileSize?: Maybe<Scalars['Int']>;
+  /** When the field is set to allow multiple files to be uploaded, this property is available to set a limit on how many may be uploaded. */
+  maxFiles?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /**
+   * An array of field values.
+   * @deprecated Use `fileUploadValues` instead.
+   */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** The individual file properties from an uploaded file. */
+export type FileUploadFieldValue = {
+  __typename?: 'FileUploadFieldValue';
+  /** The path to the parent directory of the file. */
+  basePath?: Maybe<Scalars['String']>;
+  /** The base url to the parent directory of the file. */
+  baseUrl?: Maybe<Scalars['String']>;
+  /** The filename. */
+  filename?: Maybe<Scalars['String']>;
+  /** The url to the file. */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** Gravity Forms button. */
+export type FormButton = {
+  __typename?: 'FormButton';
+  /** Controls when the form button should be visible based on values selected on the form. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** Contains the URL for the image button. Only applicable when type is set to image. */
+  imageUrl?: Maybe<Scalars['String']>;
+  /** Contains the button text. Only applicable when type is set to text. */
+  text?: Maybe<Scalars['String']>;
+  /** Specifies the type of button to be displayed. Defaults to TEXT. */
+  type?: Maybe<FormButtonTypeEnum>;
+};
+
+/** Type of button to be displayed. Default is TEXT. */
+export enum FormButtonTypeEnum {
+  /** Image button. */
+  Image = 'IMAGE',
+  /** Text button (default). */
+  Text = 'TEXT'
+}
+
+/** Properties for all the email notifications which exist for a form. */
+export type FormConfirmation = {
+  __typename?: 'FormConfirmation';
+  /** Controls which form confirmation message should be displayed. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** ID. */
+  id?: Maybe<Scalars['String']>;
+  /** Whether the confirmation is active or inactive. The default confirmation is always active. */
+  isActive?: Maybe<Scalars['Boolean']>;
+  /** Whether the confirmation message should be formatted so that paragraphs are automatically added for new lines. */
+  isAutoformatted?: Maybe<Scalars['Boolean']>;
+  /** Whether this is the default confirmation. */
+  isDefault?: Maybe<Scalars['Boolean']>;
+  /** Contains the confirmation message that will be displayed. Only applicable when type is set to &quot;MESSAGE&quot;. */
+  message?: Maybe<Scalars['String']>;
+  /** The confirmation name. */
+  name?: Maybe<Scalars['String']>;
+  /** Connection between the FormConfirmation type and the Page type */
+  page?: Maybe<FormConfirmationToPageConnectionEdge>;
+  /** Contains the Id of the WordPress page that the browser will be redirected to. Only applicable when type is set to `PAGE`. */
+  pageId?: Maybe<Scalars['Int']>;
+  /** Contains the query string to be appended to the redirection url. Only applicable when type is set to `REDIRECT`. */
+  queryString?: Maybe<Scalars['String']>;
+  /** Determines the type of confirmation to be used. */
+  type?: Maybe<FormConfirmationTypeEnum>;
+  /** Contains the URL that the browser will be redirected to. Only applicable when type is set to `REDIRECT`. */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the FormConfirmation type and the Page type */
+export type FormConfirmationToPageConnectionEdge = Edge & OneToOneConnection & PageConnectionEdge & {
+  __typename?: 'FormConfirmationToPageConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The node of the connection, without the edges */
+  node: Page;
+};
+
+/** Type of form confirmation to be used. */
+export enum FormConfirmationTypeEnum {
+  /** Use a confirmation "message". */
+  Message = 'MESSAGE',
+  /** Use a redirect to a different WordPress "page". */
+  Page = 'PAGE',
+  /** Use a "redirect" to a given URL. */
+  Redirect = 'REDIRECT'
+}
+
+/** The policies governing which entry data to include when erasing and exporting personal data. */
+export type FormDataPolicies = {
+  __typename?: 'FormDataPolicies';
+  /** Whether entry data from this form is included when erasing and exporting personal data. */
+  canExportAndErase?: Maybe<Scalars['Boolean']>;
+  /** The individual entry data exporting and erasing policies. */
+  entryData?: Maybe<Array<Maybe<FormEntryDataPolicy>>>;
+  /** The database ID of the Gravity Forms field used to identify the user. */
+  identificationFieldDatabaseId?: Maybe<Scalars['Int']>;
+};
+
+/** Determines where the field description is displayed relative to the field. */
+export enum FormDescriptionPlacementEnum {
+  /** The field description is displayed above the field input (i.e. immediately after the field label). */
+  Above = 'ABOVE',
+  /** The field description is displayed below the field input. */
+  Below = 'BELOW'
+}
+
+/** The individual entry data exporting and erasing policies. */
+export type FormEntryDataPolicy = {
+  __typename?: 'FormEntryDataPolicy';
+  /** The array key for the Gravity Forms Entry. */
+  key?: Maybe<Scalars['String']>;
+  /** Whether this field should be included when erasing personal data. */
+  shouldErase?: Maybe<Scalars['Boolean']>;
+  /** Whether this field should be included when exporting personal data. */
+  shouldExport?: Maybe<Scalars['Boolean']>;
+};
+
+/** Gravity Forms form entry limititation details. */
+export type FormEntryLimits = {
+  __typename?: 'FormEntryLimits';
+  /** Whether the form has a limit on the number of submissions. */
+  hasLimit?: Maybe<Scalars['Boolean']>;
+  /** Message that will be displayed when the maximum number of submissions have been reached. */
+  limitReachedMessage?: Maybe<Scalars['String']>;
+  /** The time period during which submissions are allowed. */
+  limitationPeriod?: Maybe<FormLimitEntriesPeriodEnum>;
+  /** The number of submissions allowed. */
+  maxEntries?: Maybe<Scalars['Int']>;
+};
+
+/** Gravity Forms field. */
+export type FormField = {
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** How the date field displays its calendar icon. */
+export enum FormFieldCalendarIconTypeEnum {
+  /** Default calendar icon. */
+  Calendar = 'CALENDAR',
+  /** Custom calendar icon. */
+  Custom = 'CUSTOM',
+  /** No calendar icon. */
+  None = 'NONE'
+}
+
+/** Connection to FormField Nodes */
+export type FormFieldConnection = {
+  /** A list of edges (relational context) between GfEntry and connected FormField Nodes */
+  edges: Array<FormFieldConnectionEdge>;
+  /** A list of connected FormField Nodes */
+  nodes: Array<FormField>;
+  pageInfo: FormFieldConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected FormField */
+export type FormFieldConnectionEdge = {
+  /** The connected FormField Node */
+  node: FormField;
+};
+
+/** Page Info on the connected FormFieldConnectionEdge */
+export type FormFieldConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** The form field-specifc policies for exporting and erasing personal data. */
+export type FormFieldDataPolicy = {
+  __typename?: 'FormFieldDataPolicy';
+  /** Whether this field is used to identify the user&#039;s personal data. */
+  isIdentificationField?: Maybe<Scalars['Boolean']>;
+  /** Whether this field should be included when erasing personal data. */
+  shouldErase?: Maybe<Scalars['Boolean']>;
+  /** Whether this field should be included when exporting personal data. */
+  shouldExport?: Maybe<Scalars['Boolean']>;
+};
+
+/** Determines where the field description is displayed relative to the field. */
+export enum FormFieldDescriptionPlacementEnum {
+  /** The field description is displayed above the field input (i.e. immediately after the field label). */
+  Above = 'ABOVE',
+  /** The field description is displayed below the field input. */
+  Below = 'BELOW',
+  /** The field description is inherited from the form default settings. */
+  Inherit = 'INHERIT'
+}
+
+/** The field label position. Empty when using the form defaults or a value of "hidden_label". */
+export enum FormFieldLabelPlacementEnum {
+  /** Field label is hidden. */
+  Hidden = 'HIDDEN',
+  /** Field label is inherited from the form defaults. */
+  Inherit = 'INHERIT',
+  /** Field label is displayed beside the fields and aligned to the left. */
+  Left = 'LEFT',
+  /** Field label is displayed beside the fields and aligned to the right. */
+  Right = 'RIGHT',
+  /** Field label is displayed on top of the fields. */
+  Top = 'TOP'
+}
+
+/** Type of indicator to use when field is required. */
+export enum FormFieldRequiredIndicatorEnum {
+  /** Asterisk (*) indicator. */
+  Asterisk = 'ASTERISK',
+  /** Custom indicator. */
+  Custom = 'CUSTOM',
+  /** Text (Required) indicator (default). */
+  Text = 'TEXT'
+}
+
+/** The size of the field when displayed on the page. */
+export enum FormFieldSizeEnum {
+  /** Large field size. */
+  Large = 'LARGE',
+  /** Medium field size. */
+  Medium = 'MEDIUM',
+  /** Small field size. */
+  Small = 'SMALL'
+}
+
+/** Determines how sub-labels are aligned. */
+export enum FormFieldSubLabelPlacementEnum {
+  /** The sub-label is displayed above the sub-field input (i.e. immediately after the field label). */
+  Above = 'ABOVE',
+  /** The sub-label is displayed below the sub-field input. */
+  Below = 'BELOW',
+  /** Field label is inherited from the form defaults. */
+  Inherit = 'INHERIT'
+}
+
+/** Gravity Forms Field Type. */
+export enum FormFieldTypeEnum {
+  /** A Gravity Forms address field. */
+  Address = 'ADDRESS',
+  /** A Gravity Forms calculation field. */
+  Calculation = 'CALCULATION',
+  /** A Gravity Forms captcha field. */
+  Captcha = 'CAPTCHA',
+  /** A Gravity Forms checkbox field. */
+  Checkbox = 'CHECKBOX',
+  /** A Gravity Forms consent field. */
+  Consent = 'CONSENT',
+  /** A Gravity Forms date field. */
+  Date = 'DATE',
+  /** A Gravity Forms email field. */
+  Email = 'EMAIL',
+  /** A Gravity Forms fileupload field. */
+  Fileupload = 'FILEUPLOAD',
+  /** A Gravity Forms hidden field. */
+  Hidden = 'HIDDEN',
+  /** A Gravity Forms hiddenproduct field. */
+  Hiddenproduct = 'HIDDENPRODUCT',
+  /** A Gravity Forms html field. */
+  Html = 'HTML',
+  /** A Gravity Forms list field. */
+  List = 'LIST',
+  /** A Gravity Forms multiselect field. */
+  Multiselect = 'MULTISELECT',
+  /** A Gravity Forms name field. */
+  Name = 'NAME',
+  /** A Gravity Forms number field. */
+  Number = 'NUMBER',
+  /** A Gravity Forms option field. */
+  Option = 'OPTION',
+  /** A Gravity Forms page field. */
+  Page = 'PAGE',
+  /** A Gravity Forms password field. */
+  Password = 'PASSWORD',
+  /** A Gravity Forms phone field. */
+  Phone = 'PHONE',
+  /** A Gravity Forms post_category field. */
+  PostCategory = 'POST_CATEGORY',
+  /** A Gravity Forms post_content field. */
+  PostContent = 'POST_CONTENT',
+  /** A Gravity Forms post_custom_field field. */
+  PostCustomField = 'POST_CUSTOM_FIELD',
+  /** A Gravity Forms post_excerpt field. */
+  PostExcerpt = 'POST_EXCERPT',
+  /** A Gravity Forms post_image field. */
+  PostImage = 'POST_IMAGE',
+  /** A Gravity Forms post_tags field. */
+  PostTags = 'POST_TAGS',
+  /** A Gravity Forms post_title field. */
+  PostTitle = 'POST_TITLE',
+  /** A Gravity Forms price field. */
+  Price = 'PRICE',
+  /** A Gravity Forms product field. */
+  Product = 'PRODUCT',
+  /** A Gravity Forms quantity field. */
+  Quantity = 'QUANTITY',
+  /** A Gravity Forms radio field. */
+  Radio = 'RADIO',
+  /** A Gravity Forms section field. */
+  Section = 'SECTION',
+  /** A Gravity Forms select field. */
+  Select = 'SELECT',
+  /** A Gravity Forms shipping field. */
+  Shipping = 'SHIPPING',
+  /** A Gravity Forms singleproduct field. */
+  Singleproduct = 'SINGLEPRODUCT',
+  /** A Gravity Forms singleshipping field. */
+  Singleshipping = 'SINGLESHIPPING',
+  /** A Gravity Forms text field. */
+  Text = 'TEXT',
+  /** A Gravity Forms textarea field. */
+  Textarea = 'TEXTAREA',
+  /** A Gravity Forms time field. */
+  Time = 'TIME',
+  /** A Gravity Forms total field. */
+  Total = 'TOTAL',
+  /** A Gravity Forms website field. */
+  Website = 'WEBSITE'
+}
+
+/** Field values input. Includes a field id, and a valid value Input. */
+export type FormFieldValuesInput = {
+  /** The form field values for Address fields. */
+  addressValues?: InputMaybe<AddressFieldInput>;
+  /** The form field values for Checkbox fields. */
+  checkboxValues?: InputMaybe<Array<InputMaybe<CheckboxFieldInput>>>;
+  /** The form field values for Email fields. */
+  emailValues?: InputMaybe<EmailFieldInput>;
+  /** The field id. */
+  id: Scalars['Int'];
+  /** The form field values for List fields. */
+  listValues?: InputMaybe<Array<InputMaybe<ListFieldInput>>>;
+  /** The form field values for Name fields. */
+  nameValues?: InputMaybe<NameFieldInput>;
+  /** The form field values for Name fields. */
+  productValues?: InputMaybe<ProductFieldInput>;
+  /** The form field values for basic fields. */
+  value?: InputMaybe<Scalars['String']>;
+  /** The form field values for fields that accept multiple string values. Used by MultiSelect, Post Category, Post Custom, and Post Tags fields. */
+  values?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+/** Field visibility. */
+export enum FormFieldVisibilityEnum {
+  /** The field is for "administrative" use. */
+  Administrative = 'ADMINISTRATIVE',
+  /** The field is "hidden". */
+  Hidden = 'HIDDEN',
+  /** The field is "visible". */
+  Visible = 'VISIBLE'
+}
+
+/** The Type of Identifier used to fetch a single resource. */
+export enum FormIdTypeEnum {
+  /** The database ID assigned by Gravity Forms. */
+  DatabaseId = 'DATABASE_ID',
+  /** Unique global ID for the object. */
+  Id = 'ID'
+}
+
+/** Determines where the field labels should be placed in relation to the field. */
+export enum FormLabelPlacementEnum {
+  /** Field labels are displayed beside the fields and aligned to the left. */
+  Left = 'LEFT',
+  /** Field labels are displayed beside the fields and aligned to the right. */
+  Right = 'RIGHT',
+  /** Field labels are displayed on top of the fields. */
+  Top = 'TOP'
+}
+
+/** Gravity Forms button. */
+export type FormLastPageButton = {
+  __typename?: 'FormLastPageButton';
+  /** Contains the URL for the image button. Only applicable when type is set to image. */
+  imageUrl?: Maybe<Scalars['String']>;
+  /** Contains the button text. Only applicable when type is set to text. */
+  text?: Maybe<Scalars['String']>;
+  /** Specifies the type of button to be displayed. Defaults to TEXT. */
+  type?: Maybe<FormButtonTypeEnum>;
+};
+
+/** When limitEntries is set to 1, this property specifies the time period during which submissions are allowed. */
+export enum FormLimitEntriesPeriodEnum {
+  /** Limit entries by "day". */
+  Day = 'DAY',
+  /** Limit entries by "month". */
+  Month = 'MONTH',
+  /** Limit entries by "week". */
+  Week = 'WEEK',
+  /** Limit entries by "year". */
+  Year = 'YEAR'
+}
+
+/** Gravity Forms form login requirements data. */
+export type FormLogin = {
+  __typename?: 'FormLogin';
+  /** Whether the form is configured to be displayed only to logged in users. */
+  isLoginRequired?: Maybe<Scalars['Boolean']>;
+  /** When `isLoginRequired` is set to true, this controls the message displayed when non-logged in user tries to access the form. */
+  loginRequiredMessage?: Maybe<Scalars['String']>;
+};
+
+/** Properties for all the email notifications which exist for a form. */
+export type FormNotification = {
+  __typename?: 'FormNotification';
+  /** The email or merge tags to be used as the email bcc address. */
+  bcc?: Maybe<Scalars['String']>;
+  /** An associative array containing the conditional logic rules. See the Conditional Logic Object for more details. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** The notification event. Default is form_submission. */
+  event?: Maybe<Scalars['String']>;
+  /** The email or merge tag to be used as the email from address. */
+  from?: Maybe<Scalars['String']>;
+  /** The text or merge tag to be used as the email from name. */
+  fromName?: Maybe<Scalars['String']>;
+  /** The notification ID. A 13 character unique ID. */
+  id?: Maybe<Scalars['String']>;
+  /** Is the notification active or inactive. The default is true (active). */
+  isActive?: Maybe<Scalars['Boolean']>;
+  /** Whether the email message should be formatted so that paragraphs are automatically added for new lines. */
+  isAutoformatted?: Maybe<Scalars['Boolean']>;
+  /** The email body/content. Merge tags supported. */
+  message?: Maybe<Scalars['String']>;
+  /** The notification name. */
+  name?: Maybe<Scalars['String']>;
+  /** The email or merge tags to be used as the email reply to address. */
+  replyTo?: Maybe<Scalars['String']>;
+  /** Routing rules. */
+  routing?: Maybe<Array<Maybe<FormNotificationRouting>>>;
+  /** The name of the service to be used when sending this notification. Default is wordpress. */
+  service?: Maybe<Scalars['String']>;
+  /** Determines if files uploaded on the form should be included when the notification is sent. */
+  shouldSendAttachments?: Maybe<Scalars['Boolean']>;
+  /** The email subject line. Merge tags supported. */
+  subject?: Maybe<Scalars['String']>;
+  /** The ID of an email field, an email address or merge tag to be used as the email to address. */
+  to?: Maybe<Scalars['String']>;
+  /** Identifies what to use for the notification &quot;to&quot;. */
+  toType?: Maybe<FormNotificationToTypeEnum>;
+};
+
+/** Properties for all the email notifications which exist for a form. */
+export type FormNotificationRouting = {
+  __typename?: 'FormNotificationRouting';
+  /** The email or merge tag to be used as the email To address if this rule is a match. */
+  email?: Maybe<Scalars['String']>;
+  /** Target field ID. The field that will have it’s value compared with the value property to determine if this rule is a match. */
+  fieldId?: Maybe<Scalars['Int']>;
+  /** Operator to be used when evaluating this rule. */
+  operator?: Maybe<FormRuleOperatorEnum>;
+  /** The value to compare with the field specified by fieldId. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** What to use for the notification "to". */
+export enum FormNotificationToTypeEnum {
+  /** Email address. */
+  Email = 'EMAIL',
+  /** Form field. */
+  Field = 'FIELD',
+  /** Hidden. */
+  Hidden = 'HIDDEN',
+  /** Routing using conditional rules. */
+  Routing = 'ROUTING'
+}
+
+/** Style of progress bar. */
+export enum FormPageProgressStyleEnum {
+  /** Blue progress bar style. */
+  Blue = 'BLUE',
+  /** Custom progress bar style. */
+  Custom = 'CUSTOM',
+  /** Green progress bar style. */
+  Green = 'GREEN',
+  /** Grey progress bar style. */
+  Grey = 'GREY',
+  /** Orange progress bar style. */
+  Orange = 'ORANGE',
+  /** Red progress bar style. */
+  Red = 'RED'
+}
+
+/** Type of page progress indicator to be displayed. */
+export enum FormPageProgressTypeEnum {
+  /** Don't show a page progress indicator. */
+  None = 'NONE',
+  /** Show page progress indicator as a percentage. */
+  Percentage = 'PERCENTAGE',
+  /** Show page progress indicator as steps. */
+  Steps = 'STEPS'
+}
+
+/** Gravity Forms form pagination data. */
+export type FormPagination = {
+  __typename?: 'FormPagination';
+  /** Progress bar background color. Can be any CSS color value. Only applies when `style` is set to &quot;CUSTOM&quot;. */
+  backgroundColor?: Maybe<Scalars['String']>;
+  /** Progress bar text color. Can be any CSS color value. Only applies when `style` is set to &quot;CUSTOM&quot;. */
+  color?: Maybe<Scalars['String']>;
+  /** Whether the confirmation bar should be displayed with the confirmation text. */
+  hasProgressbarOnConfirmation?: Maybe<Scalars['Boolean']>;
+  /** Last page button data. */
+  lastPageButton?: Maybe<FormLastPageButton>;
+  /** Names of the form&#039;s pages. */
+  pageNames?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** The confirmation text to display once the end of the progress bar has been reached. Only applies when `hasProgressbarOnConfirmation` is set to true. */
+  progressbarCompletionText?: Maybe<Scalars['String']>;
+  /** Style of progress bar. */
+  style?: Maybe<FormPageProgressStyleEnum>;
+  /** Type of progress indicator. */
+  type?: Maybe<FormPageProgressTypeEnum>;
+};
+
+/** Gravity Forms form Personal Data settings. */
+export type FormPersonalData = {
+  __typename?: 'FormPersonalData';
+  /** The policies governing which entry data to include when erasing and exporting personal data. */
+  dataPolicies?: Maybe<FormDataPolicies>;
+  /** The number of days to retain entries. `null` if `retentionPolicy` is set to `RETAIN` entries indefinitely. */
+  daysToRetain?: Maybe<Scalars['Int']>;
+  /** The policy for retaining old entry data. */
+  retentionPolicy?: Maybe<FormRetentionPolicyEnum>;
+  /** Whether the IP address should be saved to the form submission. */
+  shouldSaveIP?: Maybe<Scalars['Boolean']>;
+};
+
+/** Gravity Forms form entry limititation details. */
+export type FormPostCreation = {
+  __typename?: 'FormPostCreation';
+  /** When `useCurrentUserAsAuthor` is `false`, this contains the User object for the author. */
+  author?: Maybe<User>;
+  /** When `useCurrentUserAsAuthor` is `false`, this property contains the user database that will be used as the Post author. */
+  authorDatabaseId?: Maybe<Scalars['Int']>;
+  /** When `useCurrentUserAsAuthor` is `false`, this property contains the user ID that will be used as the Post author. */
+  authorId?: Maybe<Scalars['ID']>;
+  /** Form forms with Post fields, but without a Post Category field, this property contains the default category database ID the post will be associated with when created. */
+  categoryDatabaseId?: Maybe<Scalars['Int']>;
+  /** Template to be used when creating the post content. Field variables (i.e. {Name:3} ) can be added to the template to insert user submitted values into the post content. Only applicable when `hasContentTemplate` is `true`. */
+  contentTemplate?: Maybe<Scalars['String']>;
+  /** Determines the format that the Post should be created with. */
+  format?: Maybe<PostFormatTypeEnum>;
+  /** Determines if the post template functionality is enabled. When enabled, the post content will be created based on the template specified by `contentTemplate`. */
+  hasContentTemplate?: Maybe<Scalars['Boolean']>;
+  /** Determines if the post title template functionality is enabled. When enabled, the post title will be created based on the template specified by `titleTemplate`. */
+  hasTitleTemplate?: Maybe<Scalars['Boolean']>;
+  /** For forms with Post fields, this determines if the post should be created using the current logged in user as the author. */
+  shouldUseCurrentUserAsAuthor?: Maybe<Scalars['Boolean']>;
+  /** For forms with Post fields, determines the status that the Post should be created with. */
+  status?: Maybe<Scalars['String']>;
+  /** Template to be used when creating the post title. Field variables (i.e. {Name:3} ) can be added to the template to insert user submitted values into the post title. Only applicable when `hasTitleTemplate` is `true`. */
+  titleTemplate?: Maybe<Scalars['String']>;
+};
+
+/** The Personal Data retention policy. */
+export enum FormRetentionPolicyEnum {
+  /** Entries will be deleted automatically after a specified number of days. */
+  Delete = 'DELETE',
+  /** Entries will be retain indefinitely. */
+  Retain = 'RETAIN',
+  /** Entries will be trashed automatically after a specified number of days. */
+  Trash = 'TRASH'
+}
+
+/** Operator to be used when evaluating logic rules. */
+export enum FormRuleOperatorEnum {
+  /** Evaluates values that CONTAIN the comparison value. */
+  Contains = 'CONTAINS',
+  /** Evaluates values that END with the comparison value. */
+  EndsWith = 'ENDS_WITH',
+  /** Evaluates values that are GREATER than the comparison value. */
+  GreaterThan = 'GREATER_THAN',
+  /** Evaluates values that match the comparison value. */
+  Is = 'IS',
+  /** Evaluates values that do NOT match the comparison value. */
+  IsNot = 'IS_NOT',
+  /** Evaluates values that are LESS than the comparison value. */
+  LessThan = 'LESS_THAN',
+  /** Evaluates values that START with the comparison value. */
+  StartsWith = 'STARTS_WITH'
+}
+
+/** Gravity Forms form Save and Continue data. */
+export type FormSaveAndContinue = {
+  __typename?: 'FormSaveAndContinue';
+  /** Contains the save button text. */
+  buttonText?: Maybe<Scalars['String']>;
+  /** Whether the Save And Continue feature is enabled. */
+  hasSaveAndContinue?: Maybe<Scalars['Boolean']>;
+};
+
+/** Gravity Forms form scheduling data. */
+export type FormSchedule = {
+  __typename?: 'FormSchedule';
+  /** Message to be displayed when form is no longer available. */
+  closedMessage?: Maybe<Scalars['String']>;
+  /** The Date/time details when the form will become inactive. */
+  endDetails?: Maybe<FormScheduleDetails>;
+  /** Specifies if this form is scheduled to be displayed only during a certain configured date/time. */
+  hasSchedule?: Maybe<Scalars['Boolean']>;
+  /** Message to be displayed when form is not yet available. */
+  pendingMessage?: Maybe<Scalars['String']>;
+  /** The Date/time details when the form will become active/visible. */
+  startDetails?: Maybe<FormScheduleDetails>;
+};
+
+/** Gravity Forms form scheduling data. */
+export type FormScheduleDetails = {
+  __typename?: 'FormScheduleDetails';
+  /** Whether the date is in the AM or PM of a 12-hour clock. */
+  amPm?: Maybe<AmPmEnum>;
+  /** The schedule date in local time. */
+  date?: Maybe<Scalars['String']>;
+  /** The schedule date in GMT. */
+  dateGmt?: Maybe<Scalars['String']>;
+  /** The hour (1-12). */
+  hour?: Maybe<Scalars['Int']>;
+  /** The minute. */
+  minute?: Maybe<Scalars['Int']>;
+};
+
+/** Status of forms to get. Default is ACTIVE. */
+export enum FormStatusEnum {
+  /** Active forms (default). */
+  Active = 'ACTIVE',
+  /** Inactive forms. */
+  Inactive = 'INACTIVE',
+  /** Inactive forms in the trash. */
+  InactiveTrashed = 'INACTIVE_TRASHED',
+  /** Active forms in the trash. */
+  Trashed = 'TRASHED'
+}
+
+/** Determines how sub-labels are aligned. */
+export enum FormSubLabelPlacementEnum {
+  /** The sub-label is displayed above the sub-field input (i.e. immediately after the field label). */
+  Above = 'ABOVE',
+  /** The sub-label is displayed below the sub-field input. */
+  Below = 'BELOW'
+}
+
+/** Gravity Forms submit button. */
+export type FormSubmitButton = {
+  __typename?: 'FormSubmitButton';
+  /** Controls when the form button should be visible based on values selected on the form. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** Contains the URL for the image button. Only applicable when type is set to image. */
+  imageUrl?: Maybe<Scalars['String']>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Where the submit button should be located. */
+  location?: Maybe<FormSubmitButtonLocationEnum>;
+  /** Contains the button text. Only applicable when type is set to text. */
+  text?: Maybe<Scalars['String']>;
+  /** Specifies the type of button to be displayed. Defaults to TEXT. */
+  type?: Maybe<FormButtonTypeEnum>;
+  /** The width of the submit button element. */
+  width?: Maybe<FormSubmitButtonWidthEnum>;
+};
+
+/** Where the submit button should be located. */
+export enum FormSubmitButtonLocationEnum {
+  /** The submit button will be placed in a new row after all fields of the form. */
+  Bottom = 'BOTTOM',
+  /** The submit button will be placed on the last row of the form where it will fill the remaining space left by field columns. */
+  Inline = 'INLINE'
+}
+
+/** Submit button width. */
+export enum FormSubmitButtonWidthEnum {
+  /** The width is set to match that of the button text. */
+  Auto = 'AUTO',
+  /** The width is set to fill 100% of the container. */
+  Full = 'FULL'
+}
+
+/** Type of button to be displayed. Default is TEXT. */
+export enum FormsConnectionOrderByEnum {
+  /** The date the form was created. */
+  DateCreated = 'DATE_CREATED',
+  /** The database ID of the form. */
+  Id = 'ID',
+  /** The Form's active status. */
+  IsActive = 'IS_ACTIVE',
+  /** The form's trash status . */
+  IsTrash = 'IS_TRASH',
+  /** The title of the form. */
+  Title = 'TITLE'
+}
+
+/** Options for ordering the connection. */
+export type FormsConnectionOrderbyInput = {
+  /** The form column name used to sort the results. */
+  column?: InputMaybe<FormsConnectionOrderByEnum>;
+  /** The field name used to sort the results. */
+  field?: InputMaybe<Scalars['String']>;
+  /** The cardinality of the order of the connection. */
+  order?: InputMaybe<OrderEnum>;
 };
 
 /** The general setting type */
@@ -7134,6 +4346,1330 @@ export type GenerateAuthorizationCodePayload = {
   error?: Maybe<Scalars['String']>;
 };
 
+/** Currencies supported by Gravity Forms. */
+export enum GfCurrencyEnum {
+  /** Australian Dollar . */
+  Aud = 'AUD',
+  /** Brazilian Real . */
+  Brl = 'BRL',
+  /** Canadian Dollar . */
+  Cad = 'CAD',
+  /** Swiss Franc . */
+  Chf = 'CHF',
+  /** Czech Koruna . */
+  Czk = 'CZK',
+  /** Danish Krone . */
+  Dkk = 'DKK',
+  /** Euro . */
+  Eur = 'EUR',
+  /** Pound Sterling . */
+  Gbp = 'GBP',
+  /** Hong Kong Dollar . */
+  Hkd = 'HKD',
+  /** Hungarian Forint . */
+  Huf = 'HUF',
+  /** Israeli New Sheqel . */
+  Ils = 'ILS',
+  /** Japanese Yen . */
+  Jpy = 'JPY',
+  /** Mexican Peso . */
+  Mxn = 'MXN',
+  /** Malaysian Ringgit . */
+  Myr = 'MYR',
+  /** Norwegian Krone . */
+  Nok = 'NOK',
+  /** New Zealand Dollar . */
+  Nzd = 'NZD',
+  /** Philippine Peso . */
+  Php = 'PHP',
+  /** Polish Zloty . */
+  Pln = 'PLN',
+  /** Russian Ruble . */
+  Rub = 'RUB',
+  /** Swedish Krona . */
+  Sek = 'SEK',
+  /** Singapore Dollar . */
+  Sgd = 'SGD',
+  /** Thai Baht . */
+  Thb = 'THB',
+  /** Taiwan New Dollar . */
+  Twd = 'TWD',
+  /** U.S. Dollar . */
+  Usd = 'USD',
+  /** South African Rand . */
+  Zar = 'ZAR'
+}
+
+/** A Gravity Forms draft entry. */
+export type GfDraftEntry = GfEntry & Node & NodeWithForm & {
+  __typename?: 'GfDraftEntry';
+  /** The user who created the entry. */
+  createdBy?: Maybe<User>;
+  /** Database ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdByDatabaseId?: Maybe<Scalars['Int']>;
+  /** Global ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: Maybe<Scalars['ID']>;
+  /** The date and time that the entry was created in local time. */
+  dateCreated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in GMT. */
+  dateCreatedGmt?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in local time. */
+  dateUpdated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was updated in GMT. */
+  dateUpdatedGmt?: Maybe<Scalars['String']>;
+  /** The form object of the node. */
+  form?: Maybe<GfForm>;
+  /** The database identifier of the form of the node. */
+  formDatabaseId?: Maybe<Scalars['Int']>;
+  /** Connection between the GfEntry type and the FormField type */
+  formFields?: Maybe<GfEntryToFormFieldConnection>;
+  /** The globally unique identifier of the form of the node. */
+  formId?: Maybe<Scalars['ID']>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID'];
+  /** Client IP of user who submitted the form. */
+  ip?: Maybe<Scalars['String']>;
+  /** Whether the entry is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']>;
+  /** Whether the entry has been submitted. */
+  isSubmitted?: Maybe<Scalars['Boolean']>;
+  /** The entry order summary. Null if the entry has no pricing fields */
+  orderSummary?: Maybe<GfOrderSummary>;
+  /** The resume token. Only applies to draft entries. */
+  resumeToken?: Maybe<Scalars['String']>;
+  /** Source URL of page that contained the form when it was submitted. */
+  sourceUrl?: Maybe<Scalars['String']>;
+  /** Provides the name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: Maybe<Scalars['String']>;
+};
+
+
+/** A Gravity Forms draft entry. */
+export type GfDraftEntryFormFieldsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GfEntryToFormFieldConnectionWhereArgs>;
+};
+
+/** Gravity Forms entry interface. */
+export type GfEntry = {
+  /** The user who created the entry. */
+  createdBy?: Maybe<User>;
+  /** Database ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdByDatabaseId?: Maybe<Scalars['Int']>;
+  /** Global ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: Maybe<Scalars['ID']>;
+  /** The date and time that the entry was created in local time. */
+  dateCreated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in GMT. */
+  dateCreatedGmt?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in local time. */
+  dateUpdated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was updated in GMT. */
+  dateUpdatedGmt?: Maybe<Scalars['String']>;
+  /** The form object of the node. */
+  form?: Maybe<GfForm>;
+  /** The database identifier of the form of the node. */
+  formDatabaseId?: Maybe<Scalars['Int']>;
+  /** Connection between the GfEntry type and the FormField type */
+  formFields?: Maybe<GfEntryToFormFieldConnection>;
+  /** The globally unique identifier of the form of the node. */
+  formId?: Maybe<Scalars['ID']>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID'];
+  /** Client IP of user who submitted the form. */
+  ip?: Maybe<Scalars['String']>;
+  /** Whether the entry is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']>;
+  /** Whether the entry has been submitted. */
+  isSubmitted?: Maybe<Scalars['Boolean']>;
+  /** The entry order summary. Null if the entry has no pricing fields */
+  orderSummary?: Maybe<GfOrderSummary>;
+  /** Source URL of page that contained the form when it was submitted. */
+  sourceUrl?: Maybe<Scalars['String']>;
+  /** Provides the name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: Maybe<Scalars['String']>;
+};
+
+
+/** Gravity Forms entry interface. */
+export type GfEntryFormFieldsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GfEntryToFormFieldConnectionWhereArgs>;
+};
+
+/** Connection to GfEntry Nodes */
+export type GfEntryConnection = {
+  /** A list of edges (relational context) between RootQuery and connected GfEntry Nodes */
+  edges: Array<GfEntryConnectionEdge>;
+  /** A list of connected GfEntry Nodes */
+  nodes: Array<GfEntry>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfEntryConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected GfEntry */
+export type GfEntryConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The connected GfEntry Node */
+  node: GfEntry;
+};
+
+/** Page Info on the connected GfEntryConnectionEdge */
+export type GfEntryConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the GfEntry type and the FormField type */
+export type GfEntryToFormFieldConnection = FormFieldConnection & {
+  __typename?: 'GfEntryToFormFieldConnection';
+  /** Edges for the GfEntryToFormFieldConnection connection */
+  edges: Array<GfEntryToFormFieldConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FormField>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfEntryToFormFieldConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type GfEntryToFormFieldConnectionEdge = FormFieldConnectionEdge & {
+  __typename?: 'GfEntryToFormFieldConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: FormField;
+};
+
+/** Page Info on the &quot;GfEntryToFormFieldConnection&quot; */
+export type GfEntryToFormFieldConnectionPageInfo = FormFieldConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'GfEntryToFormFieldConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the GfEntryToFormFieldConnection connection */
+export type GfEntryToFormFieldConnectionWhereArgs = {
+  /** Array of form field adminLabels to return. */
+  adminLabels?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Array of Gravity Forms Field types to return. */
+  fieldTypes?: InputMaybe<Array<InputMaybe<FormFieldTypeEnum>>>;
+  /** Array of form field IDs to return. */
+  ids?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** The form page number to return. */
+  pageNumber?: InputMaybe<Scalars['Int']>;
+};
+
+/** Gravity Forms field choice. */
+export type GfFieldChoice = {
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Choice for a form field with the `choices_setting` setting. */
+export type GfFieldChoiceWithChoicesSetting = {
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Choice for a form field with the `columns_setting` setting. */
+export type GfFieldChoiceWithColumnsSetting = {
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Choice for a form field with the `name_setting` setting. */
+export type GfFieldChoiceWithNameSetting = {
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Choice for a form field with the `other_choice_setting` setting. */
+export type GfFieldChoiceWithOtherChoiceSetting = {
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** Gravity Forms field input. */
+export type GfFieldInput = {
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `address_setting` setting. */
+export type GfFieldInputWithAddressSetting = {
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** Key used to identify this input. */
+  key?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `date_format_setting` setting. */
+export type GfFieldInputWithDateFormatSetting = {
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `email_confirm_setting` setting. */
+export type GfFieldInputWithEmailConfirmationSetting = {
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `name_setting` setting. */
+export type GfFieldInputWithNameSetting = {
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** Key used to identify this input. */
+  key?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `password_setting` setting. */
+export type GfFieldInputWithPasswordSetting = {
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `select_all_choices_setting` setting. */
+export type GfFieldInputWithSelectAllChoicesSetting = {
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `single_product_inputs` setting. */
+export type GfFieldInputWithSingleProductInputs = {
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** An Input for a form field with the `time_format_setting` setting. */
+export type GfFieldInputWithTimeFormatSetting = {
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** Gravity Forms field value with connected choice. */
+export type GfFieldValueWithChoice = {
+  /** The selected Gravity Forms field choice object. */
+  connectedChoice?: Maybe<GfFieldChoice>;
+};
+
+/** Gravity Forms field value with connected input. */
+export type GfFieldValueWithInput = {
+  /** The selected Gravity Forms field input object. */
+  connectedInput?: Maybe<GfFieldInput>;
+};
+
+/** A form field with the `add_icon_url_setting` setting. */
+export type GfFieldWithAddIconUrlSetting = {
+  /** The URL of the image to be used for the add row button. */
+  addIconUrl?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `address_setting` setting. */
+export type GfFieldWithAddressSetting = {
+  /** Determines the type of address to be displayed. */
+  addressType?: Maybe<AddressFieldTypeEnum>;
+  /** Contains the country that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;INTERATIONAL&quot;. */
+  defaultCountry?: Maybe<AddressFieldCountryEnum>;
+  /** Contains the province that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;CANADA&quot;. */
+  defaultProvince?: Maybe<AddressFieldProvinceEnum>;
+  /** Contains the state that will be selected by default. Only applicable when &quot;addressType&quot; is set to &quot;US&quot;. */
+  defaultState?: Maybe<AddressFieldProvinceEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `admin_label_setting` setting. */
+export type GfFieldWithAdminLabelSetting = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `autocomplete_setting` setting. */
+export type GfFieldWithAutocompleteSetting = {
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `base_price_setting` setting. */
+export type GfFieldWithBasePriceSetting = {
+  /** The price of the product, prefixed by the currency. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** The price of the product. */
+  price?: Maybe<Scalars['Float']>;
+};
+
+/** A form field with the `calculation_setting` setting. */
+export type GfFieldWithCalculationSetting = {
+  /** The formula used for the number field. */
+  calculationFormula?: Maybe<Scalars['String']>;
+  /** Specifies to how many decimal places the number should be rounded. This is available when `isCalculation` is true, but will return null if the number format is `CURRENCY` or if the calculation is set to `Do not round`. */
+  calculationRounding?: Maybe<Scalars['Int']>;
+  /** Indicates whether the number field is a calculation. */
+  isCalculation?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `captcha_bg_setting` setting. */
+export type GfFieldWithCaptchaBackgroundSetting = {
+  /** Determines the image’s background color, in HEX format (i.e. #CCCCCC). Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaBackgroundColor?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `captcha_badge_setting` setting. */
+export type GfFieldWithCaptchaBadgeSetting = {
+  /** The language used when the captcha is displayed. This property is available when the captchaType is “captcha”, the default. The possible values are the language codes used by WordPress. */
+  captchaBadgePosition?: Maybe<CaptchaFieldBadgePositionEnum>;
+};
+
+/** A form field with the `captcha_fg_setting` setting. */
+export type GfFieldWithCaptchaForegroundSetting = {
+  /** Determines the image’s font color, in HEX format (i.e. #CCCCCC). Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaFontColor?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `captcha_language_setting` setting. */
+export type GfFieldWithCaptchaLanguageSetting = {
+  /** The language used when the captcha is displayed. This property is available when the captchaType is “captcha”, the default. The possible values are the language codes used by WordPress. */
+  captchaLanguage?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `captcha_size_setting` setting. */
+export type GfFieldWithCaptchaSizeSetting = {
+  /** Determines the CAPTCHA image size. Only applicable to simple_captcha and math captcha types. */
+  simpleCaptchaSize?: Maybe<FormFieldSizeEnum>;
+};
+
+/** A form field with the `captcha_theme_setting` setting. */
+export type GfFieldWithCaptchaThemeSetting = {
+  /** Determines the theme to be used for the reCAPTCHA field. Only applicable to the recaptcha captcha type. */
+  captchaTheme?: Maybe<CaptchaFieldThemeEnum>;
+};
+
+/** A form field with the `captcha_type_setting` setting. */
+export type GfFieldWithCaptchaTypeSetting = {
+  /** Determines the type of CAPTCHA field to be used. */
+  captchaType?: Maybe<CaptchaFieldTypeEnum>;
+};
+
+/** A form field with the `checkbox_label_setting` setting. */
+export type GfFieldWithCheckboxLabelSetting = {
+  /** Text of the consent checkbox. */
+  checkboxLabel?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms field with possible field choices. */
+export type GfFieldWithChoices = {
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+};
+
+/** A form field with the `choices_setting` setting. */
+export type GfFieldWithChoicesSetting = {
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `columns_setting` setting. */
+export type GfFieldWithColumnsSetting = {
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Determines if the field should use multiple columns. Default is false. */
+  hasColumns?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `conditional_logic_setting` setting. */
+export type GfFieldWithConditionalLogicSetting = {
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+};
+
+/** A form field with the `content_setting` setting. */
+export type GfFieldWithContentSetting = {
+  /** Content of an HTML block field to be displayed on the form. */
+  content?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `copy_values_option` setting. */
+export type GfFieldWithCopyValuesOptionSetting = {
+  /** The field id of the field being used as the copy source. */
+  copyValuesOptionFieldId?: Maybe<Scalars['Int']>;
+  /** The label that appears next to the copy values option when the form is displayed. The default value is \“Same as previous\”. */
+  copyValuesOptionLabel?: Maybe<Scalars['String']>;
+  /** Indicates whether the copy values option can be used. This option allows users to skip filling out the field and use the same values as another. For example, if the mailing and billing address are the same. */
+  shouldCopyValuesOption?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `css_class_setting` setting. */
+export type GfFieldWithCssClassSetting = {
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `date_format_setting` setting. */
+export type GfFieldWithDateFormatSetting = {
+  /** Determines how the date is displayed. */
+  dateFormat?: Maybe<DateFieldFormatEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `date_input_type_setting` setting. */
+export type GfFieldWithDateInputTypeSetting = {
+  /** Determines how the date field displays it’s calendar icon. */
+  calendarIconType?: Maybe<FormFieldCalendarIconTypeEnum>;
+  /** Contains the URL to the custom calendar icon. Only applicable when calendarIconType is set to custom. */
+  calendarIconUrl?: Maybe<Scalars['String']>;
+  /** The type of date field to display. */
+  dateType?: Maybe<DateFieldTypeEnum>;
+};
+
+/** A form field with the `default_value_setting` setting. */
+export type GfFieldWithDefaultValueSetting = {
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `delete_icon_url_setting` setting. */
+export type GfFieldWithDeleteIconUrlSetting = {
+  /** The URL of the image to be used for the delete row button. */
+  deleteIconUrl?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `description_setting` setting. */
+export type GfFieldWithDescriptionSetting = {
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `disable_margins_setting` setting. */
+export type GfFieldWithDisableMarginsSetting = {
+  /** Indicates whether the default margins are turned on to align the HTML content with other fields. */
+  hasMargins?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `disable_quantity_setting` setting. */
+export type GfFieldWithDisableQuantitySetting = {
+  /** Whether the field has the quantity property enabled. */
+  hasQuantity?: Maybe<Scalars['Boolean']>;
+  /**
+   * Whether the quantity property should be disabled for this field.
+   * @deprecated Use `hasQuantity` instead
+   */
+  isQuantityDisabled?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `duplicate_setting` setting. */
+export type GfFieldWithDuplicatesSetting = {
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `enable_enhanced_ui_setting` setting. */
+export type GfFieldWithEnhancedUiSetting = {
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `error_message_setting` setting. */
+export type GfFieldWithErrorMessageSetting = {
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `file_extensions_setting` setting. */
+export type GfFieldWithFileExtensionsSetting = {
+  /** A comma-delimited list of the file extensions which may be uploaded. */
+  allowedExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+/** A form field with the `file_size_setting` setting. */
+export type GfFieldWithFileSizeSetting = {
+  /** The maximum size (in MB) an uploaded file may be . */
+  maxFileSize?: Maybe<Scalars['Int']>;
+};
+
+/** A form field with the `input_mask_setting` setting. */
+export type GfFieldWithInputMaskSetting = {
+  /** Whether the field has an input mask. */
+  hasInputMask?: Maybe<Scalars['Boolean']>;
+  /** The pattern used for the input mask. */
+  inputMaskValue?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms field with possible field inputs. */
+export type GfFieldWithInputs = {
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `label_placement_setting` setting. */
+export type GfFieldWithLabelPlacementSetting = {
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+};
+
+/** A form field with the `label_setting` setting. */
+export type GfFieldWithLabelSetting = {
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `maxlen_setting` setting. */
+export type GfFieldWithMaxLengthSetting = {
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+};
+
+/** A form field with the `maxrows_setting` setting. */
+export type GfFieldWithMaxRowsSetting = {
+  /** The maximum number of rows the user can add to the field. */
+  maxRows?: Maybe<Scalars['Int']>;
+};
+
+/** A form field with the `multiple_files_setting` setting. */
+export type GfFieldWithMultipleFilesSetting = {
+  /** Indicates whether multiple files may be uploaded. */
+  canAcceptMultipleFiles?: Maybe<Scalars['Boolean']>;
+  /** When the field is set to allow multiple files to be uploaded, this property is available to set a limit on how many may be uploaded. */
+  maxFiles?: Maybe<Scalars['Int']>;
+};
+
+/** A form field with the `name_setting` setting. */
+export type GfFieldWithNameSetting = {
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `next_button_setting` setting. */
+export type GfFieldWithNextButtonSetting = {
+  /** An array containing the the individual properties for the &quot;Next&quot; button. */
+  nextButton?: Maybe<FormButton>;
+};
+
+/** A form field with the `number_format_setting` setting. */
+export type GfFieldWithNumberFormatSetting = {
+  /** Specifies the format allowed for the number field. */
+  numberFormat?: Maybe<NumberFieldFormatEnum>;
+};
+
+/** A form field with the `other_choice_setting` setting. */
+export type GfFieldWithOtherChoiceSetting = {
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `password_field_setting` setting. */
+export type GfFieldWithPasswordFieldSetting = {
+  /** Determines if a text field input tag should be created with a &quot;password&quot; type. */
+  isPasswordInput?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `password_setting` setting. */
+export type GfFieldWithPasswordSetting = {
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `password_strength_setting` setting. */
+export type GfFieldWithPasswordStrengthSetting = {
+  /** Indicates whether the field displays the password strength indicator. */
+  hasPasswordStrengthIndicator?: Maybe<Scalars['Boolean']>;
+  /** Indicates how strong the password should be. */
+  minPasswordStrength?: Maybe<PasswordFieldMinStrengthEnum>;
+};
+
+/** A form field with the `password_visibility_setting` setting. */
+export type GfFieldWithPasswordVisibilitySetting = {
+  /** Whether the Password visibility toggle should be enabled for this field. */
+  hasPasswordVisibilityToggle?: Maybe<Scalars['Boolean']>;
+};
+
+/** The form field-specifc policies for exporting and erasing personal data. */
+export type GfFieldWithPersonalData = {
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+};
+
+/** A form field with the `phone_format_setting` setting. */
+export type GfFieldWithPhoneFormatSetting = {
+  /** Determines the allowed format for phones. If the phone value does not conform with the specified format, the field will fail validation. */
+  phoneFormat?: Maybe<PhoneFieldFormatEnum>;
+};
+
+/** A form field with the `placeholder_setting` setting. */
+export type GfFieldWithPlaceholderSetting = {
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `post_category_checkbox_setting` setting. */
+export type GfFieldWithPostCategoryCheckboxSetting = {
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `post_category_initial_item_setting` setting. */
+export type GfFieldWithPostCategoryInitialItemSetting = {
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `post_custom_field_setting` setting. */
+export type GfFieldWithPostCustomFieldSetting = {
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+};
+
+/** A form field with the `post_image_featured_image` setting. */
+export type GfFieldWithPostImageFeaturedImageSetting = {
+  /** Whether the image field should be used to set the post&#039;s Featured Image */
+  isFeaturedImage?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `post_image_setting` setting. */
+export type GfFieldWithPostImageSetting = {
+  /** A comma-delimited list of the file extensions which may be uploaded. */
+  allowedExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Controls the visibility of the alt metadata for Post Image fields. */
+  hasAlt?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the caption metadata for Post Image fields. */
+  hasCaption?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the description metadata for Post Image fields. */
+  hasDescription?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the title metadata for Post Image fields. */
+  hasTitle?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `prepopulate_field_setting` setting. */
+export type GfFieldWithPrepopulateFieldSetting = {
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `previous_button` setting. */
+export type GfFieldWithPreviousButton = {
+  /** An array containing the the individual properties for the &quot;Previous&quot; button. */
+  previousButton?: Maybe<FormButton>;
+};
+
+/** A form field with the `product_field_setting` setting. */
+export type GfFieldWithProductFieldSetting = {
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+};
+
+/** A form field with the `range_setting` setting. */
+export type GfFieldWithRangeSetting = {
+  /** Maximum allowed value for a number field. Values higher than the number specified by this property will cause the field to fail validation. */
+  rangeMax?: Maybe<Scalars['Float']>;
+  /** Minimum allowed value for a number field. Values lower than the number specified by this property will cause the field to fail validation. */
+  rangeMin?: Maybe<Scalars['Float']>;
+};
+
+/** A form field with the `rich_text_editor_setting` setting. */
+export type GfFieldWithRichTextEditorSetting = {
+  /** Indicates whether the field uses the rich text editor interface. */
+  hasRichTextEditor?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `rules_setting` setting. */
+export type GfFieldWithRulesSetting = {
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+};
+
+/** A form field with the `select_all_choices_setting` setting. */
+export type GfFieldWithSelectAllChoicesSetting = {
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `single_product_inputs` setting. */
+export type GfFieldWithSingleProductInputs = {
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+};
+
+/** A form field with the `size_setting` setting. */
+export type GfFieldWithSizeSetting = {
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+};
+
+/** A form field with the `sub_label_placement_setting` setting. */
+export type GfFieldWithSubLabelPlacementSetting = {
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+};
+
+/** A form field with the `time_format_setting` setting. */
+export type GfFieldWithTimeFormatSetting = {
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines how the time is displayed. */
+  timeFormat?: Maybe<TimeFieldFormatEnum>;
+};
+
+/** Gravity Forms form. */
+export type GfForm = DatabaseIdentifier & Node & {
+  __typename?: 'GfForm';
+  /**
+   * Contains the form button settings such as the button text or image button source.
+   * @deprecated Use `submitButton` field instead
+   */
+  button?: Maybe<FormSubmitButton>;
+  /** Contains the form confirmation settings such as confirmation text or redirect URL. */
+  confirmations?: Maybe<Array<Maybe<FormConfirmation>>>;
+  /** String containing the custom CSS classes to be added to the &lt;form&gt; tag. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** The custom text to use to indicate a field is required. */
+  customRequiredIndicator?: Maybe<Scalars['String']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int'];
+  /** The date and time that the entry was created in local time. */
+  dateCreated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in GMT. */
+  dateCreatedGmt?: Maybe<Scalars['String']>;
+  /** Form description. */
+  description?: Maybe<Scalars['String']>;
+  /** Determines if the field description is displayed above the field input (i.e. immediately after the field label) or below the field input. */
+  descriptionPlacement?: Maybe<FormDescriptionPlacementEnum>;
+  /** Connection between the GfForm type and the GfEntry type */
+  entries?: Maybe<GfFormToGfEntryConnection>;
+  /** The entry limit settings. */
+  entryLimits?: Maybe<FormEntryLimits>;
+  /** CSS class for the first page. */
+  firstPageCssClass?: Maybe<Scalars['String']>;
+  /** Connection between the GfForm type and the FormField type */
+  formFields?: Maybe<GfFormToFormFieldConnection>;
+  /**
+   * Form ID.
+   * @deprecated Deprecated in favor of the databaseId field.
+   */
+  formId?: Maybe<Scalars['Int']>;
+  /** When enabled, conditional logic hide/show operation will be performed with a jQuery slide animation. Only applicable to forms with conditional logic. */
+  hasConditionalLogicAnimation?: Maybe<Scalars['Boolean']>;
+  /** Specifies if the form has the Honeypot spam-protection feature. */
+  hasHoneypot?: Maybe<Scalars['Boolean']>;
+  /** If enabled, will show a summary that lists form validation errors at the top of the form when a user attempts a failed submission. */
+  hasValidationSummary?: Maybe<Scalars['Boolean']>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID'];
+  /** Determines whether the form is active. */
+  isActive?: Maybe<Scalars['Boolean']>;
+  /** Determines whether the form is in the trash. */
+  isTrash?: Maybe<Scalars['Boolean']>;
+  /** Determines where the field labels should be placed in relation to the field. */
+  labelPlacement?: Maybe<FormLabelPlacementEnum>;
+  /**
+   * Last page button data.
+   * @deprecated Use `pagination.lastPageButton` instead
+   */
+  lastPageButton?: Maybe<FormLastPageButton>;
+  /** Login requirements data. */
+  login?: Maybe<FormLogin>;
+  /** The Gravity Forms markup version. */
+  markupVersion?: Maybe<Scalars['Int']>;
+  /** The ID to assign to the next field that is added to the form. */
+  nextFieldId?: Maybe<Scalars['Int']>;
+  /** The properties for all the email notifications which exist for a form. */
+  notifications?: Maybe<Array<Maybe<FormNotification>>>;
+  /** Pagination data. */
+  pagination?: Maybe<FormPagination>;
+  /** Personal data settings. */
+  personalData?: Maybe<FormPersonalData>;
+  /** Post creation data. */
+  postCreation?: Maybe<FormPostCreation>;
+  /** Type of indicator to use when field is required. */
+  requiredIndicator?: Maybe<FormFieldRequiredIndicatorEnum>;
+  /** \&quot;Save and Continue\&quot; data. */
+  saveAndContinue?: Maybe<FormSaveAndContinue>;
+  /** Form scheduling data. */
+  scheduling?: Maybe<FormSchedule>;
+  /** How sub-labels are aligned. */
+  subLabelPlacement?: Maybe<FormSubLabelPlacementEnum>;
+  /** Contains the form button settings such as the button text or image button source. */
+  submitButton?: Maybe<FormSubmitButton>;
+  /** Form title. */
+  title?: Maybe<Scalars['String']>;
+  /** The version of Gravity Forms used to create this form. */
+  version?: Maybe<Scalars['String']>;
+};
+
+
+/** Gravity Forms form. */
+export type GfFormEntriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GfFormToGfEntryConnectionWhereArgs>;
+};
+
+
+/** Gravity Forms form. */
+export type GfFormFormFieldsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GfFormToFormFieldConnectionWhereArgs>;
+};
+
+/** Connection to GfForm Nodes */
+export type GfFormConnection = {
+  /** A list of edges (relational context) between RootQuery and connected GfForm Nodes */
+  edges: Array<GfFormConnectionEdge>;
+  /** A list of connected GfForm Nodes */
+  nodes: Array<GfForm>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfFormConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected GfForm */
+export type GfFormConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The connected GfForm Node */
+  node: GfForm;
+};
+
+/** Page Info on the connected GfFormConnectionEdge */
+export type GfFormConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the GfForm type and the FormField type */
+export type GfFormToFormFieldConnection = FormFieldConnection & {
+  __typename?: 'GfFormToFormFieldConnection';
+  /** Edges for the GfFormToFormFieldConnection connection */
+  edges: Array<GfFormToFormFieldConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<FormField>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfFormToFormFieldConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type GfFormToFormFieldConnectionEdge = FormFieldConnectionEdge & {
+  __typename?: 'GfFormToFormFieldConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: FormField;
+};
+
+/** Page Info on the &quot;GfFormToFormFieldConnection&quot; */
+export type GfFormToFormFieldConnectionPageInfo = FormFieldConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'GfFormToFormFieldConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the GfFormToFormFieldConnection connection */
+export type GfFormToFormFieldConnectionWhereArgs = {
+  /** Array of form field adminLabels to return. */
+  adminLabels?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Array of Gravity Forms Field types to return. */
+  fieldTypes?: InputMaybe<Array<InputMaybe<FormFieldTypeEnum>>>;
+  /** Array of form field IDs to return. */
+  ids?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** The form page number to return. */
+  pageNumber?: InputMaybe<Scalars['Int']>;
+};
+
+/** Connection between the GfForm type and the GfEntry type */
+export type GfFormToGfEntryConnection = Connection & GfEntryConnection & {
+  __typename?: 'GfFormToGfEntryConnection';
+  /** The number of (filtered) entries submitted to the form. */
+  count?: Maybe<Scalars['Int']>;
+  /** Edges for the GfFormToGfEntryConnection connection */
+  edges: Array<GfFormToGfEntryConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<GfEntry>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfFormToGfEntryConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type GfFormToGfEntryConnectionEdge = Edge & GfEntryConnectionEdge & {
+  __typename?: 'GfFormToGfEntryConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: GfEntry;
+};
+
+/** Page Info on the &quot;GfFormToGfEntryConnection&quot; */
+export type GfFormToGfEntryConnectionPageInfo = GfEntryConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'GfFormToGfEntryConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the GfFormToGfEntryConnection connection */
+export type GfFormToGfEntryConnectionWhereArgs = {
+  /** Date filters to apply. */
+  dateFilters?: InputMaybe<EntriesDateFiltersInput>;
+  /** Field-specific filters to apply. */
+  fieldFilters?: InputMaybe<Array<InputMaybe<EntriesFieldFiltersInput>>>;
+  /** Whether to filter by ALL or ANY of the field filters. Default is ALL. */
+  fieldFiltersMode?: InputMaybe<FieldFiltersModeEnum>;
+  /** How to sort the entries. */
+  orderby?: InputMaybe<EntriesConnectionOrderbyInput>;
+  /** Entry status. Default is "ACTIVE". */
+  status?: InputMaybe<EntryStatusEnum>;
+};
+
+/** A form field with the `email_confirm_setting` setting. */
+export type GfGfFieldWithEmailConfirmationSetting = {
+  /** Determines whether the Confirm Email field is active. */
+  hasEmailConfirmation?: Maybe<Scalars['Boolean']>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+};
+
+/** Gravity Forms Logging Settings. */
+export type GfLogger = {
+  __typename?: 'GfLogger';
+  /** Whether the logger is enabled. */
+  isEnabled?: Maybe<Scalars['Boolean']>;
+  /** The name of the Gravity Forms logger. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** The entry order item. */
+export type GfOrderItem = {
+  __typename?: 'GfOrderItem';
+  /** The form field that the order item is connected to */
+  connectedFormField?: Maybe<FormField>;
+  /** The currency used for the order item */
+  currency?: Maybe<GfCurrencyEnum>;
+  /** The item description */
+  description?: Maybe<Scalars['String']>;
+  /** Whether this is a discount item */
+  isDiscount?: Maybe<Scalars['Boolean']>;
+  /** Whether this is a line item */
+  isLineItem?: Maybe<Scalars['Boolean']>;
+  /** Whether this is a recurring item */
+  isRecurring?: Maybe<Scalars['Boolean']>;
+  /** Whether this is a setup fee */
+  isSetupFee?: Maybe<Scalars['Boolean']>;
+  /** Whether this is a shipping fee */
+  isShipping?: Maybe<Scalars['Boolean']>;
+  /** Whether this is a trial item */
+  isTrial?: Maybe<Scalars['Boolean']>;
+  /** The item name */
+  name?: Maybe<Scalars['String']>;
+  /** The item options */
+  options?: Maybe<Array<Maybe<GfOrderItemOption>>>;
+  /** The item price */
+  price?: Maybe<Scalars['Float']>;
+  /** The item quantity */
+  quantity?: Maybe<Scalars['Float']>;
+  /** The section this order item belongs to. */
+  section?: Maybe<Scalars['String']>;
+  /** The item subtotal */
+  subtotal?: Maybe<Scalars['Float']>;
+};
+
+/** An option on an Order item. */
+export type GfOrderItemOption = {
+  __typename?: 'GfOrderItemOption';
+  /** The form field that the order item is connected to */
+  connectedFormField?: Maybe<FormField>;
+  /** The option&#039;s field label. */
+  fieldLabel?: Maybe<Scalars['String']>;
+  /** The option name. */
+  name?: Maybe<Scalars['String']>;
+  /** The option label. */
+  optionLabel?: Maybe<Scalars['String']>;
+  /** The option price. */
+  price?: Maybe<Scalars['Float']>;
+};
+
+/** The entry order information. */
+export type GfOrderSummary = {
+  __typename?: 'GfOrderSummary';
+  /** The currency used for the order */
+  currency?: Maybe<GfCurrencyEnum>;
+  /** The order item details. */
+  items?: Maybe<Array<Maybe<GfOrderItem>>>;
+  /** The order subtotal. */
+  subtotal?: Maybe<Scalars['Float']>;
+  /** The order total */
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** Gravity Forms Settings. */
+export type GfSettings = {
+  __typename?: 'GfSettings';
+  /** The default currency for your forms. Used for product, credit card, and other fields. */
+  currency?: Maybe<GfCurrencyEnum>;
+  /** Whether Gravity Forms to download and install bug fixes and security updates automatically in the background. Requires a valid license key. */
+  hasBackgroundUpdates?: Maybe<Scalars['Boolean']>;
+  /** Whether to output Gravity Forms&#039; default CSS. */
+  hasDefaultCss?: Maybe<Scalars['Boolean']>;
+  /** Whether to display the forms menu in the WordPress top toolbar. The forms menu will display the ten forms recently opened in the form editor. */
+  hasToolbar?: Maybe<Scalars['Boolean']>;
+  /** Whether the server-generated form markup uses HTML5. */
+  isHtml5Enabled?: Maybe<Scalars['Boolean']>;
+  /** Enable to prevent extraneous scripts and styles from being printed on a Gravity Forms admin pages, reducing conflicts with other plugins and themes. */
+  isNoConflictModeEnabled?: Maybe<Scalars['Boolean']>;
+  /** Logging settings. */
+  logging?: Maybe<GfSettingsLogging>;
+  /** Recaptcha settings. */
+  recaptcha?: Maybe<GfSettingsRecaptcha>;
+};
+
+/** Gravity Forms Logging Settings. */
+export type GfSettingsLogging = {
+  __typename?: 'GfSettingsLogging';
+  /** Whether Gravity Forms internal logging is enabled. Logging allows you to easily debug the inner workings of Gravity Forms to solve any possible issues. */
+  isLoggingEnabled?: Maybe<Scalars['Boolean']>;
+  /** A list of registered Gravity Forms loggers and their configurations. */
+  loggers?: Maybe<Array<Maybe<GfLogger>>>;
+};
+
+/** Gravity Forms reCAPTCHA Settings. */
+export type GfSettingsRecaptcha = {
+  __typename?: 'GfSettingsRecaptcha';
+  /** The public reCAPTCHA site key. */
+  publicKey?: Maybe<Scalars['String']>;
+  /** The type of of reCAPTCHA v2 to be used */
+  type?: Maybe<RecaptchaTypeEnum>;
+};
+
+/** A Gravity Forms submitted entry. */
+export type GfSubmittedEntry = DatabaseIdentifier & GfEntry & Node & NodeWithForm & {
+  __typename?: 'GfSubmittedEntry';
+  /** The user who created the entry. */
+  createdBy?: Maybe<User>;
+  /** Database ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdByDatabaseId?: Maybe<Scalars['Int']>;
+  /** Global ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: Maybe<Scalars['ID']>;
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int'];
+  /** The date and time that the entry was created in local time. */
+  dateCreated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in GMT. */
+  dateCreatedGmt?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was created in local time. */
+  dateUpdated?: Maybe<Scalars['String']>;
+  /** The date and time that the entry was updated in GMT. */
+  dateUpdatedGmt?: Maybe<Scalars['String']>;
+  /**
+   * The entry ID. Returns null for draft entries.
+   * @deprecated Deprecated in favor of the databaseId field.
+   */
+  entryId?: Maybe<Scalars['Int']>;
+  /** The form object of the node. */
+  form?: Maybe<GfForm>;
+  /** The database identifier of the form of the node. */
+  formDatabaseId?: Maybe<Scalars['Int']>;
+  /** Connection between the GfEntry type and the FormField type */
+  formFields?: Maybe<GfEntryToFormFieldConnection>;
+  /** The globally unique identifier of the form of the node. */
+  formId?: Maybe<Scalars['ID']>;
+  /** The globally unique ID for the object */
+  id: Scalars['ID'];
+  /** Client IP of user who submitted the form. */
+  ip?: Maybe<Scalars['String']>;
+  /** Whether the entry is a draft. */
+  isDraft?: Maybe<Scalars['Boolean']>;
+  /** Whether the entry has been read. */
+  isRead?: Maybe<Scalars['Boolean']>;
+  /** Indicates if the entry has been starred (i.e marked with a star). */
+  isStarred?: Maybe<Scalars['Boolean']>;
+  /** Whether the entry has been submitted. */
+  isSubmitted?: Maybe<Scalars['Boolean']>;
+  /** The entry order summary. Null if the entry has no pricing fields */
+  orderSummary?: Maybe<GfOrderSummary>;
+  /** For forms with Post fields, this is the post object that was created. */
+  post?: Maybe<Post>;
+  /** For forms with Post fields, this property contains the Id of the Post that was created. */
+  postDatabaseId?: Maybe<Scalars['Int']>;
+  /** Source URL of page that contained the form when it was submitted. */
+  sourceUrl?: Maybe<Scalars['String']>;
+  /** The current status of the entry. */
+  status?: Maybe<EntryStatusEnum>;
+  /** Provides the name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: Maybe<Scalars['String']>;
+};
+
+
+/** A Gravity Forms submitted entry. */
+export type GfSubmittedEntryFormFieldsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<GfEntryToFormFieldConnectionWhereArgs>;
+};
+
+/** Connection to GfSubmittedEntry Nodes */
+export type GfSubmittedEntryConnection = {
+  /** A list of edges (relational context) between RootQuery and connected GfSubmittedEntry Nodes */
+  edges: Array<GfSubmittedEntryConnectionEdge>;
+  /** A list of connected GfSubmittedEntry Nodes */
+  nodes: Array<GfSubmittedEntry>;
+  /** Information about pagination in a connection. */
+  pageInfo: GfSubmittedEntryConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected GfSubmittedEntry */
+export type GfSubmittedEntryConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The connected GfSubmittedEntry Node */
+  node: GfSubmittedEntry;
+};
+
+/** Page Info on the connected GfSubmittedEntryConnectionEdge */
+export type GfSubmittedEntryConnectionPageInfo = {
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
 /** Types of styles to load */
 export enum GlobalStylesheetTypesEnum {
   BaseLayoutStyles = 'BASE_LAYOUT_STYLES',
@@ -7141,6 +5677,44 @@ export enum GlobalStylesheetTypesEnum {
   Styles = 'STYLES',
   Variables = 'VARIABLES'
 }
+
+/** A Gravity Forms hidden field. */
+export type HiddenField = FormField & GfFieldWithDefaultValueSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & {
+  __typename?: 'HiddenField';
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
 
 /** Content node with hierarchical (parent/child) relationships */
 export type HierarchicalContentNode = {
@@ -7200,6 +5774,8 @@ export type HierarchicalContentNode = {
   previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   slug?: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -7278,6 +5854,8 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionPageInfo = Co
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -7351,6 +5929,8 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionPageInfo = Con
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -7477,6 +6057,149 @@ export type HierarchicalTermNodeEnqueuedStylesheetsArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+/** A Gravity Forms html field. */
+export type HtmlField = FormField & GfFieldWithConditionalLogicSetting & GfFieldWithContentSetting & GfFieldWithCssClassSetting & GfFieldWithDisableMarginsSetting & GfFieldWithLabelSetting & {
+  __typename?: 'HtmlField';
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** Content of an HTML block field to be displayed on the form. */
+  content?: Maybe<Scalars['String']>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the default margins are turned on to align the HTML content with other fields. */
+  hasMargins?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** The individual properties for each element of the PostImage value field. */
+export type ImageFieldValue = {
+  __typename?: 'ImageFieldValue';
+  /** The image alt text. */
+  altText?: Maybe<Scalars['String']>;
+  /** The path to the parent directory of the file. */
+  basePath?: Maybe<Scalars['String']>;
+  /** The base url to the parent directory of the file. */
+  baseUrl?: Maybe<Scalars['String']>;
+  /** The image caption. */
+  caption?: Maybe<Scalars['String']>;
+  /** The image description. */
+  description?: Maybe<Scalars['String']>;
+  /** The filename. */
+  filename?: Maybe<Scalars['String']>;
+  /** The image title. */
+  title?: Maybe<Scalars['String']>;
+  /** The url to the file. */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms list field. */
+export type ListField = FormField & GfFieldWithAddIconUrlSetting & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithColumnsSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDeleteIconUrlSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxRowsSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & {
+  __typename?: 'ListField';
+  /** The URL of the image to be used for the add row button. */
+  addIconUrl?: Maybe<Scalars['String']>;
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** The URL of the image to be used for the delete row button. */
+  deleteIconUrl?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field should use multiple columns. Default is false. */
+  hasColumns?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** List field value. */
+  listValues?: Maybe<Array<Maybe<ListFieldValue>>>;
+  /** The maximum number of rows the user can add to the field. */
+  maxRows?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** ListFieldChoice choice values. */
+export type ListFieldChoice = GfFieldChoice & GfFieldChoiceWithColumnsSetting & {
+  __typename?: 'ListFieldChoice';
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** Input fields for a single List field item. */
+export type ListFieldInput = {
+  /** Input values for the specific listField row. */
+  rowValues?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+/** The individual properties for each element of the List value field. */
+export type ListFieldValue = {
+  __typename?: 'ListFieldValue';
+  /** Input values. */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
 /** File details for a Media Item */
 export type MediaDetails = {
   __typename?: 'MediaDetails';
@@ -7591,6 +6314,8 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The sizes attribute value for an image. */
   sizes?: Maybe<Scalars['String']>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
@@ -7726,6 +6451,8 @@ export type MediaItemConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -7830,6 +6557,8 @@ export type MediaItemToCommentConnectionPageInfo = CommentConnectionPageInfo & P
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -7977,6 +6706,8 @@ export type MenuConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -8070,6 +6801,8 @@ export type MenuItemConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -8148,6 +6881,8 @@ export type MenuItemToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo & 
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -8224,6 +6959,8 @@ export type MenuToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo & Page
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -8422,6 +7159,208 @@ export enum MimeTypeEnum {
   VideoXMsWmx = 'VIDEO_X_MS_WMX'
 }
 
+/** A Gravity Forms multiselect field. */
+export type MultiSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'MultiSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** An array of field values. */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** MultiSelectFieldChoice choice values. */
+export type MultiSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'MultiSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms name field. */
+export type NameField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithNameSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & {
+  __typename?: 'NameField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Name field value. */
+  nameValues?: Maybe<NameFieldValue>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** NameFieldChoice choice values. */
+export type NameFieldChoice = GfFieldChoice & GfFieldChoiceWithNameSetting & {
+  __typename?: 'NameFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** Input fields for name field. */
+export type NameFieldInput = {
+  /** First name. */
+  first?: InputMaybe<Scalars['String']>;
+  /** Last name. */
+  last?: InputMaybe<Scalars['String']>;
+  /** Middle name. */
+  middle?: InputMaybe<Scalars['String']>;
+  /** Prefix, such as Mr., Mrs. etc. */
+  prefix?: InputMaybe<Scalars['String']>;
+  /** Suffix, such as Sr., Jr. etc. */
+  suffix?: InputMaybe<Scalars['String']>;
+};
+
+/** The individual properties for each element of the Name value field. */
+export type NameFieldValue = {
+  __typename?: 'NameFieldValue';
+  /** First name. */
+  first?: Maybe<Scalars['String']>;
+  /** Last name. */
+  last?: Maybe<Scalars['String']>;
+  /** Middle name. */
+  middle?: Maybe<Scalars['String']>;
+  /** Prefix, such as Mr., Mrs. etc. */
+  prefix?: Maybe<Scalars['String']>;
+  /** Suffix, such as Sr., Jr. etc. */
+  suffix?: Maybe<Scalars['String']>;
+};
+
+/** NameInputProperty input values. */
+export type NameInputProperty = GfFieldInput & GfFieldInputWithNameSetting & {
+  __typename?: 'NameInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The nested NameFieldChoice choice. */
+  choices?: Maybe<Array<Maybe<NameFieldChoice>>>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** Key used to identify this input. */
+  key?: Maybe<Scalars['String']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
 /** An object with an ID */
 export type Node = {
   /** The globally unique ID for the object */
@@ -8473,18 +7412,6 @@ export type NodeWithContentEditorContentArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
 };
 
-/** Node that has content blocks associated with it */
-export type NodeWithEditorBlocks = {
-  /** List of editor blocks */
-  editorBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-};
-
-
-/** Node that has content blocks associated with it */
-export type NodeWithEditorBlocksEditorBlocksArgs = {
-  flat?: InputMaybe<Scalars['Boolean']>;
-};
-
 /** A node that can have an excerpt */
 export type NodeWithExcerpt = {
   /** The excerpt of the post. */
@@ -8520,36 +7447,22 @@ export type NodeWithFeaturedImageToMediaItemConnectionEdge = Edge & MediaItemCon
   node: MediaItem;
 };
 
+/** A node that can have a Gravity Forms form assigned to it. */
+export type NodeWithForm = {
+  /** The form object of the node. */
+  form?: Maybe<GfForm>;
+  /** The database identifier of the form of the node. */
+  formDatabaseId?: Maybe<Scalars['Int']>;
+  /** The globally unique identifier of the form of the node. */
+  formId?: Maybe<Scalars['ID']>;
+};
+
 /** A node that can have page attributes */
 export type NodeWithPageAttributes = {
   /** The globally unique ID for the object */
   id: Scalars['ID'];
   /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
   menuOrder?: Maybe<Scalars['Int']>;
-};
-
-/** Node that has Page content blocks associated with it */
-export type NodeWithPageEditorBlocks = {
-  /** List of Page editor blocks */
-  editorBlocks?: Maybe<Array<Maybe<PageEditorBlock>>>;
-};
-
-
-/** Node that has Page content blocks associated with it */
-export type NodeWithPageEditorBlocksEditorBlocksArgs = {
-  flat?: InputMaybe<Scalars['Boolean']>;
-};
-
-/** Node that has Post content blocks associated with it */
-export type NodeWithPostEditorBlocks = {
-  /** List of Post editor blocks */
-  editorBlocks?: Maybe<Array<Maybe<PostEditorBlock>>>;
-};
-
-
-/** Node that has Post content blocks associated with it */
-export type NodeWithPostEditorBlocksEditorBlocksArgs = {
-  flat?: InputMaybe<Scalars['Boolean']>;
 };
 
 /** A node that can have revisions */
@@ -8583,6 +7496,8 @@ export type NodeWithTemplate = {
 export type NodeWithTitle = {
   /** The globally unique ID for the object */
   id: Scalars['ID'];
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']>;
 };
@@ -8605,12 +7520,443 @@ export type NodeWithTrackbacks = {
   toPing?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+/** A Gravity Forms number field. */
+export type NumberField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithCalculationSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithNumberFormatSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRangeSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'NumberField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The formula used for the number field. */
+  calculationFormula?: Maybe<Scalars['String']>;
+  /** Specifies to how many decimal places the number should be rounded. This is available when `isCalculation` is true, but will return null if the number format is `CURRENCY` or if the calculation is set to `Do not round`. */
+  calculationRounding?: Maybe<Scalars['Int']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Indicates whether the number field is a calculation. */
+  isCalculation?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the format allowed for the number field. */
+  numberFormat?: Maybe<NumberFieldFormatEnum>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Maximum allowed value for a number field. Values higher than the number specified by this property will cause the field to fail validation. */
+  rangeMax?: Maybe<Scalars['Float']>;
+  /** Minimum allowed value for a number field. Values lower than the number specified by this property will cause the field to fail validation. */
+  rangeMin?: Maybe<Scalars['Float']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** The format allowed for the number field. . */
+export enum NumberFieldFormatEnum {
+  /** Currency format. */
+  Currency = 'CURRENCY',
+  /** Decimal-comma format (e.g. 9.999,99). */
+  DecimalComma = 'DECIMAL_COMMA',
+  /** Decimal-dot format (e.g. 9,999.99). */
+  DecimalDot = 'DECIMAL_DOT'
+}
+
 /** A singular connection from one Node to another, with support for relational data on the &quot;edge&quot; of the connection. */
 export type OneToOneConnection = {
   /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
   cursor?: Maybe<Scalars['String']>;
   /** The connected node */
   node: Node;
+};
+
+/** A Gravity Forms checkbox option field. */
+export type OptionCheckboxField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & GfFieldWithRulesSetting & GfFieldWithSelectAllChoicesSetting & OptionField & {
+  __typename?: 'OptionCheckboxField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Checkbox field value. */
+  checkboxValues?: Maybe<Array<Maybe<CheckboxFieldValue>>>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** OptionCheckboxFieldChoice choice values. */
+export type OptionCheckboxFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & OptionFieldChoice & {
+  __typename?: 'OptionCheckboxFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** OptionCheckboxInputProperty input values. */
+export type OptionCheckboxInputProperty = GfFieldInput & GfFieldInputWithSelectAllChoicesSetting & {
+  __typename?: 'OptionCheckboxInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms option field. */
+export type OptionField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** OptionFieldChoice choice values. */
+export type OptionFieldChoice = {
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms radio option field. */
+export type OptionRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & GfFieldWithRulesSetting & OptionField & {
+  __typename?: 'OptionRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** OptionRadioFieldChoice choice values. */
+export type OptionRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & OptionFieldChoice & {
+  __typename?: 'OptionRadioFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms select option field. */
+export type OptionSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & OptionField & {
+  __typename?: 'OptionSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** OptionSelectFieldChoice choice values. */
+export type OptionSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & OptionFieldChoice & {
+  __typename?: 'OptionSelectFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
 };
 
 /** The cardinality of the connection order */
@@ -8622,7 +7968,7 @@ export enum OrderEnum {
 }
 
 /** The page type */
-export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithPageEditorBlocks & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
+export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & HierarchicalNode & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithPageAttributes & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
   __typename?: 'Page';
   /** Returns ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root). */
   ancestors?: Maybe<HierarchicalContentNodeToContentNodeAncestorsConnection>;
@@ -8642,6 +7988,8 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   comments?: Maybe<PageToCommentConnection>;
   /** @deprecated Deprecated in favor of using Next.js pages */
   conditionalTags?: Maybe<ConditionalTags>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;PAGE: Contact&quot; was set to Show in GraphQL. */
+  contact?: Maybe<Page_Contact>;
   /** The content of the post. */
   content?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the ContentType type */
@@ -8658,8 +8006,6 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   desiredSlug?: Maybe<Scalars['String']>;
   /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
   editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** List of Page editor blocks */
-  editorBlocks?: Maybe<Array<Maybe<PageEditorBlock>>>;
   /** The RSS enclosure for the object */
   enclosure?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the EnqueuedScript type */
@@ -8674,6 +8020,8 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   featuredImageId?: Maybe<Scalars['ID']>;
   /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
   guid?: Maybe<Scalars['String']>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;PAGE: Home&quot; was set to Show in GraphQL. */
+  home?: Maybe<Page_Home>;
   /** The globally unique identifier of the page object. */
   id: Scalars['ID'];
   /** Whether the node is a Content Node */
@@ -8723,6 +8071,8 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
   /** Connection between the Page type and the page type */
   revisions?: Maybe<PageToRevisionConnection>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   slug?: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -8770,12 +8120,6 @@ export type PageCommentsArgs = {
 /** The page type */
 export type PageContentArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The page type */
-export type PageEditorBlocksArgs = {
-  flat?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -8838,29 +8182,44 @@ export type PageConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
 
-export type PageEditorBlock = {
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the Block */
-  name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
+/** A Gravity Forms page field. */
+export type PageField = FormField & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithNextButtonSetting & GfFieldWithPreviousButton & {
+  __typename?: 'PageField';
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** An array containing the the individual properties for the &quot;Next&quot; button. */
+  nextButton?: Maybe<FormButton>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** An array containing the the individual properties for the &quot;Previous&quot; button. */
+  previousButton?: Maybe<FormButton>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
@@ -8914,6 +8273,8 @@ export type PageToCommentConnectionPageInfo = CommentConnectionPageInfo & PageIn
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9018,6 +8379,8 @@ export type PageToRevisionConnectionPageInfo = PageConnectionPageInfo & PageInfo
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9068,6 +8431,210 @@ export type PageToRevisionConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+/** Field Group */
+export type Page_Contact = AcfFieldGroup & {
+  __typename?: 'Page_Contact';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  heroSection?: Maybe<Page_Contact_HeroSection>;
+};
+
+/** Field Group */
+export type Page_Contact_HeroSection = AcfFieldGroup & {
+  __typename?: 'Page_Contact_HeroSection';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** Field Group */
+export type Page_Home = AcfFieldGroup & {
+  __typename?: 'Page_Home';
+  bookACallSection?: Maybe<Page_Home_BookACallSection>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  processSection?: Maybe<Page_Home_ProcessSection>;
+};
+
+/** Field Group */
+export type Page_Home_BookACallSection = AcfFieldGroup & {
+  __typename?: 'Page_Home_BookACallSection';
+  content?: Maybe<Scalars['String']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  header?: Maybe<Scalars['String']>;
+  link?: Maybe<AcfLink>;
+};
+
+/** Field Group */
+export type Page_Home_ProcessSection = AcfFieldGroup & {
+  __typename?: 'Page_Home_ProcessSection';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  header?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms password field. */
+export type PasswordField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPasswordSetting & GfFieldWithPasswordStrengthSetting & GfFieldWithPasswordVisibilitySetting & GfFieldWithPersonalData & GfFieldWithRulesSetting & GfFieldWithSizeSetting & GfFieldWithSubLabelPlacementSetting & {
+  __typename?: 'PasswordField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Indicates whether the field displays the password strength indicator. */
+  hasPasswordStrengthIndicator?: Maybe<Scalars['Boolean']>;
+  /** Whether the Password visibility toggle should be enabled for this field. */
+  hasPasswordVisibilityToggle?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Indicates how strong the password should be. */
+  minPasswordStrength?: Maybe<PasswordFieldMinStrengthEnum>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** Indicates how strong the password should be. */
+export enum PasswordFieldMinStrengthEnum {
+  /** The password strength must be "bad" or better. */
+  Bad = 'BAD',
+  /** The password strength must be "good" or better. */
+  Good = 'GOOD',
+  /** The password strength must be "short" or better. */
+  Short = 'SHORT',
+  /** The password strength must be "strong". */
+  Strong = 'STRONG'
+}
+
+/** PasswordInputProperty input values. */
+export type PasswordInputProperty = GfFieldInput & GfFieldInputWithPasswordSetting & {
+  __typename?: 'PasswordInputProperty';
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** Whether or not this field should be hidden. */
+  isHidden?: Maybe<Scalars['Boolean']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms phone field. */
+export type PhoneField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPhoneFormatSetting & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'PhoneField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines the allowed format for phones. If the phone value does not conform with the specified format, the field will fail validation. */
+  phoneFormat?: Maybe<PhoneFieldFormatEnum>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** Tthe allowed format for phone numbers. */
+export enum PhoneFieldFormatEnum {
+  /** International phone number format. */
+  International = 'INTERNATIONAL',
+  /** Standard phone number format. */
+  Standard = 'STANDARD'
+}
+
 /** An plugin object */
 export type Plugin = Node & {
   __typename?: 'Plugin';
@@ -9117,6 +8684,8 @@ export type PluginConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9140,7 +8709,7 @@ export enum PluginStatusEnum {
 }
 
 /** The post type */
-export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithEditorBlocks & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithPostEditorBlocks & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & {
+export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithAuthor & NodeWithComments & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithRevisions & NodeWithTemplate & NodeWithTitle & NodeWithTrackbacks & Previewable & UniformResourceIdentifiable & {
   __typename?: 'Post';
   /** Connection between the NodeWithAuthor type and the User type */
   author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
@@ -9174,8 +8743,6 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   desiredSlug?: Maybe<Scalars['String']>;
   /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
   editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** List of Post editor blocks */
-  editorBlocks?: Maybe<Array<Maybe<PostEditorBlock>>>;
   /** The RSS enclosure for the object */
   enclosure?: Maybe<Scalars['String']>;
   /** Connection between the ContentNode type and the EnqueuedScript type */
@@ -9235,6 +8802,8 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
   /** Connection between the Post type and the post type */
   revisions?: Maybe<PostToRevisionConnection>;
+  /** The Yoast SEO data of the ContentNode */
+  seo?: Maybe<PostTypeSeo>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   slug?: Maybe<Scalars['String']>;
   /** The current status of the object */
@@ -9278,12 +8847,6 @@ export type PostCommentsArgs = {
 /** The post type */
 export type PostContentArgs = {
   format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-
-/** The post type */
-export type PostEditorBlocksArgs = {
-  flat?: InputMaybe<Scalars['Boolean']>;
 };
 
 
@@ -9376,6 +8939,422 @@ export type PostCategoriesNodeInput = {
   slug?: InputMaybe<Scalars['String']>;
 };
 
+/** A Gravity Forms checkbox post_category field. */
+export type PostCategoryCheckboxField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCategoryCheckboxSetting & GfFieldWithPostCategoryInitialItemSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSelectAllChoicesSetting & GfFieldWithSizeSetting & PostCategoryField & {
+  __typename?: 'PostCategoryCheckboxField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Checkbox field value. */
+  checkboxValues?: Maybe<Array<Maybe<CheckboxFieldValue>>>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCategoryCheckboxFieldChoice choice values. */
+export type PostCategoryCheckboxFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & PostCategoryFieldChoice & {
+  __typename?: 'PostCategoryCheckboxFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** PostCategoryCheckboxInputProperty input values. */
+export type PostCategoryCheckboxInputProperty = GfFieldInput & GfFieldInputWithSelectAllChoicesSetting & {
+  __typename?: 'PostCategoryCheckboxInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms post_category field. */
+export type PostCategoryField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCategoryFieldChoice choice values. */
+export type PostCategoryFieldChoice = {
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms multiselect post_category field. */
+export type PostCategoryMultiSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCategoryCheckboxSetting & GfFieldWithPostCategoryInitialItemSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCategoryField & {
+  __typename?: 'PostCategoryMultiSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** An array of field values. */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCategoryMultiSelectFieldChoice choice values. */
+export type PostCategoryMultiSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & PostCategoryFieldChoice & {
+  __typename?: 'PostCategoryMultiSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms radio post_category field. */
+export type PostCategoryRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPostCategoryCheckboxSetting & GfFieldWithPostCategoryInitialItemSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCategoryField & {
+  __typename?: 'PostCategoryRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCategoryRadioFieldChoice choice values. */
+export type PostCategoryRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & PostCategoryFieldChoice & {
+  __typename?: 'PostCategoryRadioFieldChoice';
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms select post_category field. */
+export type PostCategorySelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCategoryCheckboxSetting & GfFieldWithPostCategoryInitialItemSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCategoryField & {
+  __typename?: 'PostCategorySelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The dropdown placeholder for the field. */
+  dropdownPlaceholder?: Maybe<Scalars['String']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if all categories should be displayed on the Post Category drop down. If this property is true (display all categories), the Post Category drop down will display the categories hierarchically. */
+  hasAllCategories?: Maybe<Scalars['Boolean']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCategorySelectFieldChoice choice values. */
+export type PostCategorySelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & PostCategoryFieldChoice & {
+  __typename?: 'PostCategorySelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
 /** Connection to post Nodes */
 export type PostConnection = {
   /** A list of edges (relational context) between RootQuery and connected post Nodes */
@@ -9402,29 +9381,1347 @@ export type PostConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
 
-export type PostEditorBlock = {
-  /** The API version of the Gutenberg Block */
-  apiVersion?: Maybe<Scalars['Int']>;
-  /** The name of the category the Block belongs to */
-  blockEditorCategoryName?: Maybe<Scalars['String']>;
-  /** The id of the Block */
-  clientId?: Maybe<Scalars['String']>;
-  /** CSS Classnames to apply to the block */
-  cssClassNames?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The inner blocks of the Block */
-  innerBlocks?: Maybe<Array<Maybe<EditorBlock>>>;
-  /** Whether the block is Dynamic (server rendered) */
-  isDynamic: Scalars['Boolean'];
-  /** The name of the Block */
+/** A Gravity Forms post_content field. */
+export type PostContentField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRichTextEditorSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'PostContentField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Indicates whether the field uses the rich text editor interface. */
+  hasRichTextEditor?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms checkbox post_custom_field field. */
+export type PostCustomCheckboxField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSelectAllChoicesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomCheckboxField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Checkbox field value. */
+  checkboxValues?: Maybe<Array<Maybe<CheckboxFieldValue>>>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomCheckboxFieldChoice choice values. */
+export type PostCustomCheckboxFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostCustomCheckboxFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** PostCustomCheckboxInputProperty input values. */
+export type PostCustomCheckboxInputProperty = GfFieldInput & GfFieldInputWithSelectAllChoicesSetting & {
+  __typename?: 'PostCustomCheckboxInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
   name?: Maybe<Scalars['String']>;
-  /** The parent id of the Block */
-  parentClientId?: Maybe<Scalars['String']>;
-  /** The rendered HTML for the block */
-  renderedHtml?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms date post_custom_field field. */
+export type PostCustomDateField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDateFormatSetting & GfFieldWithDateInputTypeSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & GfFieldWithSubLabelPlacementSetting & PostCustomField & {
+  __typename?: 'PostCustomDateField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines how the date field displays it’s calendar icon. */
+  calendarIconType?: Maybe<FormFieldCalendarIconTypeEnum>;
+  /** Contains the URL to the custom calendar icon. Only applicable when calendarIconType is set to custom. */
+  calendarIconUrl?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Determines how the date is displayed. */
+  dateFormat?: Maybe<DateFieldFormatEnum>;
+  /** The type of date field to display. */
+  dateType?: Maybe<DateFieldTypeEnum>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomDateInputProperty input values. */
+export type PostCustomDateInputProperty = GfFieldInput & GfFieldInputWithDateFormatSetting & {
+  __typename?: 'PostCustomDateInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms email post_custom_field field. */
+export type PostCustomEmailField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & GfFieldWithSubLabelPlacementSetting & GfGfFieldWithEmailConfirmationSetting & PostCustomField & {
+  __typename?: 'PostCustomEmailField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines whether the Confirm Email field is active. */
+  hasEmailConfirmation?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomEmailInputProperty input values. */
+export type PostCustomEmailInputProperty = GfFieldInput & GfFieldInputWithEmailConfirmationSetting & {
+  __typename?: 'PostCustomEmailInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms post_custom_field field. */
+export type PostCustomField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms fileupload post_custom_field field. */
+export type PostCustomFileuploadField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithFileExtensionsSetting & GfFieldWithFileSizeSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMultipleFilesSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomFileuploadField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** A comma-delimited list of the file extensions which may be uploaded. */
+  allowedExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Indicates whether multiple files may be uploaded. */
+  canAcceptMultipleFiles?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** File upload value */
+  fileUploadValues?: Maybe<Array<Maybe<FileUploadFieldValue>>>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The maximum size (in MB) an uploaded file may be . */
+  maxFileSize?: Maybe<Scalars['Int']>;
+  /** When the field is set to allow multiple files to be uploaded, this property is available to set a limit on how many may be uploaded. */
+  maxFiles?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /**
+   * An array of field values.
+   * @deprecated Use `fileUploadValues` instead.
+   */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms hidden post_custom_field field. */
+export type PostCustomHiddenField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomHiddenField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms list post_custom_field field. */
+export type PostCustomListField = FormField & GfFieldWithAddIconUrlSetting & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithColumnsSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDeleteIconUrlSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxRowsSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomListField';
+  /** The URL of the image to be used for the add row button. */
+  addIconUrl?: Maybe<Scalars['String']>;
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** The URL of the image to be used for the delete row button. */
+  deleteIconUrl?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field should use multiple columns. Default is false. */
+  hasColumns?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** List field value. */
+  listValues?: Maybe<Array<Maybe<ListFieldValue>>>;
+  /** The maximum number of rows the user can add to the field. */
+  maxRows?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomListFieldChoice choice values. */
+export type PostCustomListFieldChoice = GfFieldChoice & GfFieldChoiceWithColumnsSetting & {
+  __typename?: 'PostCustomListFieldChoice';
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms multiselect post_custom_field field. */
+export type PostCustomMultiSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomMultiSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** An array of field values. */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomMultiSelectFieldChoice choice values. */
+export type PostCustomMultiSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostCustomMultiSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms number post_custom_field field. */
+export type PostCustomNumberField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithCalculationSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithNumberFormatSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRangeSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomNumberField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The formula used for the number field. */
+  calculationFormula?: Maybe<Scalars['String']>;
+  /** Specifies to how many decimal places the number should be rounded. This is available when `isCalculation` is true, but will return null if the number format is `CURRENCY` or if the calculation is set to `Do not round`. */
+  calculationRounding?: Maybe<Scalars['Int']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Indicates whether the number field is a calculation. */
+  isCalculation?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the format allowed for the number field. */
+  numberFormat?: Maybe<NumberFieldFormatEnum>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Maximum allowed value for a number field. Values higher than the number specified by this property will cause the field to fail validation. */
+  rangeMax?: Maybe<Scalars['Float']>;
+  /** Minimum allowed value for a number field. Values lower than the number specified by this property will cause the field to fail validation. */
+  rangeMin?: Maybe<Scalars['Float']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms phone post_custom_field field. */
+export type PostCustomPhoneField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPhoneFormatSetting & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomPhoneField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines the allowed format for phones. If the phone value does not conform with the specified format, the field will fail validation. */
+  phoneFormat?: Maybe<PhoneFieldFormatEnum>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms radio post_custom_field field. */
+export type PostCustomRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomRadioFieldChoice choice values. */
+export type PostCustomRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & {
+  __typename?: 'PostCustomRadioFieldChoice';
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms select post_custom_field field. */
+export type PostCustomSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomSelectFieldChoice choice values. */
+export type PostCustomSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostCustomSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms textarea post_custom_field field. */
+export type PostCustomTextAreaField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRichTextEditorSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomTextAreaField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Indicates whether the field uses the rich text editor interface. */
+  hasRichTextEditor?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms text post_custom_field field. */
+export type PostCustomTextField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputMaskSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPasswordFieldSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomTextField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Whether the field has an input mask. */
+  hasInputMask?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The pattern used for the input mask. */
+  inputMaskValue?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if a text field input tag should be created with a &quot;password&quot; type. */
+  isPasswordInput?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms time post_custom_field field. */
+export type PostCustomTimeField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & GfFieldWithSubLabelPlacementSetting & GfFieldWithTimeFormatSetting & PostCustomField & {
+  __typename?: 'PostCustomTimeField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** Determines how the time is displayed. */
+  timeFormat?: Maybe<TimeFieldFormatEnum>;
+  /** Time field value. */
+  timeValues?: Maybe<TimeFieldValue>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostCustomTimeInputProperty input values. */
+export type PostCustomTimeInputProperty = GfFieldInput & GfFieldInputWithTimeFormatSetting & {
+  __typename?: 'PostCustomTimeInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms website post_custom_field field. */
+export type PostCustomWebsiteField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPostCustomFieldSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostCustomField & {
+  __typename?: 'PostCustomWebsiteField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The post meta key to which the value should be assigned. */
+  postMetaFieldName?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms post_excerpt field. */
+export type PostExcerptField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'PostExcerptField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** The postFormat type */
@@ -9463,6 +10760,8 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   postFormatId?: Maybe<Scalars['Int']>;
   /** Connection between the PostFormat type and the post type */
   posts?: Maybe<PostFormatToPostConnection>;
+  /** The Yoast SEO data of the Formats taxonomy. */
+  seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']>;
   /** Connection between the PostFormat type and the Taxonomy type */
@@ -9542,6 +10841,8 @@ export type PostFormatConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9589,6 +10890,8 @@ export type PostFormatToContentNodeConnectionPageInfo = ContentNodeConnectionPag
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9662,6 +10965,8 @@ export type PostFormatToPostConnectionPageInfo = PageInfo & PostConnectionPageIn
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9741,6 +11046,12 @@ export type PostFormatToTaxonomyConnectionEdge = Edge & OneToOneConnection & Tax
   node: Taxonomy;
 };
 
+/** List of possible post formats. */
+export enum PostFormatTypeEnum {
+  /** A standard post format. */
+  Standard = 'STANDARD'
+}
+
 /** The Type of Identifier used to fetch a single resource. Default is ID. */
 export enum PostIdType {
   /** Identify a resource by the Database ID. */
@@ -9752,6 +11063,70 @@ export enum PostIdType {
   /** Identify a resource by the URI. */
   Uri = 'URI'
 }
+
+/** A Gravity Forms post_image field. */
+export type PostImageField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithFileExtensionsSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPostImageFeaturedImageSetting & GfFieldWithPostImageSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & {
+  __typename?: 'PostImageField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** A comma-delimited list of the file extensions which may be uploaded. */
+  allowedExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Controls the visibility of the alt metadata for Post Image fields. */
+  hasAlt?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the caption metadata for Post Image fields. */
+  hasCaption?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the description metadata for Post Image fields. */
+  hasDescription?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the title metadata for Post Image fields. */
+  hasTitle?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Image field value. */
+  imageValues?: Maybe<ImageFieldValue>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Whether the image field should be used to set the post&#039;s Featured Image */
+  isFeaturedImage?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
 
 /** The format of post field data. */
 export enum PostObjectFieldFormatEnum {
@@ -9823,10 +11198,10 @@ export type PostPostFormatsNodeInput = {
 
 /** The status of the object. */
 export enum PostStatusEnum {
+  /** Objects with the acf-disabled status */
+  AcfDisabled = 'ACF_DISABLED',
   /** Objects with the auto-draft status */
   AutoDraft = 'AUTO_DRAFT',
-  /** Objects with the dp-rewrite-republish status */
-  DpRewriteRepublish = 'DP_REWRITE_REPUBLISH',
   /** Objects with the draft status */
   Draft = 'DRAFT',
   /** Objects with the future status */
@@ -9851,12 +11226,238 @@ export enum PostStatusEnum {
   Trash = 'TRASH'
 }
 
+/** A Gravity Forms checkbox post_tags field. */
+export type PostTagsCheckboxField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSelectAllChoicesSetting & GfFieldWithSizeSetting & PostTagsField & {
+  __typename?: 'PostTagsCheckboxField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Checkbox field value. */
+  checkboxValues?: Maybe<Array<Maybe<CheckboxFieldValue>>>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Whether the \&quot;select all\&quot; choice should be displayed. */
+  hasSelectAll?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostTagsCheckboxFieldChoice choice values. */
+export type PostTagsCheckboxFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostTagsCheckboxFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** PostTagsCheckboxInputProperty input values. */
+export type PostTagsCheckboxInputProperty = GfFieldInput & GfFieldInputWithSelectAllChoicesSetting & {
+  __typename?: 'PostTagsCheckboxInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms post_tags field. */
+export type PostTagsField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
 /** Set relationships between the post to tags */
 export type PostTagsInput = {
   /** If true, this will append the tag to existing related tags. If false, this will replace existing relationships. Default true. */
   append?: InputMaybe<Scalars['Boolean']>;
   /** The input list of items to set. */
   nodes?: InputMaybe<Array<InputMaybe<PostTagsNodeInput>>>;
+};
+
+/** A Gravity Forms multiselect post_tags field. */
+export type PostTagsMultiSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostTagsField & {
+  __typename?: 'PostTagsMultiSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** An array of field values. */
+  values?: Maybe<Array<Maybe<Scalars['String']>>>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostTagsMultiSelectFieldChoice choice values. */
+export type PostTagsMultiSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostTagsMultiSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
 };
 
 /** List of tags to connect the post to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
@@ -9869,6 +11470,300 @@ export type PostTagsNodeInput = {
   name?: InputMaybe<Scalars['String']>;
   /** The slug of the tag. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
   slug?: InputMaybe<Scalars['String']>;
+};
+
+/** A Gravity Forms radio post_tags field. */
+export type PostTagsRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostTagsField & {
+  __typename?: 'PostTagsRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostTagsRadioFieldChoice choice values. */
+export type PostTagsRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & {
+  __typename?: 'PostTagsRadioFieldChoice';
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms select post_tags field. */
+export type PostTagsSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostTagsField & {
+  __typename?: 'PostTagsSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** PostTagsSelectFieldChoice choice values. */
+export type PostTagsSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'PostTagsSelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms text post_tags field. */
+export type PostTagsTextField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputMaskSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPasswordFieldSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & PostTagsField & {
+  __typename?: 'PostTagsTextField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Whether the field has an input mask. */
+  hasInputMask?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The pattern used for the input mask. */
+  inputMaskValue?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if a text field input tag should be created with a &quot;password&quot; type. */
+  isPasswordInput?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms post_title field. */
+export type PostTitleField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'PostTitleField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** Connection between the Post type and the category type */
@@ -9887,6 +11782,8 @@ export type PostToCategoryConnectionEdge = CategoryConnectionEdge & Edge & {
   __typename?: 'PostToCategoryConnectionEdge';
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
+  /** The Yoast SEO Primary category */
+  isPrimary?: Maybe<Scalars['Boolean']>;
   /** The item at the end of the edge */
   node: Category;
 };
@@ -9900,6 +11797,8 @@ export type PostToCategoryConnectionPageInfo = CategoryConnectionPageInfo & Page
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -9979,6 +11878,8 @@ export type PostToCommentConnectionPageInfo = CommentConnectionPageInfo & PageIn
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -10061,6 +11962,8 @@ export type PostToPostFormatConnectionEdge = Edge & PostFormatConnectionEdge & {
   __typename?: 'PostToPostFormatConnectionEdge';
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
+  /** The Yoast SEO Primary post_format */
+  isPrimary?: Maybe<Scalars['Boolean']>;
   /** The item at the end of the edge */
   node: PostFormat;
 };
@@ -10074,6 +11977,8 @@ export type PostToPostFormatConnectionPageInfo = PageInfo & PostFormatConnection
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -10162,6 +12067,8 @@ export type PostToRevisionConnectionPageInfo = PageInfo & PostConnectionPageInfo
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -10248,6 +12155,8 @@ export type PostToTagConnectionEdge = Edge & TagConnectionEdge & {
   __typename?: 'PostToTagConnectionEdge';
   /** A cursor for use in pagination */
   cursor?: Maybe<Scalars['String']>;
+  /** The Yoast SEO Primary post_tag */
+  isPrimary?: Maybe<Scalars['Boolean']>;
   /** The item at the end of the edge */
   node: Tag;
 };
@@ -10261,6 +12170,8 @@ export type PostToTagConnectionPageInfo = PageInfo & TagConnectionPageInfo & WpP
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -10340,6 +12251,8 @@ export type PostToTermNodeConnectionPageInfo = PageInfo & TermNodeConnectionPage
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -10447,6 +12360,35 @@ export type PostTypeLabelDetails = {
   viewItems?: Maybe<Scalars['String']>;
 };
 
+export type PostTypeSeo = {
+  __typename?: 'PostTypeSEO';
+  breadcrumbs?: Maybe<Array<Maybe<SeoPostTypeBreadcrumbs>>>;
+  canonical?: Maybe<Scalars['String']>;
+  cornerstone?: Maybe<Scalars['Boolean']>;
+  focuskw?: Maybe<Scalars['String']>;
+  fullHead?: Maybe<Scalars['String']>;
+  metaDesc?: Maybe<Scalars['String']>;
+  metaKeywords?: Maybe<Scalars['String']>;
+  metaRobotsNofollow?: Maybe<Scalars['String']>;
+  metaRobotsNoindex?: Maybe<Scalars['String']>;
+  opengraphAuthor?: Maybe<Scalars['String']>;
+  opengraphDescription?: Maybe<Scalars['String']>;
+  opengraphImage?: Maybe<MediaItem>;
+  opengraphModifiedTime?: Maybe<Scalars['String']>;
+  opengraphPublishedTime?: Maybe<Scalars['String']>;
+  opengraphPublisher?: Maybe<Scalars['String']>;
+  opengraphSiteName?: Maybe<Scalars['String']>;
+  opengraphTitle?: Maybe<Scalars['String']>;
+  opengraphType?: Maybe<Scalars['String']>;
+  opengraphUrl?: Maybe<Scalars['String']>;
+  readingTime?: Maybe<Scalars['Float']>;
+  schema?: Maybe<SeoPostTypeSchema>;
+  title?: Maybe<Scalars['String']>;
+  twitterDescription?: Maybe<Scalars['String']>;
+  twitterImage?: Maybe<MediaItem>;
+  twitterTitle?: Maybe<Scalars['String']>;
+};
+
 /** Nodes that can be seen in a preview (unpublished) state. */
 export type Previewable = {
   /** Whether the object is a node in the preview state */
@@ -10457,167 +12399,848 @@ export type Previewable = {
   previewRevisionId?: Maybe<Scalars['ID']>;
 };
 
-/** The project type */
-export type Project = ContentNode & DatabaseIdentifier & Node & NodeWithAuthor & NodeWithFeaturedImage & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
-  __typename?: 'Project';
-  /** Connection between the NodeWithAuthor type and the User type */
-  author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
-  /** The database identifier of the author of the node */
-  authorDatabaseId?: Maybe<Scalars['Int']>;
-  /** The globally unique identifier of the author of the node */
-  authorId?: Maybe<Scalars['ID']>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
-  /** Project Content Area */
-  contentArea?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The name of the Content Type the node belongs to */
-  contentTypeName: Scalars['String'];
-  /** The unique identifier stored in the database */
+/** A Gravity Forms calculation calculation field. */
+export type ProductCalculationField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithCalculationSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDisableQuantitySetting & GfFieldWithDuplicatesSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & ProductField & {
+  __typename?: 'ProductCalculationField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The formula used for the number field. */
+  calculationFormula?: Maybe<Scalars['String']>;
+  /** Specifies to how many decimal places the number should be rounded. This is available when `isCalculation` is true, but will return null if the number format is `CURRENCY` or if the calculation is set to `Do not round`. */
+  calculationRounding?: Maybe<Scalars['Int']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
   databaseId: Scalars['Int'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-  featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
-  /** The database identifier for the featured image node assigned to the content node */
-  featuredImageDatabaseId?: Maybe<Scalars['Int']>;
-  /** Globally unique ID of the featured image assigned to the node */
-  featuredImageId?: Maybe<Scalars['ID']>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']>;
-  /** The globally unique identifier of the project object. */
-  id: Scalars['ID'];
-  /** Project Featured Image */
-  image?: Maybe<MediaItem>;
-  /** Whether the node is a Content Node */
-  isContentNode: Scalars['Boolean'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']>;
-  /** Whether the node is a Term */
-  isTermNode: Scalars['Boolean'];
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']>;
-  /** Connection between the Project type and the project type */
-  preview?: Maybe<ProjectToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Whether the field has the quantity property enabled. */
+  hasQuantity?: Maybe<Scalars['Boolean']>;
   /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
    */
-  projectId: Scalars['Int'];
-  /** Project Title */
-  projectTitle?: Maybe<Scalars['String']>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  /** The template assigned to the node */
-  template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']>;
-  /** The unique resource identifier path */
-  uri?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Indicates whether the number field is a calculation. */
+  isCalculation?: Maybe<Scalars['Boolean']>;
+  /**
+   * Whether the quantity property should be disabled for this field.
+   * @deprecated Use `hasQuantity` instead
+   */
+  isQuantityDisabled?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-
-/** The project type */
-export type ProjectEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+/** A Gravity Forms product field. */
+export type ProductField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-
-/** The project type */
-export type ProjectEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+/** Input fields for Product field. */
+export type ProductFieldInput = {
+  /** Product price. */
+  price?: InputMaybe<Scalars['Float']>;
+  /** Product quantity. */
+  quantity?: InputMaybe<Scalars['Float']>;
 };
 
-
-/** The project type */
-export type ProjectTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
+/** The individual properties for each element of the Product value field. */
+export type ProductFieldValue = {
+  __typename?: 'ProductFieldValue';
+  /** The product name. */
+  name?: Maybe<Scalars['String']>;
+  /** The product price. */
+  price?: Maybe<Scalars['String']>;
+  /** The product quantity. */
+  quantity?: Maybe<Scalars['Float']>;
 };
 
-/** Connection to project Nodes */
-export type ProjectConnection = {
-  /** A list of edges (relational context) between RootQuery and connected project Nodes */
-  edges: Array<ProjectConnectionEdge>;
-  /** A list of connected project Nodes */
-  nodes: Array<Project>;
-  /** Information about pagination in a connection. */
-  pageInfo: ProjectConnectionPageInfo;
+/** A Gravity Forms hiddenproduct hiddenproduct field. */
+export type ProductHiddenField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithBasePriceSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & ProductField & {
+  __typename?: 'ProductHiddenField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The price of the product, prefixed by the currency. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The price of the product. */
+  price?: Maybe<Scalars['Float']>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-/** Edge between a Node and a connected project */
-export type ProjectConnectionEdge = {
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']>;
-  /** The connected project Node */
-  node: Project;
+/** A Gravity Forms price product field. */
+export type ProductPriceField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & ProductField & {
+  __typename?: 'ProductPriceField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-/** Page Info on the connected ProjectConnectionEdge */
-export type ProjectConnectionPageInfo = {
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
+/** A Gravity Forms radio product field. */
+export type ProductRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & ProductField & {
+  __typename?: 'ProductRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum ProjectIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
+/** ProductRadioFieldChoice choice values. */
+export type ProductRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & {
+  __typename?: 'ProductRadioFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
 
-/** Connection between the Project type and the project type */
-export type ProjectToPreviewConnectionEdge = Edge & OneToOneConnection & ProjectConnectionEdge & {
-  __typename?: 'ProjectToPreviewConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']>;
-  /** The node of the connection, without the edges */
-  node: Project;
+/** A Gravity Forms select product field. */
+export type ProductSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & ProductField & {
+  __typename?: 'ProductSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** ProductSelectFieldChoice choice values. */
+export type ProductSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'ProductSelectFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms singleproduct singleproduct field. */
+export type ProductSingleField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithBasePriceSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDisableQuantitySetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSingleProductInputs & ProductField & {
+  __typename?: 'ProductSingleField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** The price of the product, prefixed by the currency. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Whether the field has the quantity property enabled. */
+  hasQuantity?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /**
+   * Whether the quantity property should be disabled for this field.
+   * @deprecated Use `hasQuantity` instead
+   */
+  isQuantityDisabled?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The price of the product. */
+  price?: Maybe<Scalars['Float']>;
+  /** Product field values. */
+  productValues?: Maybe<ProductFieldValue>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** ProductSingleInputProperty input values. */
+export type ProductSingleInputProperty = GfFieldInput & GfFieldInputWithSingleProductInputs & {
+  __typename?: 'ProductSingleInputProperty';
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  name?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms quantity field. */
+export type QuantityField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms hidden quantity field. */
+export type QuantityHiddenField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & QuantityField & {
+  __typename?: 'QuantityHiddenField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms number quantity field. */
+export type QuantityNumberField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithCalculationSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithNumberFormatSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & GfFieldWithRangeSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & QuantityField & {
+  __typename?: 'QuantityNumberField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The formula used for the number field. */
+  calculationFormula?: Maybe<Scalars['String']>;
+  /** Specifies to how many decimal places the number should be rounded. This is available when `isCalculation` is true, but will return null if the number format is `CURRENCY` or if the calculation is set to `Do not round`. */
+  calculationRounding?: Maybe<Scalars['Int']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Indicates whether the number field is a calculation. */
+  isCalculation?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the format allowed for the number field. */
+  numberFormat?: Maybe<NumberFieldFormatEnum>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** Maximum allowed value for a number field. Values higher than the number specified by this property will cause the field to fail validation. */
+  rangeMax?: Maybe<Scalars['Float']>;
+  /** Minimum allowed value for a number field. Values lower than the number specified by this property will cause the field to fail validation. */
+  rangeMin?: Maybe<Scalars['Float']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms select quantity field. */
+export type QuantitySelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithProductFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & QuantityField & {
+  __typename?: 'QuantitySelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** The id of the product field to which the field is associated. */
+  productField?: Maybe<Scalars['Int']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** QuantitySelectFieldChoice choice values. */
+export type QuantitySelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'QuantitySelectFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms radio field. */
+export type RadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & {
+  __typename?: 'RadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** RadioFieldChoice choice values. */
+export type RadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & {
+  __typename?: 'RadioFieldChoice';
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
 };
 
 /** The reading setting type */
@@ -10632,6 +13255,14 @@ export type ReadingSettings = {
   /** What to show on the front page */
   showOnFront?: Maybe<Scalars['String']>;
 };
+
+/** Determines which version of reCAPTCHA v2 will be used.  */
+export enum RecaptchaTypeEnum {
+  /** A checkbox reCAPTCHA type. */
+  Checkbox = 'CHECKBOX',
+  /** An invisible reCAPTCHA type. */
+  Invisible = 'INVISIBLE'
+}
 
 /** Input for the registerUser mutation. */
 export type RegisterUserInput = {
@@ -10743,18 +13374,18 @@ export type RootMutation = {
   createPost?: Maybe<CreatePostPayload>;
   /** The createPostFormat mutation */
   createPostFormat?: Maybe<CreatePostFormatPayload>;
-  /** The createProject mutation */
-  createProject?: Maybe<CreateProjectPayload>;
   /** The createTag mutation */
   createTag?: Maybe<CreateTagPayload>;
-  /** The createTestimonial mutation */
-  createTestimonial?: Maybe<CreateTestimonialPayload>;
   /** The createUser mutation */
   createUser?: Maybe<CreateUserPayload>;
   /** The deleteCategory mutation */
   deleteCategory?: Maybe<DeleteCategoryPayload>;
   /** The deleteComment mutation */
   deleteComment?: Maybe<DeleteCommentPayload>;
+  /** The deleteGfDraftEntry mutation */
+  deleteGfDraftEntry?: Maybe<DeleteGfDraftEntryPayload>;
+  /** The deleteGfEntry mutation */
+  deleteGfEntry?: Maybe<DeleteGfEntryPayload>;
   /** The deleteMediaItem mutation */
   deleteMediaItem?: Maybe<DeleteMediaItemPayload>;
   /** The deletePage mutation */
@@ -10763,12 +13394,8 @@ export type RootMutation = {
   deletePost?: Maybe<DeletePostPayload>;
   /** The deletePostFormat mutation */
   deletePostFormat?: Maybe<DeletePostFormatPayload>;
-  /** The deleteProject mutation */
-  deleteProject?: Maybe<DeleteProjectPayload>;
   /** The deleteTag mutation */
   deleteTag?: Maybe<DeleteTagPayload>;
-  /** The deleteTestimonial mutation */
-  deleteTestimonial?: Maybe<DeleteTestimonialPayload>;
   /** The deleteUser mutation */
   deleteUser?: Maybe<DeleteUserPayload>;
   /** The generateAuthorizationCode mutation */
@@ -10783,10 +13410,18 @@ export type RootMutation = {
   restoreComment?: Maybe<RestoreCommentPayload>;
   /** Send password reset email to user */
   sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
+  /** The submitGfDraftEntry mutation */
+  submitGfDraftEntry?: Maybe<SubmitGfDraftEntryPayload>;
+  /** The submitGfForm mutation */
+  submitGfForm?: Maybe<SubmitGfFormPayload>;
   /** The updateCategory mutation */
   updateCategory?: Maybe<UpdateCategoryPayload>;
   /** The updateComment mutation */
   updateComment?: Maybe<UpdateCommentPayload>;
+  /** The updateGfDraftEntry mutation */
+  updateGfDraftEntry?: Maybe<UpdateGfDraftEntryPayload>;
+  /** The updateGfEntry mutation */
+  updateGfEntry?: Maybe<UpdateGfEntryPayload>;
   /** The updateMediaItem mutation */
   updateMediaItem?: Maybe<UpdateMediaItemPayload>;
   /** The updatePage mutation */
@@ -10795,14 +13430,10 @@ export type RootMutation = {
   updatePost?: Maybe<UpdatePostPayload>;
   /** The updatePostFormat mutation */
   updatePostFormat?: Maybe<UpdatePostFormatPayload>;
-  /** The updateProject mutation */
-  updateProject?: Maybe<UpdateProjectPayload>;
   /** The updateSettings mutation */
   updateSettings?: Maybe<UpdateSettingsPayload>;
   /** The updateTag mutation */
   updateTag?: Maybe<UpdateTagPayload>;
-  /** The updateTestimonial mutation */
-  updateTestimonial?: Maybe<UpdateTestimonialPayload>;
   /** The updateUser mutation */
   updateUser?: Maybe<UpdateUserPayload>;
 };
@@ -10845,20 +13476,8 @@ export type RootMutationCreatePostFormatArgs = {
 
 
 /** The root mutation */
-export type RootMutationCreateProjectArgs = {
-  input: CreateProjectInput;
-};
-
-
-/** The root mutation */
 export type RootMutationCreateTagArgs = {
   input: CreateTagInput;
-};
-
-
-/** The root mutation */
-export type RootMutationCreateTestimonialArgs = {
-  input: CreateTestimonialInput;
 };
 
 
@@ -10877,6 +13496,18 @@ export type RootMutationDeleteCategoryArgs = {
 /** The root mutation */
 export type RootMutationDeleteCommentArgs = {
   input: DeleteCommentInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteGfDraftEntryArgs = {
+  input: DeleteGfDraftEntryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteGfEntryArgs = {
+  input: DeleteGfEntryInput;
 };
 
 
@@ -10905,20 +13536,8 @@ export type RootMutationDeletePostFormatArgs = {
 
 
 /** The root mutation */
-export type RootMutationDeleteProjectArgs = {
-  input: DeleteProjectInput;
-};
-
-
-/** The root mutation */
 export type RootMutationDeleteTagArgs = {
   input: DeleteTagInput;
-};
-
-
-/** The root mutation */
-export type RootMutationDeleteTestimonialArgs = {
-  input: DeleteTestimonialInput;
 };
 
 
@@ -10965,6 +13584,18 @@ export type RootMutationSendPasswordResetEmailArgs = {
 
 
 /** The root mutation */
+export type RootMutationSubmitGfDraftEntryArgs = {
+  input: SubmitGfDraftEntryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationSubmitGfFormArgs = {
+  input: SubmitGfFormInput;
+};
+
+
+/** The root mutation */
 export type RootMutationUpdateCategoryArgs = {
   input: UpdateCategoryInput;
 };
@@ -10973,6 +13604,18 @@ export type RootMutationUpdateCategoryArgs = {
 /** The root mutation */
 export type RootMutationUpdateCommentArgs = {
   input: UpdateCommentInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateGfDraftEntryArgs = {
+  input: UpdateGfDraftEntryInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateGfEntryArgs = {
+  input: UpdateGfEntryInput;
 };
 
 
@@ -11001,12 +13644,6 @@ export type RootMutationUpdatePostFormatArgs = {
 
 
 /** The root mutation */
-export type RootMutationUpdateProjectArgs = {
-  input: UpdateProjectInput;
-};
-
-
-/** The root mutation */
 export type RootMutationUpdateSettingsArgs = {
   input: UpdateSettingsInput;
 };
@@ -11015,12 +13652,6 @@ export type RootMutationUpdateSettingsArgs = {
 /** The root mutation */
 export type RootMutationUpdateTagArgs = {
   input: UpdateTagInput;
-};
-
-
-/** The root mutation */
-export type RootMutationUpdateTestimonialArgs = {
-  input: UpdateTestimonialInput;
 };
 
 
@@ -11034,8 +13665,6 @@ export type RootQuery = {
   __typename?: 'RootQuery';
   /** Entry point to get all settings for the site */
   allSettings?: Maybe<Settings>;
-  /** Fields of the &#039;AtlasContentModelerSettingsSettings&#039; settings group */
-  atlasContentModelerSettingsSettings?: Maybe<AtlasContentModelerSettingsSettings>;
   /** Connection between the RootQuery type and the category type */
   categories?: Maybe<RootQueryToCategoryConnection>;
   /** A 0bject */
@@ -11056,6 +13685,22 @@ export type RootQuery = {
   discussionSettings?: Maybe<DiscussionSettings>;
   /** Fields of the &#039;GeneralSettings&#039; settings group */
   generalSettings?: Maybe<GeneralSettings>;
+  /** Get a Gravity Forms entry. */
+  gfDraftEntry?: Maybe<GfDraftEntry>;
+  /** Connection between the RootQuery type and the GfEntry type */
+  gfEntries?: Maybe<RootQueryToGfEntryConnection>;
+  /** Get a Gravity Forms entry. */
+  gfEntry?: Maybe<GfEntry>;
+  /** Get a Gravity Forms form. */
+  gfForm?: Maybe<GfForm>;
+  /** Connection between the RootQuery type and the GfForm type */
+  gfForms?: Maybe<RootQueryToGfFormConnection>;
+  /** Gravity Forms settings. */
+  gfSettings?: Maybe<GfSettings>;
+  /** Connection between the RootQuery type and the GfSubmittedEntry type */
+  gfSubmittedEntries?: Maybe<RootQueryToGfSubmittedEntryConnection>;
+  /** Get a Gravity Forms entry. */
+  gfSubmittedEntry?: Maybe<GfSubmittedEntry>;
   /** Returns the stylesheet resulting of merging core, theme, and user data. */
   globalStylesheet?: Maybe<Scalars['String']>;
   /** An object of the mediaItem Type.  */
@@ -11105,15 +13750,6 @@ export type RootQuery = {
   postFormats?: Maybe<RootQueryToPostFormatConnection>;
   /** Connection between the RootQuery type and the post type */
   posts?: Maybe<RootQueryToPostConnection>;
-  /** An object of the project Type. Project Content Model */
-  project?: Maybe<Project>;
-  /**
-   * A project object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  projectBy?: Maybe<Project>;
-  /** Connection between the RootQuery type and the project type */
-  projects?: Maybe<RootQueryToProjectConnection>;
   /** Fields of the &#039;ReadingSettings&#039; settings group */
   readingSettings?: Maybe<ReadingSettings>;
   /** Connection between the RootQuery type and the EnqueuedScript type */
@@ -11122,6 +13758,8 @@ export type RootQuery = {
   registeredStylesheets?: Maybe<RootQueryToEnqueuedStylesheetConnection>;
   /** Connection between the RootQuery type and the ContentNode type */
   revisions?: Maybe<RootQueryToRevisionsConnection>;
+  /** Returns seo site data */
+  seo?: Maybe<SeoConfig>;
   /** A 0bject */
   tag?: Maybe<Tag>;
   /** Connection between the RootQuery type and the tag type */
@@ -11134,15 +13772,6 @@ export type RootQuery = {
   termNode?: Maybe<TermNode>;
   /** Connection between the RootQuery type and the TermNode type */
   terms?: Maybe<RootQueryToTermNodeConnection>;
-  /** An object of the testimonial Type. Testimonial content model for the testimonials carousel */
-  testimonial?: Maybe<Testimonial>;
-  /**
-   * A testimonial object
-   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
-   */
-  testimonialBy?: Maybe<Testimonial>;
-  /** Connection between the RootQuery type and the testimonial type */
-  testimonials?: Maybe<RootQueryToTestimonialConnection>;
   /** A Theme object */
   theme?: Maybe<Theme>;
   /** Connection between the RootQuery type and the Theme type */
@@ -11228,6 +13857,64 @@ export type RootQueryContentTypesArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfDraftEntryArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<DraftEntryIdTypeEnum>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfEntriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToGfEntryConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfEntryArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<EntryIdTypeEnum>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfFormArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<FormIdTypeEnum>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfFormsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToGfFormConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfSubmittedEntriesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToGfSubmittedEntryConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryGfSubmittedEntryArgs = {
+  id: Scalars['ID'];
+  idType?: InputMaybe<SubmittedEntryIdTypeEnum>;
 };
 
 
@@ -11397,33 +14084,6 @@ export type RootQueryPostsArgs = {
 
 
 /** The root entry point into the Graph */
-export type RootQueryProjectArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<ProjectIdType>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryProjectByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  projectId?: InputMaybe<Scalars['Int']>;
-  slug?: InputMaybe<Scalars['String']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryProjectsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToProjectConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
 export type RootQueryRegisteredScriptsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -11503,33 +14163,6 @@ export type RootQueryTermsArgs = {
 
 
 /** The root entry point into the Graph */
-export type RootQueryTestimonialArgs = {
-  asPreview?: InputMaybe<Scalars['Boolean']>;
-  id: Scalars['ID'];
-  idType?: InputMaybe<TestimonialIdType>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryTestimonialByArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  slug?: InputMaybe<Scalars['String']>;
-  testimonialId?: InputMaybe<Scalars['Int']>;
-  uri?: InputMaybe<Scalars['String']>;
-};
-
-
-/** The root entry point into the Graph */
-export type RootQueryTestimonialsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<RootQueryToTestimonialConnectionWhereArgs>;
-};
-
-
-/** The root entry point into the Graph */
 export type RootQueryThemeArgs = {
   id: Scalars['ID'];
 };
@@ -11604,6 +14237,8 @@ export type RootQueryToCategoryConnectionPageInfo = CategoryConnectionPageInfo &
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -11683,6 +14318,8 @@ export type RootQueryToCommentConnectionPageInfo = CommentConnectionPageInfo & P
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -11778,6 +14415,8 @@ export type RootQueryToContentNodeConnectionPageInfo = ContentNodeConnectionPage
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -11851,6 +14490,8 @@ export type RootQueryToContentTypeConnectionPageInfo = ContentTypeConnectionPage
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -11884,6 +14525,8 @@ export type RootQueryToEnqueuedScriptConnectionPageInfo = EnqueuedScriptConnecti
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -11917,8 +14560,159 @@ export type RootQueryToEnqueuedStylesheetConnectionPageInfo = EnqueuedStylesheet
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the RootQuery type and the GfEntry type */
+export type RootQueryToGfEntryConnection = Connection & GfEntryConnection & {
+  __typename?: 'RootQueryToGfEntryConnection';
+  /** Edges for the RootQueryToGfEntryConnection connection */
+  edges: Array<RootQueryToGfEntryConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<GfEntry>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToGfEntryConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToGfEntryConnectionEdge = Edge & GfEntryConnectionEdge & {
+  __typename?: 'RootQueryToGfEntryConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: GfEntry;
+};
+
+/** Page Info on the &quot;RootQueryToGfEntryConnection&quot; */
+export type RootQueryToGfEntryConnectionPageInfo = GfEntryConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToGfEntryConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the RootQueryToGfEntryConnection connection */
+export type RootQueryToGfEntryConnectionWhereArgs = {
+  /** Date filters to apply. */
+  dateFilters?: InputMaybe<EntriesDateFiltersInput>;
+  /** Entry status. Default is `SUBMITTED`. Currently no other types are supported. */
+  entryType?: InputMaybe<EntryTypeEnum>;
+  /** Field-specific filters to apply. */
+  fieldFilters?: InputMaybe<Array<InputMaybe<EntriesFieldFiltersInput>>>;
+  /** Whether to filter by ALL or ANY of the field filters. Default is ALL. */
+  fieldFiltersMode?: InputMaybe<FieldFiltersModeEnum>;
+  /** Array of form IDs to limit the entries to. Exclude this argument to query all forms. */
+  formIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** How to sort the entries. */
+  orderby?: InputMaybe<EntriesConnectionOrderbyInput>;
+  /** Entry status. Default is "ACTIVE". */
+  status?: InputMaybe<EntryStatusEnum>;
+};
+
+/** Connection between the RootQuery type and the GfForm type */
+export type RootQueryToGfFormConnection = Connection & GfFormConnection & {
+  __typename?: 'RootQueryToGfFormConnection';
+  /** Edges for the RootQueryToGfFormConnection connection */
+  edges: Array<RootQueryToGfFormConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<GfForm>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToGfFormConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToGfFormConnectionEdge = Edge & GfFormConnectionEdge & {
+  __typename?: 'RootQueryToGfFormConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: GfForm;
+};
+
+/** Page Info on the &quot;RootQueryToGfFormConnection&quot; */
+export type RootQueryToGfFormConnectionPageInfo = GfFormConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToGfFormConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the RootQueryToGfFormConnection connection */
+export type RootQueryToGfFormConnectionWhereArgs = {
+  /** Array of form database IDs to return. Exclude this argument to query all forms. */
+  formIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** How to sort the entries. */
+  orderby?: InputMaybe<FormsConnectionOrderbyInput>;
+  /** Status of the forms to get. */
+  status?: InputMaybe<FormStatusEnum>;
+};
+
+/** Connection between the RootQuery type and the GfSubmittedEntry type */
+export type RootQueryToGfSubmittedEntryConnection = Connection & GfSubmittedEntryConnection & {
+  __typename?: 'RootQueryToGfSubmittedEntryConnection';
+  /** Edges for the RootQueryToGfSubmittedEntryConnection connection */
+  edges: Array<RootQueryToGfSubmittedEntryConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<GfSubmittedEntry>;
+  /** Information about pagination in a connection. */
+  pageInfo: RootQueryToGfSubmittedEntryConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type RootQueryToGfSubmittedEntryConnectionEdge = Edge & GfSubmittedEntryConnectionEdge & {
+  __typename?: 'RootQueryToGfSubmittedEntryConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: GfSubmittedEntry;
+};
+
+/** Page Info on the &quot;RootQueryToGfSubmittedEntryConnection&quot; */
+export type RootQueryToGfSubmittedEntryConnectionPageInfo = GfSubmittedEntryConnectionPageInfo & PageInfo & WpPageInfo & {
+  __typename?: 'RootQueryToGfSubmittedEntryConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Arguments for filtering the RootQueryToGfSubmittedEntryConnection connection */
+export type RootQueryToGfSubmittedEntryConnectionWhereArgs = {
+  /** Date filters to apply. */
+  dateFilters?: InputMaybe<EntriesDateFiltersInput>;
+  /** Field-specific filters to apply. */
+  fieldFilters?: InputMaybe<Array<InputMaybe<EntriesFieldFiltersInput>>>;
+  /** Whether to filter by ALL or ANY of the field filters. Default is ALL. */
+  fieldFiltersMode?: InputMaybe<FieldFiltersModeEnum>;
+  /** Array of form IDs to limit the entries to. Exclude this argument to query all forms. */
+  formIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** How to sort the entries. */
+  orderby?: InputMaybe<EntriesConnectionOrderbyInput>;
+  /** Entry status. Default is "ACTIVE". */
+  status?: InputMaybe<EntryStatusEnum>;
 };
 
 /** Connection between the RootQuery type and the mediaItem type */
@@ -11950,6 +14744,8 @@ export type RootQueryToMediaItemConnectionPageInfo = MediaItemConnectionPageInfo
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12029,6 +14825,8 @@ export type RootQueryToMenuConnectionPageInfo = MenuConnectionPageInfo & PageInf
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12072,6 +14870,8 @@ export type RootQueryToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12117,6 +14917,8 @@ export type RootQueryToPageConnectionPageInfo = PageConnectionPageInfo & PageInf
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12196,6 +14998,8 @@ export type RootQueryToPluginConnectionPageInfo = PageInfo & PluginConnectionPag
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12239,6 +15043,8 @@ export type RootQueryToPostConnectionPageInfo = PageInfo & PostConnectionPageInf
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12338,6 +15144,8 @@ export type RootQueryToPostFormatConnectionPageInfo = PageInfo & PostFormatConne
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12388,85 +15196,6 @@ export type RootQueryToPostFormatConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** Connection between the RootQuery type and the project type */
-export type RootQueryToProjectConnection = Connection & ProjectConnection & {
-  __typename?: 'RootQueryToProjectConnection';
-  /** Edges for the RootQueryToProjectConnection connection */
-  edges: Array<RootQueryToProjectConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<Project>;
-  /** Information about pagination in a connection. */
-  pageInfo: RootQueryToProjectConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type RootQueryToProjectConnectionEdge = Edge & ProjectConnectionEdge & {
-  __typename?: 'RootQueryToProjectConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node: Project;
-};
-
-/** Page Info on the &quot;RootQueryToProjectConnection&quot; */
-export type RootQueryToProjectConnectionPageInfo = PageInfo & ProjectConnectionPageInfo & WpPageInfo & {
-  __typename?: 'RootQueryToProjectConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
-};
-
-/** Arguments for filtering the RootQueryToProjectConnection connection */
-export type RootQueryToProjectConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: InputMaybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: InputMaybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
 /** Connection between the RootQuery type and the ContentNode type */
 export type RootQueryToRevisionsConnection = Connection & ContentNodeConnection & {
   __typename?: 'RootQueryToRevisionsConnection';
@@ -12496,6 +15225,8 @@ export type RootQueryToRevisionsConnectionPageInfo = ContentNodeConnectionPageIn
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12569,6 +15300,8 @@ export type RootQueryToTagConnectionPageInfo = PageInfo & TagConnectionPageInfo 
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12648,6 +15381,8 @@ export type RootQueryToTaxonomyConnectionPageInfo = PageInfo & TaxonomyConnectio
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12681,6 +15416,8 @@ export type RootQueryToTermNodeConnectionPageInfo = PageInfo & TermNodeConnectio
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12733,85 +15470,6 @@ export type RootQueryToTermNodeConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
 };
 
-/** Connection between the RootQuery type and the testimonial type */
-export type RootQueryToTestimonialConnection = Connection & TestimonialConnection & {
-  __typename?: 'RootQueryToTestimonialConnection';
-  /** Edges for the RootQueryToTestimonialConnection connection */
-  edges: Array<RootQueryToTestimonialConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<Testimonial>;
-  /** Information about pagination in a connection. */
-  pageInfo: RootQueryToTestimonialConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type RootQueryToTestimonialConnectionEdge = Edge & TestimonialConnectionEdge & {
-  __typename?: 'RootQueryToTestimonialConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node: Testimonial;
-};
-
-/** Page Info on the &quot;RootQueryToTestimonialConnection&quot; */
-export type RootQueryToTestimonialConnectionPageInfo = PageInfo & TestimonialConnectionPageInfo & WpPageInfo & {
-  __typename?: 'RootQueryToTestimonialConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
-};
-
-/** Arguments for filtering the RootQueryToTestimonialConnection connection */
-export type RootQueryToTestimonialConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: InputMaybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: InputMaybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
 /** Connection between the RootQuery type and the Theme type */
 export type RootQueryToThemeConnection = Connection & ThemeConnection & {
   __typename?: 'RootQueryToThemeConnection';
@@ -12841,6 +15499,8 @@ export type RootQueryToThemeConnectionPageInfo = PageInfo & ThemeConnectionPageI
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12874,6 +15534,8 @@ export type RootQueryToUserConnectionPageInfo = PageInfo & UserConnectionPageInf
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -12941,8 +15603,418 @@ export type RootQueryToUserRoleConnectionPageInfo = PageInfo & UserRoleConnectio
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO breadcrumb config */
+export type SeoBreadcrumbs = {
+  __typename?: 'SEOBreadcrumbs';
+  archivePrefix?: Maybe<Scalars['String']>;
+  boldLast?: Maybe<Scalars['Boolean']>;
+  enabled?: Maybe<Scalars['Boolean']>;
+  homeText?: Maybe<Scalars['String']>;
+  notFoundText?: Maybe<Scalars['String']>;
+  prefix?: Maybe<Scalars['String']>;
+  searchPrefix?: Maybe<Scalars['String']>;
+  separator?: Maybe<Scalars['String']>;
+  showBlogPage?: Maybe<Scalars['Boolean']>;
+};
+
+/** Types of cards */
+export enum SeoCardType {
+  Summary = 'summary',
+  SummaryLargeImage = 'summary_large_image'
+}
+
+/** The Yoast SEO site level configuration data */
+export type SeoConfig = {
+  __typename?: 'SEOConfig';
+  breadcrumbs?: Maybe<SeoBreadcrumbs>;
+  contentTypes?: Maybe<SeoContentTypes>;
+  meta?: Maybe<SeoGlobalMeta>;
+  openGraph?: Maybe<SeoOpenGraph>;
+  redirects?: Maybe<Array<Maybe<SeoRedirect>>>;
+  schema?: Maybe<SeoSchema>;
+  social?: Maybe<SeoSocial>;
+  webmaster?: Maybe<SeoWebmaster>;
+};
+
+/** The Yoast SEO search appearance content types fields */
+export type SeoContentType = {
+  __typename?: 'SEOContentType';
+  archive?: Maybe<SeoContentTypeArchive>;
+  metaDesc?: Maybe<Scalars['String']>;
+  metaRobotsNoindex?: Maybe<Scalars['Boolean']>;
+  schema?: Maybe<SeoPageInfoSchema>;
+  schemaType?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO search appearance content types fields */
+export type SeoContentTypeArchive = {
+  __typename?: 'SEOContentTypeArchive';
+  archiveLink?: Maybe<Scalars['String']>;
+  breadcrumbTitle?: Maybe<Scalars['String']>;
+  fullHead?: Maybe<Scalars['String']>;
+  hasArchive?: Maybe<Scalars['Boolean']>;
+  metaDesc?: Maybe<Scalars['String']>;
+  metaRobotsFollow?: Maybe<Scalars['String']>;
+  metaRobotsIndex?: Maybe<Scalars['String']>;
+  metaRobotsNofollow?: Maybe<Scalars['Boolean']>;
+  metaRobotsNoindex?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO search appearance content types */
+export type SeoContentTypes = {
+  __typename?: 'SEOContentTypes';
+  mediaItem?: Maybe<SeoContentType>;
+  page?: Maybe<SeoContentType>;
+  post?: Maybe<SeoContentType>;
+};
+
+/** The Yoast SEO meta data */
+export type SeoGlobalMeta = {
+  __typename?: 'SEOGlobalMeta';
+  author?: Maybe<SeoGlobalMetaAuthor>;
+  config?: Maybe<SeoGlobalMetaConfig>;
+  date?: Maybe<SeoGlobalMetaDate>;
+  homepage?: Maybe<SeoGlobalMetaHome>;
+  notFound?: Maybe<SeoGlobalMeta404>;
+};
+
+/** The Yoast SEO meta 404 data */
+export type SeoGlobalMeta404 = {
+  __typename?: 'SEOGlobalMeta404';
+  breadcrumb?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO Author data */
+export type SeoGlobalMetaAuthor = {
+  __typename?: 'SEOGlobalMetaAuthor';
+  description?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO meta config data */
+export type SeoGlobalMetaConfig = {
+  __typename?: 'SEOGlobalMetaConfig';
+  separator?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO Date data */
+export type SeoGlobalMetaDate = {
+  __typename?: 'SEOGlobalMetaDate';
+  description?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO homepage data */
+export type SeoGlobalMetaHome = {
+  __typename?: 'SEOGlobalMetaHome';
+  description?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Open Graph data */
+export type SeoOpenGraph = {
+  __typename?: 'SEOOpenGraph';
+  defaultImage?: Maybe<MediaItem>;
+  frontPage?: Maybe<SeoOpenGraphFrontPage>;
+};
+
+/** The Open Graph Front page data */
+export type SeoOpenGraphFrontPage = {
+  __typename?: 'SEOOpenGraphFrontPage';
+  description?: Maybe<Scalars['String']>;
+  image?: Maybe<MediaItem>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The Schema for post type */
+export type SeoPageInfoSchema = {
+  __typename?: 'SEOPageInfoSchema';
+  raw?: Maybe<Scalars['String']>;
+};
+
+export type SeoPostTypeBreadcrumbs = {
+  __typename?: 'SEOPostTypeBreadcrumbs';
+  text?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+/** The page info SEO details */
+export type SeoPostTypePageInfo = {
+  __typename?: 'SEOPostTypePageInfo';
+  schema?: Maybe<SeoPageInfoSchema>;
+};
+
+/** The Schema types */
+export type SeoPostTypeSchema = {
+  __typename?: 'SEOPostTypeSchema';
+  articleType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  pageType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  raw?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast redirect data  (Yoast Premium only) */
+export type SeoRedirect = {
+  __typename?: 'SEORedirect';
+  format?: Maybe<Scalars['String']>;
+  origin?: Maybe<Scalars['String']>;
+  target?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['Int']>;
+};
+
+/** The Yoast SEO schema data */
+export type SeoSchema = {
+  __typename?: 'SEOSchema';
+  companyLogo?: Maybe<MediaItem>;
+  companyName?: Maybe<Scalars['String']>;
+  companyOrPerson?: Maybe<Scalars['String']>;
+  homeUrl?: Maybe<Scalars['String']>;
+  inLanguage?: Maybe<Scalars['String']>;
+  logo?: Maybe<MediaItem>;
+  personLogo?: Maybe<MediaItem>;
+  personName?: Maybe<Scalars['String']>;
+  siteName?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
+  wordpressSiteName?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO Social media links */
+export type SeoSocial = {
+  __typename?: 'SEOSocial';
+  facebook?: Maybe<SeoSocialFacebook>;
+  instagram?: Maybe<SeoSocialInstagram>;
+  linkedIn?: Maybe<SeoSocialLinkedIn>;
+  mySpace?: Maybe<SeoSocialMySpace>;
+  otherSocials?: Maybe<Array<Maybe<Scalars['String']>>>;
+  pinterest?: Maybe<SeoSocialPinterest>;
+  twitter?: Maybe<SeoSocialTwitter>;
+  wikipedia?: Maybe<SeoSocialWikipedia>;
+  youTube?: Maybe<SeoSocialYoutube>;
+};
+
+export type SeoSocialFacebook = {
+  __typename?: 'SEOSocialFacebook';
+  defaultImage?: Maybe<MediaItem>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialInstagram = {
+  __typename?: 'SEOSocialInstagram';
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialLinkedIn = {
+  __typename?: 'SEOSocialLinkedIn';
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialMySpace = {
+  __typename?: 'SEOSocialMySpace';
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialPinterest = {
+  __typename?: 'SEOSocialPinterest';
+  metaTag?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialTwitter = {
+  __typename?: 'SEOSocialTwitter';
+  cardType?: Maybe<SeoCardType>;
+  username?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialWikipedia = {
+  __typename?: 'SEOSocialWikipedia';
+  url?: Maybe<Scalars['String']>;
+};
+
+export type SeoSocialYoutube = {
+  __typename?: 'SEOSocialYoutube';
+  url?: Maybe<Scalars['String']>;
+};
+
+/** The Schema types for Taxonomy */
+export type SeoTaxonomySchema = {
+  __typename?: 'SEOTaxonomySchema';
+  raw?: Maybe<Scalars['String']>;
+};
+
+export type SeoUser = {
+  __typename?: 'SEOUser';
+  breadcrumbTitle?: Maybe<Scalars['String']>;
+  canonical?: Maybe<Scalars['String']>;
+  fullHead?: Maybe<Scalars['String']>;
+  language?: Maybe<Scalars['String']>;
+  metaDesc?: Maybe<Scalars['String']>;
+  metaRobotsNofollow?: Maybe<Scalars['String']>;
+  metaRobotsNoindex?: Maybe<Scalars['String']>;
+  opengraphDescription?: Maybe<Scalars['String']>;
+  opengraphImage?: Maybe<MediaItem>;
+  opengraphTitle?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+  schema?: Maybe<SeoUserSchema>;
+  social?: Maybe<SeoUserSocial>;
+  title?: Maybe<Scalars['String']>;
+  twitterDescription?: Maybe<Scalars['String']>;
+  twitterImage?: Maybe<MediaItem>;
+  twitterTitle?: Maybe<Scalars['String']>;
+};
+
+/** The Schema types for User */
+export type SeoUserSchema = {
+  __typename?: 'SEOUserSchema';
+  articleType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  pageType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  raw?: Maybe<Scalars['String']>;
+};
+
+export type SeoUserSocial = {
+  __typename?: 'SEOUserSocial';
+  facebook?: Maybe<Scalars['String']>;
+  instagram?: Maybe<Scalars['String']>;
+  linkedIn?: Maybe<Scalars['String']>;
+  mySpace?: Maybe<Scalars['String']>;
+  pinterest?: Maybe<Scalars['String']>;
+  soundCloud?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
+  youTube?: Maybe<Scalars['String']>;
+};
+
+/** The Yoast SEO  webmaster fields */
+export type SeoWebmaster = {
+  __typename?: 'SEOWebmaster';
+  baiduVerify?: Maybe<Scalars['String']>;
+  googleVerify?: Maybe<Scalars['String']>;
+  msVerify?: Maybe<Scalars['String']>;
+  yandexVerify?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms section field. */
+export type SectionField = FormField & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithLabelSetting & {
+  __typename?: 'SectionField';
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms select field. */
+export type SelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'SelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** SelectFieldChoice choice values. */
+export type SelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'SelectFieldChoice';
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
 };
 
 /** Input for the sendPasswordResetEmail mutation. */
@@ -12970,8 +16042,6 @@ export type SendPasswordResetEmailPayload = {
 /** All of the registered settings */
 export type Settings = {
   __typename?: 'Settings';
-  /** Settings of the the string Settings Group */
-  atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking?: Maybe<Scalars['String']>;
   /** Settings of the the string Settings Group */
   discussionSettingsDefaultCommentStatus?: Maybe<Scalars['String']>;
   /** Settings of the the string Settings Group */
@@ -13010,6 +16080,383 @@ export type Settings = {
   writingSettingsUseSmilies?: Maybe<Scalars['Boolean']>;
 };
 
+/** A Gravity Forms shipping field. */
+export type ShippingField = {
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** A Gravity Forms radio shipping field. */
+export type ShippingRadioField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithOtherChoiceSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & ShippingField & {
+  __typename?: 'ShippingRadioField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** Indicates whether the &#039;Enable &quot;other&quot; choice&#039; option is checked in the editor. */
+  hasOtherChoice?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** ShippingRadioFieldChoice choice values. */
+export type ShippingRadioFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & GfFieldChoiceWithOtherChoiceSetting & {
+  __typename?: 'ShippingRadioFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Indicates the radio button item is the “Other” choice. */
+  isOtherChoice?: Maybe<Scalars['Boolean']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms select shipping field. */
+export type ShippingSelectField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithChoices & GfFieldWithChoicesSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithEnhancedUiSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & ShippingField & {
+  __typename?: 'ShippingSelectField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** The choices for the field. */
+  choices?: Maybe<Array<Maybe<GfFieldChoice>>>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field (checkbox, select or radio) have choice values enabled, which allows the field to have choice values different from the labels that are displayed to the user. */
+  hasChoiceValue?: Maybe<Scalars['Boolean']>;
+  /** When set to true, the &quot;Chosen&quot; jQuery script will be applied to this field, enabling search capabilities to Drop Down fields and a more user-friendly interface for Multi Select fields. */
+  hasEnhancedUI?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** ShippingSelectFieldChoice choice values. */
+export type ShippingSelectFieldChoice = GfFieldChoice & GfFieldChoiceWithChoicesSetting & {
+  __typename?: 'ShippingSelectFieldChoice';
+  /** The price associated with the choice. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /** Determines if this choice should be selected by default when displayed. The value true will select the choice, whereas false will display it unselected. */
+  isSelected?: Maybe<Scalars['Boolean']>;
+  /** The price associated with the choice. */
+  price?: Maybe<Scalars['Float']>;
+  /** The text to be displayed to the user when displaying this choice. */
+  text?: Maybe<Scalars['String']>;
+  /** The value to be stored in the database when this choice is selected. Note: This property is only supported by the Drop Down and Post Category fields. Checkboxes and Radio fields will store the text property in the database regardless of the value property. */
+  value?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms singleshipping singleshipping field. */
+export type ShippingSingleField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithBasePriceSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & ShippingField & {
+  __typename?: 'ShippingSingleField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** The price of the product, prefixed by the currency. */
+  formattedPrice?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The price of the product. */
+  price?: Maybe<Scalars['Float']>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** The Confirmation object returned on submission. Null if the submission was not successful. */
+export type SubmissionConfirmation = {
+  __typename?: 'SubmissionConfirmation';
+  /** Contains the confirmation message HTML to display. Only applicable when type is set to `MESSAGE`. */
+  message?: Maybe<Scalars['String']>;
+  /** Connection between the SubmissionConfirmation type and the Page type */
+  page?: Maybe<SubmissionConfirmationToPageConnectionEdge>;
+  /** Contains the Id of the WordPress page that the browser will be redirected to. Only applicable when type is set to `PAGE`. */
+  pageId?: Maybe<Scalars['Int']>;
+  /** Contains the query string to be appended to the redirection url. Only applicable when type is set to `REDIRECT` or `PAGE` . */
+  queryString?: Maybe<Scalars['String']>;
+  /** Determines the type of confirmation to be used. */
+  type?: Maybe<SubmissionConfirmationTypeEnum>;
+  /** The URL the submission should redirect to. Only applicable when type is set to `REDIRECT`. */
+  url?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the SubmissionConfirmation type and the Page type */
+export type SubmissionConfirmationToPageConnectionEdge = Edge & OneToOneConnection & PageConnectionEdge & {
+  __typename?: 'SubmissionConfirmationToPageConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The node of the connection, without the edges */
+  node: Page;
+};
+
+/** Type of confirmation returned by the submission. */
+export enum SubmissionConfirmationTypeEnum {
+  /** A confirmation "message". */
+  Message = 'MESSAGE',
+  /** A "redirect" to a given URL. */
+  Redirect = 'REDIRECT'
+}
+
+/** Entry meta input fields for submitting Gravity Forms forms. */
+export type SubmitFormMetaInput = {
+  /** ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: InputMaybe<Scalars['Int']>;
+  /** The UTC date the entry was created, in `Y-m-d H:i:s` format. */
+  dateCreatedGmt?: InputMaybe<Scalars['String']>;
+  /** Client IP of user who submitted the form. */
+  ip?: InputMaybe<Scalars['String']>;
+  /** Used to overwrite the sourceUrl the form was submitted from. */
+  sourceUrl?: InputMaybe<Scalars['String']>;
+  /** The name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: InputMaybe<Scalars['String']>;
+};
+
+/** Input for the submitGfDraftEntry mutation. */
+export type SubmitGfDraftEntryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** Either the global ID of the draft entry, or its resume token. */
+  id: Scalars['ID'];
+  /** The ID type for the draft entry. Defaults to `ID` . */
+  idType?: InputMaybe<DraftEntryIdTypeEnum>;
+};
+
+/** The payload for the submitGfDraftEntry mutation. */
+export type SubmitGfDraftEntryPayload = {
+  __typename?: 'SubmitGfDraftEntryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The form confirmation data. Null if the submission has `errors` */
+  confirmation?: Maybe<SubmissionConfirmation>;
+  /** The entry that was created. */
+  entry?: Maybe<GfSubmittedEntry>;
+  /** Field errors. */
+  errors?: Maybe<Array<Maybe<FieldError>>>;
+};
+
+/** Input for the submitGfForm mutation. */
+export type SubmitGfFormInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The entry meta associated with the submission. */
+  entryMeta?: InputMaybe<SubmitFormMetaInput>;
+  /** The field ids and their values. */
+  fieldValues: Array<InputMaybe<FormFieldValuesInput>>;
+  /** The form ID. Accepts either a global or Database ID. */
+  id: Scalars['ID'];
+  /** Set to `true` if submitting a draft entry. Defaults to `false`. */
+  saveAsDraft?: InputMaybe<Scalars['Boolean']>;
+  /** Useful for multi-page forms to indicate which page of the form was just submitted. */
+  sourcePage?: InputMaybe<Scalars['Int']>;
+  /** Useful for multi-page forms to indicate which page is to be loaded if the current page passes validation. */
+  targetPage?: InputMaybe<Scalars['Int']>;
+};
+
+/** The payload for the submitGfForm mutation. */
+export type SubmitGfFormPayload = {
+  __typename?: 'SubmitGfFormPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The form confirmation data. Null if the submission has `errors` */
+  confirmation?: Maybe<SubmissionConfirmation>;
+  /** The entry that was created. */
+  entry?: Maybe<GfEntry>;
+  /** Field errors. */
+  errors?: Maybe<Array<Maybe<FieldError>>>;
+  /** Draft resume URL. Null if submitting an entry. If the &quot;Referer&quot; header is not included in the request, this will be an empty string. */
+  resumeUrl?: Maybe<Scalars['String']>;
+};
+
+/** The Type of Identifier used to fetch a single resource. */
+export enum SubmittedEntryIdTypeEnum {
+  /** The database ID assigned by Gravity Forms. Used by submitted entries. */
+  DatabaseId = 'DATABASE_ID',
+  /** Unique global ID for the object. */
+  Id = 'ID'
+}
+
 /** The tag type */
 export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable & {
   __typename?: 'Tag';
@@ -13041,6 +16488,8 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   name?: Maybe<Scalars['String']>;
   /** Connection between the Tag type and the post type */
   posts?: Maybe<TagToPostConnection>;
+  /** The Yoast SEO data of the Tags taxonomy. */
+  seo?: Maybe<TaxonomySeo>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']>;
   /**
@@ -13125,6 +16574,8 @@ export type TagConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13172,6 +16623,8 @@ export type TagToContentNodeConnectionPageInfo = ContentNodeConnectionPageInfo &
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13245,6 +16698,8 @@ export type TagToPostConnectionPageInfo = PageInfo & PostConnectionPageInfo & Wp
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13404,6 +16859,8 @@ export type TaxonomyConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13425,6 +16882,34 @@ export enum TaxonomyIdTypeEnum {
   /** The name of the taxonomy */
   Name = 'NAME'
 }
+
+export type TaxonomySeo = {
+  __typename?: 'TaxonomySEO';
+  breadcrumbs?: Maybe<Array<Maybe<SeoPostTypeBreadcrumbs>>>;
+  canonical?: Maybe<Scalars['String']>;
+  cornerstone?: Maybe<Scalars['Boolean']>;
+  focuskw?: Maybe<Scalars['String']>;
+  fullHead?: Maybe<Scalars['String']>;
+  metaDesc?: Maybe<Scalars['String']>;
+  metaKeywords?: Maybe<Scalars['String']>;
+  metaRobotsNofollow?: Maybe<Scalars['String']>;
+  metaRobotsNoindex?: Maybe<Scalars['String']>;
+  opengraphAuthor?: Maybe<Scalars['String']>;
+  opengraphDescription?: Maybe<Scalars['String']>;
+  opengraphImage?: Maybe<MediaItem>;
+  opengraphModifiedTime?: Maybe<Scalars['String']>;
+  opengraphPublishedTime?: Maybe<Scalars['String']>;
+  opengraphPublisher?: Maybe<Scalars['String']>;
+  opengraphSiteName?: Maybe<Scalars['String']>;
+  opengraphTitle?: Maybe<Scalars['String']>;
+  opengraphType?: Maybe<Scalars['String']>;
+  opengraphUrl?: Maybe<Scalars['String']>;
+  schema?: Maybe<SeoTaxonomySchema>;
+  title?: Maybe<Scalars['String']>;
+  twitterDescription?: Maybe<Scalars['String']>;
+  twitterImage?: Maybe<MediaItem>;
+  twitterTitle?: Maybe<Scalars['String']>;
+};
 
 /** Connection between the Taxonomy type and the ContentType type */
 export type TaxonomyToContentTypeConnection = Connection & ContentTypeConnection & {
@@ -13455,20 +16940,79 @@ export type TaxonomyToContentTypeConnectionPageInfo = ContentTypeConnectionPageI
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
 
 /** The template assigned to the node */
-export type Template_Blank = ContentTemplate & {
-  __typename?: 'Template_Blank';
+export type Template_About = ContentTemplate & {
+  __typename?: 'Template_About';
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;PAGE: About&quot; was set to Show in GraphQL. */
+  about?: Maybe<Template_About_About>;
   /** The name of the template */
   templateName?: Maybe<Scalars['String']>;
 };
 
+/** Field Group */
+export type Template_About_About = AcfFieldGroup & {
+  __typename?: 'Template_About_About';
+  aboutCta?: Maybe<Template_About_About_AboutCta>;
+  aboutHero?: Maybe<Template_About_About_AboutHero>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+};
+
+/** Field Group */
+export type Template_About_About_AboutCta = AcfFieldGroup & {
+  __typename?: 'Template_About_About_AboutCta';
+  aboutCtaBody?: Maybe<Scalars['String']>;
+  aboutCtaButton?: Maybe<AcfLink>;
+  aboutCtaHeading?: Maybe<Scalars['String']>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+};
+
+/** Field Group */
+export type Template_About_About_AboutHero = AcfFieldGroup & {
+  __typename?: 'Template_About_About_AboutHero';
+  aboutHeroBody?: Maybe<Scalars['String']>;
+  aboutHeroBottom?: Maybe<Scalars['String']>;
+  aboutHeroHeading?: Maybe<Scalars['String']>;
+  aboutHeroIllustration?: Maybe<MediaItem>;
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+};
+
 /** The template assigned to the node */
-export type Template_BlogAlternative = ContentTemplate & {
-  __typename?: 'Template_BlogAlternative';
+export type Template_Contact = ContentTemplate & {
+  __typename?: 'Template_Contact';
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;PAGE: Contact&quot; was set to Show in GraphQL. */
+  contact?: Maybe<Template_Contact_Contact>;
+  /** The name of the template */
+  templateName?: Maybe<Scalars['String']>;
+};
+
+/** Field Group */
+export type Template_Contact_Contact = AcfFieldGroup & {
+  __typename?: 'Template_Contact_Contact';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  heroSection?: Maybe<Template_Contact_Contact_HeroSection>;
+};
+
+/** Field Group */
+export type Template_Contact_Contact_HeroSection = AcfFieldGroup & {
+  __typename?: 'Template_Contact_Contact_HeroSection';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** The template assigned to the node */
+export type Template_Home = ContentTemplate & {
+  __typename?: 'Template_Home';
   /** The name of the template */
   templateName?: Maybe<Scalars['String']>;
 };
@@ -13556,6 +17100,8 @@ export type TermNodeConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13603,6 +17149,8 @@ export type TermNodeToEnqueuedScriptConnectionPageInfo = EnqueuedScriptConnectio
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13636,6 +17184,8 @@ export type TermNodeToEnqueuedStylesheetConnectionPageInfo = EnqueuedStylesheetC
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -13658,156 +17208,140 @@ export enum TermObjectsConnectionOrderbyEnum {
   TermOrder = 'TERM_ORDER'
 }
 
-/** The testimonial type */
-export type Testimonial = ContentNode & DatabaseIdentifier & Node & NodeWithAuthor & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
-  __typename?: 'Testimonial';
-  /** Connection between the NodeWithAuthor type and the User type */
-  author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
-  /** The database identifier of the author of the node */
-  authorDatabaseId?: Maybe<Scalars['Int']>;
-  /** The globally unique identifier of the author of the node */
-  authorId?: Maybe<Scalars['ID']>;
-  /** @deprecated Deprecated in favor of using Next.js pages */
-  conditionalTags?: Maybe<ConditionalTags>;
-  /** Connection between the ContentNode type and the ContentType type */
-  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
-  /** The name of the Content Type the node belongs to */
-  contentTypeName: Scalars['String'];
-  /** The unique identifier stored in the database */
+/** A Gravity Forms textarea field. */
+export type TextAreaField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRichTextEditorSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'TextAreaField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
   databaseId: Scalars['Int'];
-  /** Post publishing date. */
-  date?: Maybe<Scalars['String']>;
-  /** The publishing date set in GMT. */
-  dateGmt?: Maybe<Scalars['String']>;
-  /** The desired slug of the post */
-  desiredSlug?: Maybe<Scalars['String']>;
-  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
-  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
-  /** The RSS enclosure for the object */
-  enclosure?: Maybe<Scalars['String']>;
-  /** Connection between the ContentNode type and the EnqueuedScript type */
-  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
-  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
-  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
-  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
-  guid?: Maybe<Scalars['String']>;
-  /** The globally unique identifier of the testimonial object. */
-  id: Scalars['ID'];
-  /** Whether the node is a Content Node */
-  isContentNode: Scalars['Boolean'];
-  /** Whether the object is a node in the preview state */
-  isPreview?: Maybe<Scalars['Boolean']>;
-  /** Whether the object is restricted from the current viewer */
-  isRestricted?: Maybe<Scalars['Boolean']>;
-  /** Whether the node is a Term */
-  isTermNode: Scalars['Boolean'];
-  /** The user that most recently edited the node */
-  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
-  /** The permalink of the post */
-  link?: Maybe<Scalars['String']>;
-  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
-  modified?: Maybe<Scalars['String']>;
-  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
-  modifiedGmt?: Maybe<Scalars['String']>;
-  /** Connection between the Testimonial type and the testimonial type */
-  preview?: Maybe<TestimonialToPreviewConnectionEdge>;
-  /** The database id of the preview node */
-  previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
-  /** Whether the object is a node in the preview state */
-  previewRevisionId?: Maybe<Scalars['ID']>;
-  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
-  slug?: Maybe<Scalars['String']>;
-  /** The current status of the object */
-  status?: Maybe<Scalars['String']>;
-  /** The template assigned to the node */
-  template?: Maybe<ContentTemplate>;
-  templates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  testimonialAuthor?: Maybe<Scalars['String']>;
-  testimonialContent?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Indicates whether the field uses the rich text editor interface. */
+  hasRichTextEditor?: Maybe<Scalars['Boolean']>;
   /**
-   * The id field matches the WP_Post-&gt;ID field.
-   * @deprecated Deprecated in favor of the databaseId field
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
    */
-  testimonialId: Scalars['Int'];
-  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
-  title?: Maybe<Scalars['String']>;
-  /** The unique resource identifier path */
-  uri?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
-
-/** The testimonial type */
-export type TestimonialEnqueuedScriptsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** The testimonial type */
-export type TestimonialEnqueuedStylesheetsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** The testimonial type */
-export type TestimonialTitleArgs = {
-  format?: InputMaybe<PostObjectFieldFormatEnum>;
-};
-
-/** Connection to testimonial Nodes */
-export type TestimonialConnection = {
-  /** A list of edges (relational context) between RootQuery and connected testimonial Nodes */
-  edges: Array<TestimonialConnectionEdge>;
-  /** A list of connected testimonial Nodes */
-  nodes: Array<Testimonial>;
-  /** Information about pagination in a connection. */
-  pageInfo: TestimonialConnectionPageInfo;
-};
-
-/** Edge between a Node and a connected testimonial */
-export type TestimonialConnectionEdge = {
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']>;
-  /** The connected testimonial Node */
-  node: Testimonial;
-};
-
-/** Page Info on the connected TestimonialConnectionEdge */
-export type TestimonialConnectionPageInfo = {
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
-};
-
-/** The Type of Identifier used to fetch a single resource. Default is ID. */
-export enum TestimonialIdType {
-  /** Identify a resource by the Database ID. */
-  DatabaseId = 'DATABASE_ID',
-  /** Identify a resource by the (hashed) Global ID. */
-  Id = 'ID',
-  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
-  Slug = 'SLUG',
-  /** Identify a resource by the URI. */
-  Uri = 'URI'
-}
-
-/** Connection between the Testimonial type and the testimonial type */
-export type TestimonialToPreviewConnectionEdge = Edge & OneToOneConnection & TestimonialConnectionEdge & {
-  __typename?: 'TestimonialToPreviewConnectionEdge';
-  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
-  cursor?: Maybe<Scalars['String']>;
-  /** The node of the connection, without the edges */
-  node: Testimonial;
+/** A Gravity Forms text field. */
+export type TextField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithAutocompleteSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputMaskSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithMaxLengthSetting & GfFieldWithPasswordFieldSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'TextField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /** Whether autocomplete should be enabled for this field. */
+  hasAutocomplete?: Maybe<Scalars['Boolean']>;
+  /** Whether the field has an input mask. */
+  hasInputMask?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The pattern used for the input mask. */
+  inputMaskValue?: Maybe<Scalars['String']>;
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if a text field input tag should be created with a &quot;password&quot; type. */
+  isPasswordInput?: Maybe<Scalars['Boolean']>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** Specifies the maximum number of characters allowed in a text or textarea (paragraph) field. */
+  maxLength?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** A theme object */
@@ -13863,8 +17397,154 @@ export type ThemeConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms time field. */
+export type TimeField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithInputs & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSubLabelPlacementSetting & GfFieldWithTimeFormatSetting & {
+  __typename?: 'TimeField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** The inputs for the field. */
+  inputs?: Maybe<Array<Maybe<GfFieldInput>>>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** The placement of the labels for the subfields within the group. This setting controls all of the subfields, they cannot be set individually. They may be aligned above or below the inputs. If this property is not set, the “Sub-Label Placement” setting on the Form Settings-&gt;Form Layout page is used. If no setting is specified, the default is above inputs. */
+  subLabelPlacement?: Maybe<FormFieldSubLabelPlacementEnum>;
+  /** Determines how the time is displayed. */
+  timeFormat?: Maybe<TimeFieldFormatEnum>;
+  /** Time field value. */
+  timeValues?: Maybe<TimeFieldValue>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
+};
+
+/** How the time is displayed. */
+export enum TimeFieldFormatEnum {
+  /** 12-hour time format. */
+  H12 = 'H12',
+  /** 24-hour time format. */
+  H24 = 'H24'
+}
+
+/** The individual properties for each element of the Time value field. */
+export type TimeFieldValue = {
+  __typename?: 'TimeFieldValue';
+  /** AM or PM. */
+  amPm?: Maybe<AmPmEnum>;
+  /** The full display value in 12-hour format. Example: &quot;08:25 am&quot;. */
+  displayValue?: Maybe<Scalars['String']>;
+  /** The hours, in this format: hh. */
+  hours?: Maybe<Scalars['String']>;
+  /** The minutes, in this format: mm. */
+  minutes?: Maybe<Scalars['String']>;
+};
+
+/** TimeInputProperty input values. */
+export type TimeInputProperty = GfFieldInput & GfFieldInputWithTimeFormatSetting & {
+  __typename?: 'TimeInputProperty';
+  /** The autocomplete attribute for the field. */
+  autocompleteAttribute?: Maybe<Scalars['String']>;
+  /** The custom label for the input. When set, this is used in place of the label. */
+  customLabel?: Maybe<Scalars['String']>;
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** The input ID. Input IDs follow the following naming convention: FIELDID.INPUTID (i.e. 5.1), where FIELDID is the id of the containing field and INPUTID specifies the input field. */
+  id?: Maybe<Scalars['Float']>;
+  /** The label to be used for the input. */
+  label?: Maybe<Scalars['String']>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms total field. */
+export type TotalField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDescriptionSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & {
+  __typename?: 'TotalField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** Any node that has a URI */
@@ -13946,6 +17626,94 @@ export type UpdateCommentPayload = {
   comment?: Maybe<Comment>;
   /** Whether the mutation succeeded. If the comment is not approved, the server will not return the comment to a non authenticated user, but a success message can be returned if the create succeeded, and the client can optimistically add the comment to the client cache */
   success?: Maybe<Scalars['Boolean']>;
+};
+
+/** Entry meta input fields for updating draft Gravity Forms entries. */
+export type UpdateDraftEntryMetaInput = {
+  /** ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: InputMaybe<Scalars['Int']>;
+  /** The UTC date the entry was created, in `Y-m-d H:i:s` format. */
+  dateCreatedGmt?: InputMaybe<Scalars['String']>;
+  /** Client IP of user who submitted the form. */
+  ip?: InputMaybe<Scalars['String']>;
+  /** Used to overwrite the sourceUrl the form was submitted from. */
+  sourceUrl?: InputMaybe<Scalars['String']>;
+  /** The name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: InputMaybe<Scalars['String']>;
+};
+
+/** Entry meta input fields for updating Gravity Forms entries. */
+export type UpdateEntryMetaInput = {
+  /** ID of the user that submitted of the form if a logged in user submitted the form. */
+  createdById?: InputMaybe<Scalars['Int']>;
+  /** The UTC date the entry was created, in `Y-m-d H:i:s` format. */
+  dateCreatedGmt?: InputMaybe<Scalars['String']>;
+  /** Client IP of user who submitted the form. */
+  ip?: InputMaybe<Scalars['String']>;
+  /** Whether the entry has been read. */
+  isRead?: InputMaybe<Scalars['Boolean']>;
+  /** Whether the entry has been starred (i.e marked with a star). */
+  isStarred?: InputMaybe<Scalars['Boolean']>;
+  /** Used to overwrite the sourceUrl the form was submitted from. */
+  sourceUrl?: InputMaybe<Scalars['String']>;
+  /** The current status of the entry. */
+  status?: InputMaybe<EntryStatusEnum>;
+  /** The name and version of both the browser and operating system from which the entry was submitted. */
+  userAgent?: InputMaybe<Scalars['String']>;
+};
+
+/** Input for the updateGfDraftEntry mutation. */
+export type UpdateGfDraftEntryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The entry meta values to update. */
+  entryMeta?: InputMaybe<UpdateDraftEntryMetaInput>;
+  /** The field ids and their values. */
+  fieldValues?: InputMaybe<Array<InputMaybe<FormFieldValuesInput>>>;
+  /** Either the global ID of the draft entry, or its resume token. */
+  id: Scalars['ID'];
+  /** The ID type for the draft entry. Defaults to `ID` . */
+  idType?: InputMaybe<DraftEntryIdTypeEnum>;
+  /** Whether the field values should be validated on submission. Defaults to false. */
+  shouldValidate?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** The payload for the updateGfDraftEntry mutation. */
+export type UpdateGfDraftEntryPayload = {
+  __typename?: 'UpdateGfDraftEntryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The draft entry after the update mutation has been applied. If a validation error occurred, the draft entry will NOT have been updated with the invalid value provided. */
+  draftEntry?: Maybe<GfDraftEntry>;
+  /** Field validation errors. */
+  errors?: Maybe<Array<Maybe<FieldError>>>;
+  /** Draft resume URL. If the &quot;Referer&quot; header is not included in the request, this will be an empty string. */
+  resumeUrl?: Maybe<Scalars['String']>;
+};
+
+/** Input for the updateGfEntry mutation. */
+export type UpdateGfEntryInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The entry meta values to update. */
+  entryMeta?: InputMaybe<UpdateEntryMetaInput>;
+  /** The field ids and their values to update. */
+  fieldValues?: InputMaybe<Array<InputMaybe<FormFieldValuesInput>>>;
+  /** ID of the entry to update, either a global or database ID. */
+  id: Scalars['ID'];
+  /** Whether the field values should be validated on submission. Defaults to false. */
+  shouldValidate?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** The payload for the updateGfEntry mutation. */
+export type UpdateGfEntryPayload = {
+  __typename?: 'UpdateGfEntryPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The entry that was created. */
+  entry?: Maybe<GfSubmittedEntry>;
+  /** Field errors. */
+  errors?: Maybe<Array<Maybe<FieldError>>>;
 };
 
 /** Input for the updateMediaItem mutation. */
@@ -14108,48 +17876,8 @@ export type UpdatePostPayload = {
   post?: Maybe<Post>;
 };
 
-/** Input for the updateProject mutation. */
-export type UpdateProjectInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: InputMaybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** Project Content Area */
-  contentArea?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** The ID of the project object */
-  id: Scalars['ID'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** Project Title */
-  projectTitle?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  summary?: InputMaybe<Scalars['String']>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the updateProject mutation. */
-export type UpdateProjectPayload = {
-  __typename?: 'UpdateProjectPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  project?: Maybe<Project>;
-};
-
 /** Input for the updateSettings mutation. */
 export type UpdateSettingsInput = {
-  /** Opt into anonymous usage tracking to help us make Atlas Content Modeler better. */
-  atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking?: InputMaybe<Scalars['String']>;
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']>;
   /** Allow people to submit comments on new posts. */
@@ -14195,8 +17923,6 @@ export type UpdateSettingsPayload = {
   __typename?: 'UpdateSettingsPayload';
   /** Update all settings. */
   allSettings?: Maybe<Settings>;
-  /** Update the AtlasContentModelerSettingsSettings setting. */
-  atlasContentModelerSettingsSettings?: Maybe<AtlasContentModelerSettingsSettings>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']>;
   /** Update the DiscussionSettings setting. */
@@ -14232,41 +17958,6 @@ export type UpdateTagPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The created post_tag */
   tag?: Maybe<Tag>;
-};
-
-/** Input for the updateTestimonial mutation. */
-export type UpdateTestimonialInput = {
-  /** The userId to assign as the author of the object */
-  authorId?: InputMaybe<Scalars['ID']>;
-  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: InputMaybe<Scalars['String']>;
-  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
-  date?: InputMaybe<Scalars['String']>;
-  /** The ID of the testimonial object */
-  id: Scalars['ID'];
-  /** Override the edit lock when another user is editing the post */
-  ignoreEditLock?: InputMaybe<Scalars['Boolean']>;
-  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
-  menuOrder?: InputMaybe<Scalars['Int']>;
-  /** The password used to protect the content of the object */
-  password?: InputMaybe<Scalars['String']>;
-  /** The slug of the object */
-  slug?: InputMaybe<Scalars['String']>;
-  /** The status of the object */
-  status?: InputMaybe<PostStatusEnum>;
-  testimonialAuthor?: InputMaybe<Scalars['String']>;
-  testimonialContent?: InputMaybe<Scalars['String']>;
-  /** The title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** The payload for the updateTestimonial mutation. */
-export type UpdateTestimonialPayload = {
-  __typename?: 'UpdateTestimonialPayload';
-  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
-  clientMutationId?: Maybe<Scalars['String']>;
-  /** The Post object mutation type. */
-  testimonial?: Maybe<Testimonial>;
 };
 
 /** Input for the updateUser mutation. */
@@ -14369,22 +18060,20 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   pages?: Maybe<UserToPageConnection>;
   /** Connection between the User type and the post type */
   posts?: Maybe<UserToPostConnection>;
-  /** Connection between the User type and the project type */
-  projects?: Maybe<UserToProjectConnection>;
   /** The date the user registered or was created. The field follows a full ISO8601 date string format. */
   registeredDate?: Maybe<Scalars['String']>;
   /** Connection between the User and Revisions authored by the user */
   revisions?: Maybe<UserToRevisionsConnection>;
   /** Connection between the User type and the UserRole type */
   roles?: Maybe<UserToUserRoleConnection>;
+  /** The Yoast SEO data of a user */
+  seo?: Maybe<SeoUser>;
   /** Whether the Toolbar should be displayed when the user is viewing the site. */
   shouldShowAdminToolbar?: Maybe<Scalars['Boolean']>;
   shouldShowFaustToolbar?: Maybe<Scalars['Boolean']>;
   /** The slug for the user. This field is equivalent to WP_User-&gt;user_nicename */
   slug?: Maybe<Scalars['String']>;
   templates?: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Connection between the User type and the testimonial type */
-  testimonials?: Maybe<UserToTestimonialConnection>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']>;
   /** A website url that is associated with the user. */
@@ -14466,16 +18155,6 @@ export type UserPostsArgs = {
 
 
 /** A User object */
-export type UserProjectsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<UserToProjectConnectionWhereArgs>;
-};
-
-
-/** A User object */
 export type UserRevisionsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
@@ -14491,16 +18170,6 @@ export type UserRolesArgs = {
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
-};
-
-
-/** A User object */
-export type UserTestimonialsArgs = {
-  after?: InputMaybe<Scalars['String']>;
-  before?: InputMaybe<Scalars['String']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
-  where?: InputMaybe<UserToTestimonialConnectionWhereArgs>;
 };
 
 /** Connection to User Nodes */
@@ -14529,6 +18198,8 @@ export type UserConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14590,6 +18261,8 @@ export type UserRoleConnectionPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14604,6 +18277,10 @@ export enum UserRoleEnum {
   Contributor = 'CONTRIBUTOR',
   /** User role with specific capabilities */
   Editor = 'EDITOR',
+  /** User role with specific capabilities */
+  SeoEditor = 'SEO_EDITOR',
+  /** User role with specific capabilities */
+  SeoManager = 'SEO_MANAGER',
   /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER'
 }
@@ -14637,6 +18314,8 @@ export type UserToCommentConnectionPageInfo = CommentConnectionPageInfo & PageIn
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14732,6 +18411,8 @@ export type UserToEnqueuedScriptConnectionPageInfo = EnqueuedScriptConnectionPag
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14765,6 +18446,8 @@ export type UserToEnqueuedStylesheetConnectionPageInfo = EnqueuedStylesheetConne
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14798,6 +18481,8 @@ export type UserToMediaItemConnectionPageInfo = MediaItemConnectionPageInfo & Pa
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14877,6 +18562,8 @@ export type UserToPageConnectionPageInfo = PageConnectionPageInfo & PageInfo & W
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -14956,6 +18643,8 @@ export type UserToPostConnectionPageInfo = PageInfo & PostConnectionPageInfo & W
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -15026,85 +18715,6 @@ export type UserToPostConnectionWhereArgs = {
   title?: InputMaybe<Scalars['String']>;
 };
 
-/** Connection between the User type and the project type */
-export type UserToProjectConnection = Connection & ProjectConnection & {
-  __typename?: 'UserToProjectConnection';
-  /** Edges for the UserToProjectConnection connection */
-  edges: Array<UserToProjectConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<Project>;
-  /** Information about pagination in a connection. */
-  pageInfo: UserToProjectConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type UserToProjectConnectionEdge = Edge & ProjectConnectionEdge & {
-  __typename?: 'UserToProjectConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node: Project;
-};
-
-/** Page Info on the &quot;UserToProjectConnection&quot; */
-export type UserToProjectConnectionPageInfo = PageInfo & ProjectConnectionPageInfo & WpPageInfo & {
-  __typename?: 'UserToProjectConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
-};
-
-/** Arguments for filtering the UserToProjectConnection connection */
-export type UserToProjectConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: InputMaybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: InputMaybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
 /** Connection between the User type and the ContentNode type */
 export type UserToRevisionsConnection = Connection & ContentNodeConnection & {
   __typename?: 'UserToRevisionsConnection';
@@ -15134,6 +18744,8 @@ export type UserToRevisionsConnectionPageInfo = ContentNodeConnectionPageInfo & 
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -15142,85 +18754,6 @@ export type UserToRevisionsConnectionPageInfo = ContentNodeConnectionPageInfo & 
 export type UserToRevisionsConnectionWhereArgs = {
   /** The Types of content to filter */
   contentTypes?: InputMaybe<Array<InputMaybe<ContentTypeEnum>>>;
-  /** Filter the connection based on dates */
-  dateQuery?: InputMaybe<DateQueryInput>;
-  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
-  hasPassword?: InputMaybe<Scalars['Boolean']>;
-  /** Specific database ID of the object */
-  id?: InputMaybe<Scalars['Int']>;
-  /** Array of IDs for the objects to retrieve */
-  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Get objects with a specific mimeType property */
-  mimeType?: InputMaybe<MimeTypeEnum>;
-  /** Slug / post_name of the object */
-  name?: InputMaybe<Scalars['String']>;
-  /** Specify objects to retrieve. Use slugs */
-  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
-  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
-  /** Use ID to return only children. Use 0 to return only top-level items */
-  parent?: InputMaybe<Scalars['ID']>;
-  /** Specify objects whose parent is in an array */
-  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Specify posts whose parent is not in an array */
-  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Show posts with a specific password. */
-  password?: InputMaybe<Scalars['String']>;
-  /** Show Posts based on a keyword search */
-  search?: InputMaybe<Scalars['String']>;
-  /** Retrieve posts where post status is in an array. */
-  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
-  /** Show posts with a specific status. */
-  status?: InputMaybe<PostStatusEnum>;
-  /** Title of the object */
-  title?: InputMaybe<Scalars['String']>;
-};
-
-/** Connection between the User type and the testimonial type */
-export type UserToTestimonialConnection = Connection & TestimonialConnection & {
-  __typename?: 'UserToTestimonialConnection';
-  /** Edges for the UserToTestimonialConnection connection */
-  edges: Array<UserToTestimonialConnectionEdge>;
-  /** The nodes of the connection, without the edges */
-  nodes: Array<Testimonial>;
-  /** Information about pagination in a connection. */
-  pageInfo: UserToTestimonialConnectionPageInfo;
-};
-
-/** An edge in a connection */
-export type UserToTestimonialConnectionEdge = Edge & TestimonialConnectionEdge & {
-  __typename?: 'UserToTestimonialConnectionEdge';
-  /** A cursor for use in pagination */
-  cursor?: Maybe<Scalars['String']>;
-  /** The item at the end of the edge */
-  node: Testimonial;
-};
-
-/** Page Info on the &quot;UserToTestimonialConnection&quot; */
-export type UserToTestimonialConnectionPageInfo = PageInfo & TestimonialConnectionPageInfo & WpPageInfo & {
-  __typename?: 'UserToTestimonialConnectionPageInfo';
-  /** When paginating forwards, the cursor to continue. */
-  endCursor?: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  startCursor?: Maybe<Scalars['String']>;
-};
-
-/** Arguments for filtering the UserToTestimonialConnection connection */
-export type UserToTestimonialConnectionWhereArgs = {
-  /** The user that's connected as the author of the object. Use the userId for the author object. */
-  author?: InputMaybe<Scalars['Int']>;
-  /** Find objects connected to author(s) in the array of author's userIds */
-  authorIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** Find objects connected to the author by the author's nicename */
-  authorName?: InputMaybe<Scalars['String']>;
-  /** Find objects NOT connected to author(s) in the array of author's userIds */
-  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -15286,6 +18819,8 @@ export type UserToUserRoleConnectionPageInfo = PageInfo & UserRoleConnectionPage
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
 };
@@ -15340,8 +18875,70 @@ export type WpPageInfo = {
   hasNextPage: Scalars['Boolean'];
   /** When paginating backwards, are there more items? */
   hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  seo?: Maybe<SeoPostTypePageInfo>;
   /** When paginating backwards, the cursor to continue. */
   startCursor?: Maybe<Scalars['String']>;
+};
+
+/** A Gravity Forms website field. */
+export type WebsiteField = FormField & GfFieldWithAdminLabelSetting & GfFieldWithConditionalLogicSetting & GfFieldWithCssClassSetting & GfFieldWithDefaultValueSetting & GfFieldWithDescriptionSetting & GfFieldWithDuplicatesSetting & GfFieldWithErrorMessageSetting & GfFieldWithLabelPlacementSetting & GfFieldWithLabelSetting & GfFieldWithPersonalData & GfFieldWithPlaceholderSetting & GfFieldWithPrepopulateFieldSetting & GfFieldWithRulesSetting & GfFieldWithSizeSetting & {
+  __typename?: 'WebsiteField';
+  /** When specified, the value of this property will be used on the admin pages instead of the label. It is useful for fields with long labels. */
+  adminLabel?: Maybe<Scalars['String']>;
+  /** Determines if the field’s value can be pre-populated dynamically. */
+  canPrepopulate?: Maybe<Scalars['Boolean']>;
+  /** Controls the visibility of the field based on values selected by the user. */
+  conditionalLogic?: Maybe<ConditionalLogic>;
+  /** String containing the custom CSS classes to be added to the &lt;li&gt; tag that contains the field. Useful for applying custom formatting to specific fields. */
+  cssClass?: Maybe<Scalars['String']>;
+  /** Field database ID. */
+  databaseId: Scalars['Int'];
+  /** Contains the default value for the field. When specified, the field&#039;s value will be populated with the contents of this property when the form is displayed. */
+  defaultValue?: Maybe<Scalars['String']>;
+  /** Field description. */
+  description?: Maybe<Scalars['String']>;
+  /** The placement of the field description. */
+  descriptionPlacement?: Maybe<FormFieldDescriptionPlacementEnum>;
+  /** Indicates the field is only displayed and its contents are not submitted with the form/saved with the entry. This is set to true. */
+  displayOnly?: Maybe<Scalars['Boolean']>;
+  /** Contains the message that is displayed for fields that fail validation. */
+  errorMessage?: Maybe<Scalars['String']>;
+  /**
+   * Field database ID.
+   * @deprecated This field will be changing to return a Global ID in a future release. Future-proof your code and use databaseId instead.
+   */
+  id: Scalars['Int'];
+  /** Assigns a name to this field so that it can be populated dynamically via this input name. Only applicable when canPrepopulate is `true`. */
+  inputName?: Maybe<Scalars['String']>;
+  /** The base form field type used to display the input. A good example is the Post Custom Field that can be displayed as various different types of fields. */
+  inputType?: Maybe<FormFieldTypeEnum>;
+  /** Determines if the field requires the user to enter a value. Fields marked as required will prevent the form from being submitted if the user has not entered a value in it. */
+  isRequired?: Maybe<Scalars['Boolean']>;
+  /** Field label that will be displayed on the form and on the admin pages. */
+  label?: Maybe<Scalars['String']>;
+  /** The field label position. */
+  labelPlacement?: Maybe<FormFieldLabelPlacementEnum>;
+  /** The number of CSS grid columns the field should span. */
+  layoutGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The number of CSS grid columns the spacer field following this one should span. */
+  layoutSpacerGridColumnSpan?: Maybe<Scalars['Int']>;
+  /** The form page this field is located on. Default is 1. */
+  pageNumber?: Maybe<Scalars['Int']>;
+  /** The form field-specifc policies for exporting and erasing personal data. */
+  personalData?: Maybe<FormFieldDataPolicy>;
+  /** Placeholder text to give the user a hint on how to fill out the field. This is not submitted with the form. */
+  placeholder?: Maybe<Scalars['String']>;
+  /** Determines if the field allows duplicate submissions. */
+  shouldAllowDuplicates?: Maybe<Scalars['Boolean']>;
+  /** Determines the size of the field when displayed on the page. */
+  size?: Maybe<FormFieldSizeEnum>;
+  /** The type of field to be displayed. */
+  type?: Maybe<FormFieldTypeEnum>;
+  /** The string-formatted entry value for the `formField`. For complex fields this might be a JSON-encoded or serialized array. */
+  value?: Maybe<Scalars['String']>;
+  /** Field visibility. */
+  visibility?: Maybe<FormFieldVisibilityEnum>;
 };
 
 /** The writing setting type */
@@ -15369,7 +18966,15 @@ export type GetArchiveQueryVariables = Exact<{
 }>;
 
 
-export type GetArchiveQuery = { __typename?: 'RootQuery', nodeByUri?: { __typename?: 'Category', name?: string | null, archiveType: 'Category', posts?: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', id: string, title?: string | null, uri?: string | null }> } | null } | { __typename?: 'ContentType', archiveType: 'ContentType' } | { __typename?: 'MediaItem', archiveType: 'MediaItem' } | { __typename?: 'Page', archiveType: 'Page' } | { __typename?: 'Post', archiveType: 'Post' } | { __typename?: 'PostFormat', archiveType: 'PostFormat' } | { __typename?: 'Project', archiveType: 'Project' } | { __typename?: 'Tag', name?: string | null, archiveType: 'Tag', posts?: { __typename?: 'TagToPostConnection', nodes: Array<{ __typename?: 'Post', id: string, title?: string | null, uri?: string | null }> } | null } | { __typename?: 'Testimonial', archiveType: 'Testimonial' } | { __typename?: 'User', archiveType: 'User' } | null, generalSettings?: { __typename?: 'GeneralSettings', title?: string | null, description?: string | null } | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', id: string, uri?: string | null, path?: string | null, label?: string | null, parentId?: string | null, cssClasses?: Array<string | null> | null, menu?: { __typename?: 'MenuItemToMenuConnectionEdge', node: { __typename?: 'Menu', name?: string | null } } | null }> } | null };
+export type GetArchiveQuery = { __typename?: 'RootQuery', nodeByUri?: { __typename?: 'Category', name?: string | null, archiveType: 'Category', posts?: { __typename?: 'CategoryToPostConnection', nodes: Array<{ __typename?: 'Post', id: string, title?: string | null, uri?: string | null }> } | null } | { __typename?: 'ContentType', archiveType: 'ContentType' } | { __typename?: 'MediaItem', archiveType: 'MediaItem' } | { __typename?: 'Page', archiveType: 'Page' } | { __typename?: 'Post', archiveType: 'Post' } | { __typename?: 'PostFormat', archiveType: 'PostFormat' } | { __typename?: 'Tag', name?: string | null, archiveType: 'Tag', posts?: { __typename?: 'TagToPostConnection', nodes: Array<{ __typename?: 'Post', id: string, title?: string | null, uri?: string | null }> } | null } | { __typename?: 'User', archiveType: 'User' } | null, generalSettings?: { __typename?: 'GeneralSettings', title?: string | null, description?: string | null } | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', id: string, uri?: string | null, path?: string | null, label?: string | null, parentId?: string | null, cssClasses?: Array<string | null> | null, menu?: { __typename?: 'MenuItemToMenuConnectionEdge', node: { __typename?: 'Menu', name?: string | null } } | null }> } | null };
+
+export type GetContactPageQueryVariables = Exact<{
+  databaseId: Scalars['ID'];
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+}>;
+
+
+export type GetContactPageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', title?: string | null, content?: string | null, authorId?: string | null, template?: { __typename?: 'DefaultTemplate' } | { __typename?: 'Template_About' } | { __typename?: 'Template_Contact', contact?: { __typename?: 'Template_Contact_Contact', heroSection?: { __typename?: 'Template_Contact_Contact_HeroSection', title?: string | null } | null } | null } | { __typename?: 'Template_Home' } | null } | null, generalSettings?: { __typename?: 'GeneralSettings', title?: string | null, description?: string | null } | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', id: string, uri?: string | null, path?: string | null, label?: string | null, parentId?: string | null, cssClasses?: Array<string | null> | null, menu?: { __typename?: 'MenuItemToMenuConnectionEdge', node: { __typename?: 'Menu', name?: string | null } } | null }> } | null };
 
 export type GetHomePageQueryVariables = Exact<{
   databaseId: Scalars['ID'];
@@ -15377,7 +18982,7 @@ export type GetHomePageQueryVariables = Exact<{
 }>;
 
 
-export type GetHomePageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', title?: string | null, content?: string | null } | null, generalSettings?: { __typename?: 'GeneralSettings', title?: string | null, description?: string | null } | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', id: string, uri?: string | null, path?: string | null, label?: string | null, parentId?: string | null, cssClasses?: Array<string | null> | null, menu?: { __typename?: 'MenuItemToMenuConnectionEdge', node: { __typename?: 'Menu', name?: string | null } } | null }> } | null };
+export type GetHomePageQuery = { __typename?: 'RootQuery', page?: { __typename?: 'Page', title?: string | null, content?: string | null, home?: { __typename?: 'Page_Home', processSection?: { __typename?: 'Page_Home_ProcessSection', header?: string | null } | null, bookACallSection?: { __typename?: 'Page_Home_BookACallSection', content?: string | null, fieldGroupName?: string | null, header?: string | null, link?: { __typename?: 'AcfLink', target?: string | null, title?: string | null, url?: string | null } | null } | null } | null } | null, generalSettings?: { __typename?: 'GeneralSettings', title?: string | null, description?: string | null } | null, primaryMenuItems?: { __typename?: 'RootQueryToMenuItemConnection', nodes: Array<{ __typename?: 'MenuItem', id: string, uri?: string | null, path?: string | null, label?: string | null, parentId?: string | null, cssClasses?: Array<string | null> | null, menu?: { __typename?: 'MenuItemToMenuConnectionEdge', node: { __typename?: 'Menu', name?: string | null } } | null }> } | null };
 
 export type GetPageQueryVariables = Exact<{
   databaseId: Scalars['ID'];
@@ -15399,6 +19004,7 @@ export const HeaderGeneralSettingsFragmentFragmentDoc = {"kind":"Document","defi
 export const PrimaryMenuItemFragmentFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PrimaryMenuItemFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MenuItem"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<PrimaryMenuItemFragmentFragment, unknown>;
 export const GetExamplePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetExamplePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetExamplePageQuery, GetExamplePageQueryVariables>;
 export const GetArchiveDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetArchive"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"uri"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodeByUri"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"Variable","name":{"kind":"Name","value":"uri"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"archiveType"},"name":{"kind":"Name","value":"__typename"}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Category"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}}]}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Tag"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetArchiveQuery, GetArchiveQueryVariables>;
-export const GetHomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomePage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}},"defaultValue":{"kind":"BooleanValue","value":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}},{"kind":"Argument","name":{"kind":"Name","value":"asPreview"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomePageQuery, GetHomePageQueryVariables>;
+export const GetContactPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetContactPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}},"defaultValue":{"kind":"BooleanValue","value":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}},{"kind":"Argument","name":{"kind":"Name","value":"asPreview"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"authorId"}},{"kind":"Field","name":{"kind":"Name","value":"template"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Template_Contact"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contact"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetContactPageQuery, GetContactPageQueryVariables>;
+export const GetHomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetHomePage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}},"defaultValue":{"kind":"BooleanValue","value":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}},{"kind":"Argument","name":{"kind":"Name","value":"asPreview"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"processSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"header"}}]}},{"kind":"Field","name":{"kind":"Name","value":"bookACallSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"fieldGroupName"}},{"kind":"Field","name":{"kind":"Name","value":"header"}},{"kind":"Field","name":{"kind":"Name","value":"link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetHomePageQuery, GetHomePageQueryVariables>;
 export const GetPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}},"defaultValue":{"kind":"BooleanValue","value":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}},{"kind":"Argument","name":{"kind":"Name","value":"asPreview"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPageQuery, GetPageQueryVariables>;
 export const GetPostDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetPost"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}},"defaultValue":{"kind":"BooleanValue","value":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"databaseId"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}},{"kind":"Argument","name":{"kind":"Name","value":"asPreview"},"value":{"kind":"Variable","name":{"kind":"Name","value":"asPreview"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"date"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"generalSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","alias":{"kind":"Name","value":"primaryMenuItems"},"name":{"kind":"Name","value":"menuItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"location"},"value":{"kind":"EnumValue","value":"PRIMARY"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"path"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"parentId"}},{"kind":"Field","name":{"kind":"Name","value":"cssClasses"}},{"kind":"Field","name":{"kind":"Name","value":"menu"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPostQuery, GetPostQueryVariables>;
