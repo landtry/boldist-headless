@@ -20,6 +20,6 @@
     "jsx": "preserve",
     "noImplicitAny": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/wp-templates/contact.tsx"],
   "exclude": ["node_modules", "src/__generated__"]
 }

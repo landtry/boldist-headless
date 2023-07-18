@@ -12,10 +12,12 @@ const Component: FaustTemplate<GetHomePageQuery> = (props) => {
   if (props.loading) {
     return <>Loading...</>;
   }
+  console.log(props.data.page.home.bookACallSection);
 
   const { title: siteTitle, description: siteDescription } = props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content } = props.data.page;
+  const { title, content, home } = props.data.page;
+  const { bookACallSection, processSection } = home;
 
   return (
     <>
@@ -27,6 +29,8 @@ const Component: FaustTemplate<GetHomePageQuery> = (props) => {
 
       <main className="">
         <div dangerouslySetInnerHTML={{ __html: content }} />
+        {processSection.header}
+        {bookACallSection.content}
       </main>
 
       <Footer />
@@ -46,6 +50,21 @@ Component.query = gql(`
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      home {
+        processSection {
+          header
+        }
+        bookACallSection {
+          content
+          fieldGroupName
+          header
+          link {
+            target
+            title
+            url
+          }
+        }
+      }
     }
     generalSettings {
       title
