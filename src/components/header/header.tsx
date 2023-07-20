@@ -2,10 +2,7 @@ import { gql } from '../../__generated__';
 
 import Link from 'next/link';
 
-import {
-  HeaderGeneralSettingsFragmentFragment,
-  PrimaryMenuItemFragmentFragment,
-} from '../../__generated__/graphql';
+import { PrimaryMenuItemFragmentFragment } from '../../__generated__/graphql';
 
 type HeaderProps = {
   menuItems: PrimaryMenuItemFragmentFragment[];

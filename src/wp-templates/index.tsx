@@ -4,10 +4,12 @@ import archive from './archive';
 import contact from './contact';
 import home from './home';
 
-export default {
+const templates = {
   page,
   single,
   archive,
   'template-Home': home,
   'template-Contact': contact,
 };
+
+export default templates;

@@ -5,6 +5,7 @@
     "build": "faust build",
     "generate": "faust generatePossibleTypes",
     "prettier": "prettier --write --ignore-unknown .",
+    "lint": "next lint",
     "start": "faust start",
     "codegen": "graphql-codegen",
     "watch-codegen": "graphql-codegen -w"
@@ -27,6 +28,8 @@
     "@types/react": "^18.2.0",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
+    "eslint": "8.45.0",
+    "eslint-config-next": "13.4.10",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
