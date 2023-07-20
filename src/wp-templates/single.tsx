@@ -1,32 +1,29 @@
 import { gql } from '@/__generated__';
-import Head from 'next/head';
-import EntryHeader from '@/components/entery-header/entry-header';
-import Footer from '@/components/footer/footer';
-import Header from '@/components/header/header';
 import { GetPostQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
+import { Header, Footer } from '@/components';
 
-const Component: FaustTemplate<GetPostQuery> = (props) => {
+import parse from 'html-react-parser';
+import Head from 'next/head';
+
+const Template: FaustTemplate<GetPostQuery> = (props) => {
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
   }
 
-  const { post, generalSettings, primaryMenuItems } = props.data;
-  const { title: siteTitle } = generalSettings;
+  const { fullHead } = props.data.post.seo;
+  const { post, primaryMenuItems } = props.data;
   const { nodes: menuItems } = primaryMenuItems;
-  const { title, content, date, author } = post;
+  const { content } = post;
 
   return (
     <>
-      <Head>
-        <title>{`${title} - ${siteTitle}`}</title>
-      </Head>
+      <Head>{parse(fullHead)}</Head>
 
-      <Header siteTitle={siteTitle} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
       <main className="">
-        <EntryHeader title={title} date={date} author={author.node.name} />
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </main>
 
@@ -35,19 +32,22 @@ const Component: FaustTemplate<GetPostQuery> = (props) => {
   );
 };
 
-Component.variables = ({ databaseId }, ctx) => {
+Template.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     asPreview: ctx?.asPreview,
   };
 };
 
-Component.query = gql(`
+Template.query = gql(`
   query GetPost($databaseId: ID!, $asPreview: Boolean = false) {
     post(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
       date
+      seo {
+        fullHead
+      }
       author {
         node {
           name
@@ -76,4 +76,4 @@ Component.query = gql(`
   }
 `);
 
-export default Component;
+export default Template;

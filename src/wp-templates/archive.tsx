@@ -1,15 +1,15 @@
 import { gql } from '@/__generated__';
-import Link from 'next/link';
-import Head from 'next/head';
-import Header from '@/components/header/header';
-import EntryHeader from '@/components/entery-header/entry-header';
-import Footer from '@/components/footer/footer';
+import { Header, Footer } from '@/components';
 import { GetArchiveQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
 
-const Component: FaustTemplate<GetArchiveQuery> = (props) => {
-  const { title: siteTitle } = props.data.generalSettings;
-  const menuItems = props.data.primaryMenuItems.nodes;
+import Link from 'next/link';
+import Head from 'next/head';
+import parse from 'html-react-parser';
+
+const Template: FaustTemplate<GetArchiveQuery> = (props) => {
+  const { fullHead } = props.data.page.seo;
+  const { nodes: menuItems } = props.data.primaryMenuItems;
   const { archiveType } = props.data.nodeByUri;
 
   if (archiveType !== 'Category' && archiveType !== 'Tag') {
@@ -17,19 +17,14 @@ const Component: FaustTemplate<GetArchiveQuery> = (props) => {
   }
 
   const { name, posts } = props.data.nodeByUri;
-  const htmlTitle = `${archiveType}: ${name} - ${siteTitle}`;
 
   return (
     <>
-      <Head>
-        <title>{`${archiveType}: ${name} - ${siteTitle}`}</title>
-      </Head>
+      <Head>{parse(fullHead)}</Head>
 
-      <Header siteTitle={siteTitle} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
       <main className="">
-        <EntryHeader title={`Archive for ${archiveType}: ${name}`} />
-
         <h3>Recent Posts</h3>
         <ul>
           {posts.nodes.map((post) => (
@@ -45,14 +40,23 @@ const Component: FaustTemplate<GetArchiveQuery> = (props) => {
   );
 };
 
-Component.variables = (seedQuery, ctx) => {
+Template.variables = ({ uri, databaseId }, ctx) => {
   return {
-    uri: seedQuery.uri,
+    uri,
+    databaseId,
+    asPreview: ctx?.asPreview,
   };
 };
 
-Component.query = gql(`
-  query GetArchive($uri: String!) {
+Template.query = gql(`
+  query GetArchive($uri: String!, $databaseId: ID!, $asPreview: Boolean = false) {
+    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
+      title
+      content
+      seo {
+        fullHead
+      }
+    }
     nodeByUri(uri: $uri) {
       archiveType: __typename
       ... on Category {
@@ -98,4 +102,4 @@ Component.query = gql(`
   }
 `);
 
-export default Component;
+export default Template;

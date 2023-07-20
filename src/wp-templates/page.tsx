@@ -1,31 +1,29 @@
 import { gql } from '@/__generated__';
-import Head from 'next/head';
-import EntryHeader from '@/components/entery-header/entry-header';
-import Footer from '@/components/footer/footer';
-import Header from '@/components/header/header';
 import { GetPageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
+import { Footer, Header } from '@/components';
 
-const Component: FaustTemplate<GetPageQuery> = (props) => {
+import parse from 'html-react-parser';
+import Head from 'next/head';
+
+const Template: FaustTemplate<GetPageQuery> = (props) => {
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
   }
 
-  const { title: siteTitle } = props.data.generalSettings;
-  const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content } = props.data.page;
+  // Set data variables
+  const { fullHead } = props.data.page.seo;
+  const { nodes: menuItems } = props.data.primaryMenuItems;
+  const { content } = props.data.page;
 
   return (
     <>
-      <Head>
-        <title>{`${title} - ${siteTitle}`}</title>
-      </Head>
+      <Head>{parse(fullHead)}</Head>
 
-      <Header siteTitle={siteTitle} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
       <main className="">
-        <EntryHeader title={title} />
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </main>
 
@@ -34,18 +32,21 @@ const Component: FaustTemplate<GetPageQuery> = (props) => {
   );
 };
 
-Component.variables = ({ databaseId }, ctx) => {
+Template.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     asPreview: ctx?.asPreview,
   };
 };
 
-Component.query = gql(`
+Template.query = gql(`
   query GetPage($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      seo {
+        fullHead
+      }
     }
     generalSettings {
       title
@@ -69,4 +70,4 @@ Component.query = gql(`
   }
 `);
 
-export default Component;
+export default Template;

@@ -2,19 +2,21 @@ import { gql } from '../../__generated__';
 
 import Link from 'next/link';
 
-import { HeaderGeneralSettingsFragmentFragment, PrimaryMenuItemFragmentFragment } from '../../__generated__/graphql';
+import {
+  HeaderGeneralSettingsFragmentFragment,
+  PrimaryMenuItemFragmentFragment,
+} from '../../__generated__/graphql';
 
 type HeaderProps = {
-  siteTitle: HeaderGeneralSettingsFragmentFragment['title'];
   menuItems: PrimaryMenuItemFragmentFragment[];
 };
 
-export default function Header({ siteTitle, menuItems }: HeaderProps) {
+export default function Header({ menuItems }: HeaderProps) {
   return (
     <header className={'bg-gray-100 py-4'}>
       <div className="container flex items-center">
         <Link href="/" className={''}>
-          <h2 className={''}>{siteTitle}</h2>
+          <h2 className={''}>{'Boldist'}</h2>
         </Link>
 
         <nav className={'ml-auto'}>

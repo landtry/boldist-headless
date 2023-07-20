@@ -1,36 +1,31 @@
 import { gql } from '@/__generated__';
-
-import Head from 'next/head';
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
-
 import { GetHomePageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
+import { Footer, Header } from '@/components';
 
-const Component: FaustTemplate<GetHomePageQuery> = (props) => {
+import parse from 'html-react-parser';
+import Head from 'next/head';
+
+const Template: FaustTemplate<GetHomePageQuery> = (props) => {
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
   }
-  console.log(props.data.page.home.bookACallSection);
 
-  const { title: siteTitle, description: siteDescription } = props.data.generalSettings;
-  const menuItems = props.data.primaryMenuItems.nodes;
-  const { title, content, home } = props.data.page;
-  const { bookACallSection, processSection } = home;
+  // Set data variables
+  const { nodes: menuItems } = props.data.primaryMenuItems;
+  const { fullHead } = props.data.page.seo;
+  const { bookACallSection, processSection } = props.data.page.home;
 
   return (
     <>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+      <Head>{parse(fullHead)}</Head>
 
-      <Header siteTitle={siteTitle} menuItems={menuItems} />
+      <Header menuItems={menuItems} />
 
       <main className="">
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-        {processSection.header}
-        {bookACallSection.content}
+        <div dangerouslySetInnerHTML={{ __html: processSection?.header }}></div>
+        <div dangerouslySetInnerHTML={{ __html: bookACallSection.content }}></div>
       </main>
 
       <Footer />
@@ -38,18 +33,21 @@ const Component: FaustTemplate<GetHomePageQuery> = (props) => {
   );
 };
 
-Component.variables = ({ databaseId }, ctx) => {
+Template.variables = ({ databaseId }, ctx) => {
   return {
     databaseId,
     asPreview: ctx?.asPreview,
   };
 };
 
-Component.query = gql(`
+Template.query = gql(`
   query GetHomePage($databaseId: ID!, $asPreview: Boolean = false) {
     page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
       title
       content
+      seo {
+        fullHead
+      }
       home {
         processSection {
           header
@@ -88,4 +86,4 @@ Component.query = gql(`
   }
 `);
 
-export default Component;
+export default Template;
