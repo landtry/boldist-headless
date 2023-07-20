@@ -8,6 +8,12 @@ import Head from 'next/head';
 import parse from 'html-react-parser';
 
 const Template: FaustTemplate<GetArchiveQuery> = (props) => {
+  // Loading state for previews
+  if (props.loading) {
+    return <>Loading...</>;
+  }
+
+  // Set data variables
   const { fullHead } = props.data.page.seo;
   const { nodes: menuItems } = props.data.primaryMenuItems;
   const { archiveType } = props.data.nodeByUri;

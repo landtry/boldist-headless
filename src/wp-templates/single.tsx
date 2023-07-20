@@ -12,6 +12,7 @@ const Template: FaustTemplate<GetPostQuery> = (props) => {
     return <>Loading...</>;
   }
 
+  // Set data variables
   const { fullHead } = props.data.post.seo;
   const { post, primaryMenuItems } = props.data;
   const { nodes: menuItems } = primaryMenuItems;
