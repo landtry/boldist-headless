@@ -3,7 +3,6 @@ import { GetHomePageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
 
 import { Button, Footer, Header, Layout, SiteHead } from '@/components';
-import Link from 'next/link';
 
 const Template: FaustTemplate<GetHomePageQuery> = (props) => {
   // Loading state for previews
