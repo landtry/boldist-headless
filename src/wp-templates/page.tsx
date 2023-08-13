@@ -1,9 +1,8 @@
 import { gql } from '@/__generated__';
 import { GetPageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
-import { Footer, Header } from '@/components';
+import { Footer, Header, SiteHead } from '@/components';
 
-import parse from 'html-react-parser';
 import Head from 'next/head';
 
 const Template: FaustTemplate<GetPageQuery> = (props) => {
@@ -19,7 +18,7 @@ const Template: FaustTemplate<GetPageQuery> = (props) => {
 
   return (
     <>
-      <Head>{parse(fullHead)}</Head>
+      <SiteHead>{fullHead}</SiteHead>
 
       <Header menuItems={menuItems} />
 

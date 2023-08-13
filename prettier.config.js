@@ -1,6 +1,7 @@
 // prettier.config.js
 module.exports = {
   plugins: [require('prettier-plugin-tailwindcss')],
+  tailwindFunctions: ['cn', 'cva'],
   tailwindConfig: './tailwind.config.js',
   printWidth: 100, // max 120 chars in line, code is easy to read
   useTabs: false, // use spaces instead of tabs

@@ -1,15 +1,13 @@
+import home from './home';
 import page from './page';
 import single from './single';
 import archive from './archive';
-import contact from './contact';
-import home from './home';
 
-const templates = {
+const template = {
+  'front-page': home,
   page,
   single,
   archive,
-  'template-Home': home,
-  'template-Contact': contact,
 };
 
-export default templates;
+export default template;

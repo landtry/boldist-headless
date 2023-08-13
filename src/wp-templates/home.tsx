@@ -1,10 +1,9 @@
 import { gql } from '@/__generated__';
 import { GetHomePageQuery } from '@/__generated__/graphql';
 import { FaustTemplate } from '@faustwp/core';
-import { Footer, Header } from '@/components';
 
-import parse from 'html-react-parser';
-import Head from 'next/head';
+import { Button, Footer, Header, Layout, SiteHead } from '@/components';
+import Link from 'next/link';
 
 const Template: FaustTemplate<GetHomePageQuery> = (props) => {
   // Loading state for previews
@@ -15,20 +14,21 @@ const Template: FaustTemplate<GetHomePageQuery> = (props) => {
   // Set data variables
   const { nodes: menuItems } = props.data.primaryMenuItems;
   const { fullHead } = props.data.page.seo;
-  const { bookACallSection, processSection } = props.data.page.home;
 
   return (
     <>
-      <Head>{parse(fullHead)}</Head>
+      <SiteHead>{fullHead}</SiteHead>
+      <Layout>
+        <Header menuItems={menuItems} />
 
-      <Header menuItems={menuItems} />
+        <main className="h-[200vh] p-40">
+          {/* <Button onClick={() => console.log('click')} variant="accent">
+            Schedule a Consultation
+          </Button> */}
+        </main>
 
-      <main className="">
-        <div dangerouslySetInnerHTML={{ __html: processSection?.header }}></div>
-        <div dangerouslySetInnerHTML={{ __html: bookACallSection.content }}></div>
-      </main>
-
-      <Footer />
+        <Footer />
+      </Layout>
     </>
   );
 };
@@ -47,21 +47,6 @@ Template.query = gql(`
       content
       seo {
         fullHead
-      }
-      home {
-        processSection {
-          header
-        }
-        bookACallSection {
-          content
-          fieldGroupName
-          header
-          link {
-            target
-            title
-            url
-          }
-        }
       }
     }
     generalSettings {

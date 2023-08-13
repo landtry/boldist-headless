@@ -1,3 +1,91 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'boldist';
+  src: url('../../public/fonts/boldist-rg.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'boldist';
+  src: url('../../public/fonts/boldist-md.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'boldist';
+  src: url('../../public/fonts/boldist-bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'boldist';
+  src: url('../../public/fonts/boldist-blk.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --font-sans: 'boldist';
+
+    --background: 322 94% 14%;
+    --foreground: 0 0% 100%;
+
+    --muted: 322 96% 11%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 15 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --primary: 44 99% 50%;
+    --primary-foreground: 321, 97%, 14%;
+
+    --secondary: 309 98% 22%;
+    --secondary-foreground: 0 0% 100%;
+  }
+
+  .theme-purple {
+    --background: 235 77% 9%;
+    --foreground: 0 0% 100%;
+
+    --muted: 0 0% 100%;
+    --muted-foreground: 235 77% 9%;
+
+    --accent: 237 63% 71%;
+    --accent-foreground: 0 0% 100%;
+
+    --primary: 256 52% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 197 94% 79%;
+    --secondary-foreground: 235 77% 9%;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground ring-offset-background;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+  .bg-background * {
+    @apply ring-offset-background;
+  }
+  .bg-accent * {
+    @apply ring-offset-accent;
+  }
+  .bg-muted * {
+    @apply ring-offset-muted;
+  }
+  .bg-primary * {
+    @apply ring-offset-primary;
+  }
+  .bg-secondary * {
+    @apply ring-offset-secondary;
+  }
+}
